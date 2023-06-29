@@ -11,6 +11,24 @@
     <div>
       <div class="Subtitle">게임머니계산기</div>
     </div>
+
+    <div>
+      <div class="Contents">
+        <div>GAMEMONEYCALC는, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때</div>
+        <div>경매장(거래소)에 등록 금액과 현금 거래의 비율을</div>
+        <div>하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.</div>
+        <br><br>
+        <div>겜창인 개발자의 경험으로 꼭 필요하다 생각이 들었던 상품권 할인 비율을 계산할 수 있게 만들어</div>
+        <div>더욱 효율적으로 여러분의 지갑을 조금이나마 지켜드리겠습니다!</div>
+      </div>
+    </div>
+
+
+
+    <div>
+      GAMEMONEYCAL
+    </div>
+
   </div>
 </template>
 
@@ -23,7 +41,9 @@ export default {
 <style>
 .Title_img{
   position: fixed;
-  top: 15%;
+  /*더 위로 올라가야함 */
+  top: 10%;
+  /* top: calc(30% - 140px); */
   left: 10%;
   /* cursor: pointer; */
   /* z-index: 1; */
@@ -31,7 +51,7 @@ export default {
 
 .Title_name{
   position: fixed;
-  top: 30%;
+  top: 25%;
   left: 10%;
 
   color:#fff;
@@ -47,7 +67,7 @@ export default {
 
 .Subtitle{
   position: fixed;
-  top: 52%;
+  top: 50%;
   left: 10%;
   
   font-family: "NeurimboGothicRegular";
@@ -56,4 +76,14 @@ export default {
   background-color: transparent;
 }
 
+.Contents{
+  position: fixed;
+  top: 60%;
+  left: 10%;
+
+  font-family: 'PretendardMedium';
+  color : #fff;
+  font-size: 25px;
+  background-color: transparent;
+}
 </style>

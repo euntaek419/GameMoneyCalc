@@ -36,6 +36,11 @@ export default {
   src : url('assets/fonts/neurimboGothicRegular.otf');
 }
 
+@font-face{
+  font-family: 'PretendardMedium';
+  src : url('assets/fonts/PretendardMedium.otf');
+}
+
 * {
   background-color: #000000;
 }
