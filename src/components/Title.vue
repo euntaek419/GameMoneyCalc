@@ -13,7 +13,7 @@
     </div>
 
     <div>
-      <div class="Contents">
+      <div class="MainContents">
         <div>GAMEMONEYCALC는, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때</div>
         <div>경매장(거래소)에 등록 금액과 현금 거래의 비율을</div>
         <div>하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.</div>
@@ -25,8 +25,10 @@
 
 
 
-    <div>
-      GAMEMONEYCAL
+    <div class="animated-title">
+      <div class="track"> <!-- bottom animation -->
+        <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span><span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> 
+      </div>
     </div>
 
   </div>
@@ -76,7 +78,7 @@ export default {
   background-color: transparent;
 }
 
-.Contents{
+.MainContents{
   position: fixed;
   top: 60%;
   left: 10%;
@@ -85,5 +87,35 @@ export default {
   color : #fff;
   font-size: 25px;
   background-color: transparent;
+}
+
+.Footer{
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
+}
+
+.BoldText{
+  background-color: #fff;
+  font-size: 25px;
+  text-align: center;
+}
+
+.LightText{
+  background-color: #fff;
+  font-size: 25px;
+}
+
+/* 움직이는 텍스트 */
+.animated-title {font-size:25px; position: fixed; bottom: -15px; width: 100%; max-width:100%; height: 50px; overflow-x: hidden; overflow-y: hidden; color: #000000;}
+.animated-title .track {position: fixed; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (hover: hover) and (min-width: 700px){
+.animated-title .content { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceBold'; }
+.animated-title .content2 { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceLight';  }
 }
 </style>

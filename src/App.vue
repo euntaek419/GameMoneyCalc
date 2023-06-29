@@ -41,7 +41,23 @@ export default {
   src : url('assets/fonts/PretendardMedium.otf');
 }
 
+@font-face{
+  font-family: 'PyeongChangPeaceBold';
+  src : url('assets/fonts/PyeongChangPeaceBold.ttf');
+}
+
+@font-face{
+  font-family: 'PyeongChangPeaceLight';
+  src : url('assets/fonts/PyeongChangPeaceLight.ttf');
+}
+
 * {
   background-color: #000000;
+}
+
+/* 크롬 기본 스타일링 처리 */
+body {
+  padding: 0;
+  margin: 0;
 }
 </style>
