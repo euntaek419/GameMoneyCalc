@@ -5,25 +5,20 @@
     </div>
 
     <div>
-      <div class="Title_name">GAMEMONEY<b class="Gray">CALC</b></div>
-    </div>
-
-    <div>
-      <div class="Subtitle">게임머니계산기</div>
-    </div>
-
-    <div>
-      <div class="MainContents">
-        <div>GAMEMONEYCALC는, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때</div>
-        <div>경매장(거래소)에 등록 금액과 현금 거래의 비율을</div>
-        <div>하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.</div>
-        <br><br>
-        <div>겜창인 개발자의 경험으로 꼭 필요하다 생각이 들었던 상품권 할인 비율을 계산할 수 있게 만들어</div>
-        <div>더욱 효율적으로 여러분의 지갑을 조금이나마 지켜드리겠습니다!</div>
+      <div class="Title_name">
+        GAMEMONEY<span class="Gray">CALC</span>
+        <div class="Subtitle">게임머니계산기</div> 
       </div>
     </div>
 
-
+<pre class="MainContents">
+GAMEMONEYCALC는, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때,
+경매장(거래소)에 등록 금액과 현금 거래의 비율을
+하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.
+        
+겜창인 개발자의 경험으로 꼭 필요하다 생각이 들었던 상품권 할인 비율을 계산할 수 있게 만들어
+더욱 효율적으로 여러분의 지갑을 조금이나마 지켜드리겠습니다!
+</pre>
 
     <div class="animated-title">
       <div class="track"> <!-- bottom animation -->
@@ -68,14 +63,11 @@ export default {
 }
 
 .Subtitle{
-  position: fixed;
-  top: 50%;
-  left: 10%;
-  
   font-family: "NeurimboGothicRegular";
   color : #fff;
   font-size: 55px;
   background-color: transparent;
+  margin-top:-30px;
 }
 
 .MainContents{

@@ -2,7 +2,7 @@
 
   <div>
     <Title></Title>
-    <Main></Main>
+    <Main v-if="yes==0"></Main>
   </div>
 
 </template>
@@ -14,7 +14,7 @@ import Title from './components/Title.vue'
 export default {
   data: () => {
     return {
- 
+      yes : 1,
     }
   },
   name: 'App',
