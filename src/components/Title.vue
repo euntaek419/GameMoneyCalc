@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Title">
     <div class="Title_img">
       <img src="../assets/images/temp.png">
     </div>
@@ -36,8 +36,12 @@ export default {
 </script>
 
 <style>
+.Title{
+  height: 937px;
+}
+
 .Title_img{
-  position: fixed;
+  position: absolute;
   /*더 위로 올라가야함 */
   top: 10%;
   /* top: calc(30% - 140px); */
@@ -47,7 +51,7 @@ export default {
 }
 
 .Title_name{
-  position: fixed;
+  position: absolute;
   top: 25%;
   left: 10%;
 
@@ -71,7 +75,7 @@ export default {
 }
 
 .MainContents{
-  position: fixed;
+  position: absolute;
   top: 60%;
   left: 10%;
 
@@ -100,8 +104,8 @@ export default {
 }
 
 /* 움직이는 텍스트 */
-.animated-title {font-size:25px; position: fixed; bottom: -15px; width: 100%; max-width:100%; height: 50px; overflow-x: hidden; overflow-y: hidden; color: #000000;}
-.animated-title .track {position: fixed; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; }
+.animated-title {font-size:25px; position: absolute; bottom:0; width: 100%; max-width:100%; height: 35px; overflow-x: hidden; overflow-y: hidden; color: #000000;}
+.animated-title .track {position: absolute; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
@@ -110,4 +114,5 @@ export default {
 .animated-title .content { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceBold'; }
 .animated-title .content2 { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceLight';  }
 }
+
 </style>

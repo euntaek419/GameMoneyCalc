@@ -2,7 +2,7 @@
 
   <div>
     <Title></Title>
-    <Main v-if="yes==0"></Main>
+    <Main></Main>
   </div>
 
 </template>
@@ -14,7 +14,6 @@ import Title from './components/Title.vue'
 export default {
   data: () => {
     return {
-      yes : 1,
     }
   },
   name: 'App',
@@ -50,6 +49,12 @@ export default {
   font-family: 'PyeongChangPeaceLight';
   src : url('assets/fonts/PyeongChangPeaceLight.ttf');
 }
+
+@font-face{
+  font-family: 'Galmuri11';
+  src : url('assets/fonts/Galmuri11.ttf');
+}
+
 
 * {
   background-color: #000000;
