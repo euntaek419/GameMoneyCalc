@@ -1,7 +1,7 @@
 <template>
   <div class="Title">
     <div class="Title_img">
-      <img src="../assets/images/temp.png">
+      <img src="../assets/images/PumpkinBall.gif">
     </div>
 
     <div>
@@ -12,7 +12,7 @@
     </div>
 
 <pre class="MainContents">
-GAMEMONEYCALC는, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때,
+GAMEMONEYCALC은, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때,
 경매장(거래소)에 등록 금액과 현금 거래의 비율을
 하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.
         
@@ -42,12 +42,8 @@ export default {
 
 .Title_img{
   position: absolute;
-  /*더 위로 올라가야함 */
-  top: 10%;
-  /* top: calc(30% - 140px); */
-  left: 10%;
-  /* cursor: pointer; */
-  /* z-index: 1; */
+  top:10%;
+  left:10%;
 }
 
 .Title_name{
