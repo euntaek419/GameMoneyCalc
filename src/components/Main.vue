@@ -6,6 +6,46 @@
         구매할 정보를 기입해줘 !
       </div>
     </div>
+
+    <div class="WhatMoney">
+      <span class="CashShop">
+        캐시샵
+        <div>(원)</div>
+      </span>
+
+      <span class="Auction">
+        인게임 경매장
+        <div>(현금거래 설정 비율)</div>
+      </span>
+    </div>
+
+    <div class="WhenSell">
+      <span class="CashSell">
+        캐시샵 판매 금액 입력
+        <div>
+          <input  class="CashInput" maxlength="12" v-bind="ImgLength">
+          <div class="UnderBar_left">
+            <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (ImgLength.length) * 10 + 'px'}">
+          </div>
+          <div>
+            <div> 원</div>
+          </div>
+        </div>
+      </span>
+
+      <span class="AuctionSell">
+        경매장 판매 금액 입력
+        <div>
+          <input class="AuctionInput" maxlength='12'>
+          <div class="UnderBar_right">
+            <img src="../assets/images/UnderBar.gif" >
+          </div>
+          <div>
+            <div> 머니</div>
+          </div>
+        </div>
+      </span>
+    </div>
 <!--   
   <div>
     <label> 캐시 할인 : </label>
@@ -33,6 +73,11 @@
 
 <script>
 export default {
+  data: () => {
+    return {
+      ImgLength: 0,
+    }
+  }
   
 }
 </script>
@@ -43,7 +88,7 @@ export default {
 }
 
 .InfoBox{
-  width: 430px;
+  width: 400px;
   height: 65px;
   border: solid 2px #000;
   background-color: #5b5b5b;
@@ -52,15 +97,89 @@ export default {
 
   position: relative;
   left: 40%;
-  top: 10%;
-  transform: translate(0, -50%);
+  top: 5%;
 }
 
 .InfoText{
   background-color: transparent;
   font-family: "Galmuri11";
   font-size: 25px;
-
+  
+  position: relative;
+  top: 25%;
+  text-align: center;
 }
+
+.WhatMoney{
+  position: relative;
+  top: 10%;
+  font-family: "Galmuri11";
+  font-size: 25px;
+  color: #fff;
+}
+
+.CashShop{
+  position: absolute;
+  left: 5%;
+}
+
+.Auction{
+  position: absolute;
+  right: 5%;
+  text-align: right;
+}
+
+.WhenSell{
+  position: relative;
+  top: 25%;
+  font-family: "Galmuri11";
+  font-size: 30px;
+  color: #9b9b9b;
+}
+
+.CashSell{
+  position: absolute;
+  left: 5%;
+}
+
+.AuctionSell{
+  position: absolute;
+  right: 5%;
+  text-align: right;
+}
+
+.CashInput{
+  width: 600px;
+  height: 200px;
+  color:#9b9b9b;
+  font-size: 200px;
+  font-family: "MorganiteBold";
+  outline: none;
+  border: none;
+  caret-color: transparent;
+}
+
+.AuctionInput{
+  width: 600px;
+  height: 200px;
+  color:#9b9b9b;
+  font-size: 200px;
+  font-family: "MorganiteBold";
+  text-align: right;
+  outline: none;
+  border: none;
+  caret-color: transparent;
+  
+}
+
+.UnderBar_left{
+  margin-top: -50px;
+  
+}
+
+.UnderBar_right{
+  margin-top: -50px;
+}
+
 
 </style>

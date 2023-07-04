@@ -1,7 +1,15 @@
 <template>
   <div class="Title">
+    <!-- https://cet4713.cafe24.com/ -->
+    <div class="Title_imgText">
+      <a href="https://cet4713.cafe24.com/">
+        <img src="../assets/images/PumpkinBallText.gif">
+      </a>
+    </div>
     <div class="Title_img">
-      <img src="../assets/images/PumpkinBall.gif">
+      <a href="https://cet4713.cafe24.com/">
+        <img src="../assets/images/PumpkinBall.gif">
+      </a>
     </div>
 
     <div>
@@ -19,6 +27,9 @@ GAMEMONEYCALC은, 게임을 하면서 캐시를 사용하는 물품을 구매하
 겜창인 개발자의 경험으로 꼭 필요하다 생각이 들었던 상품권 할인 비율을 계산할 수 있게 만들어
 더욱 효율적으로 여러분의 지갑을 조금이나마 지켜드리겠습니다!
 </pre>
+    <div class="Mouse_img">
+      <img src="../assets/images/MouseIcon.gif" title="마우스 스크롤을 내려보세요!">
+    </div>
 
     <div class="animated-title">
       <div class="track"> <!-- bottom animation -->
@@ -40,10 +51,18 @@ export default {
   height: 937px;
 }
 
+.Title_imgText{
+  position: absolute;
+  top: 11%;
+  left:18%;
+  cursor: pointer;
+}
+
 .Title_img{
   position: absolute;
   top:10%;
   left:10%;
+  cursor: pointer;
 }
 
 .Title_name{
@@ -74,6 +93,7 @@ export default {
   position: absolute;
   top: 60%;
   left: 10%;
+  z-index: 1;
 
   font-family: 'PretendardMedium';
   color : #fff;
@@ -97,6 +117,13 @@ export default {
 .LightText{
   background-color: #fff;
   font-size: 25px;
+}
+
+.Mouse_img{
+  position: absolute;
+  bottom:5%;
+  left:50%;
+  z-index: 0;
 }
 
 /* 움직이는 텍스트 */
