@@ -23,12 +23,12 @@
       <span class="CashSell">
         캐시샵 판매 금액 입력
         <div>
-          <input  class="CashInput" maxlength="12" v-bind="ImgLength">
+          <input  class="CashInput" maxlength="12" v-model="Cash">
           <div class="UnderBar_left">
-            <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (ImgLength.length) * 10 + 'px'}">
+            <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}">
           </div>
           <div>
-            <div> 원</div>
+            <div> {{readmoney(Cash)}} 원</div>
           </div>
         </div>
       </span>
@@ -36,12 +36,12 @@
       <span class="AuctionSell">
         경매장 판매 금액 입력
         <div>
-          <input class="AuctionInput" maxlength='12'>
+          <input class="AuctionInput" maxlength='12' v-model="Money">
           <div class="UnderBar_right">
             <img src="../assets/images/UnderBar.gif" >
           </div>
           <div>
-            <div> 머니</div>
+            <div> {{readmoney(Money)}} 머니</div>
           </div>
         </div>
       </span>
@@ -75,7 +75,25 @@
 export default {
   data: () => {
     return {
-      ImgLength: 0,
+      Cash: '',
+      Money: '',
+
+    }
+  },
+  methods:{
+    readmoney(cash) {
+      if(cash < 1000){
+        return cash
+      }
+      if(cash >= 1000 && cash < 10000){
+        return cash / 1000 + ' 천 '
+      }
+      if(cash >= 10000 && cash < 100000000){
+        return cash / 10000 + ' 만 '
+      }
+      if(cash >= 100000000){
+        return cash / 100000000 + ' 억 '
+      }
     }
   }
   
