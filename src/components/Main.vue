@@ -82,17 +82,17 @@ export default {
   },
   methods:{
     readmoney(cash) {
-      if(cash < 1000){
+      if(cash < 10000){
         return cash
       }
-      if(cash >= 1000 && cash < 10000){
-        return cash / 1000 + ' 천 '
-      }
-      if(cash >= 10000 && cash < 100000000){
+      if(cash == 10000){
         return cash / 10000 + ' 만 '
       }
+      if(cash > 10000 && cash < 100000000){
+        return Math.floor(cash / 10000) + ' 만 ' +  cash % 10000
+      }
       if(cash >= 100000000){
-        return cash / 100000000 + ' 억 '
+        return Math.floor(cash / 100000000) + ' 억 ' +  Math.floor(cash / 10000) + ' 만 ' + cash % 10000
       }
     }
   }
