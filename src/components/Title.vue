@@ -53,8 +53,9 @@ export default {
 
 .Title_imgText{
   position: absolute;
-  top: 11%;
-  left:18%;
+  top: 10%;
+  left:10%;
+  margin-left:150px;
   cursor: pointer;
 }
 

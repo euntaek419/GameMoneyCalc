@@ -25,7 +25,8 @@
         <div>
           <input  class="CashInput" maxlength="12" v-model="Cash">
           <div class="UnderBar_left">
-            <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}">
+            <!-- <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}"> -->
+            <img src="../assets/images/UnderBar.gif">
           </div>
           <div>
             <div> {{readinput(Cash)}} 원</div>
@@ -343,7 +344,7 @@ export default {
 
 .CashRatioInput_Under{
   position: absolute;
-  right:20%;
+  right:15%;
   bottom: 20%;
 }
 
