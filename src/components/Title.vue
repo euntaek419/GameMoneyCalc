@@ -128,7 +128,7 @@ export default {
 
 /* 움직이는 텍스트 */
 .animated-title {font-size:25px; position: absolute; bottom:0; width: 100%; max-width:100%; height: 35px; overflow-x: hidden; overflow-y: hidden; color: #000000;}
-.animated-title .track {position: absolute; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; }
+.animated-title .track {position: absolute; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; background-color: #fff;}
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
