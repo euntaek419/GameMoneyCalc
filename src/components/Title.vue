@@ -1,7 +1,6 @@
 <template>
   <div class="Title">
-    <!-- https://cet4713.cafe24.com/ -->
-    <div class="Title_imgText">
+    <div class="Title_img Title_text">
       <a href="https://cet4713.cafe24.com/">
         <img src="../assets/images/PumpkinBallText.gif">
       </a>
@@ -20,12 +19,12 @@
     </div>
 
 <pre class="MainContents">
-GAMEMONEYCALC은, 게임을 하면서 캐시를 사용하는 물품을 구매하려 할 때,
-경매장(거래소)에 등록 금액과 현금 거래의 비율을
-하나하나 계산하는 번거로움을 줄이기 위해 만들어졌습니다.
-        
-겜창인 개발자의 경험으로 꼭 필요하다 생각이 들었던 상품권 할인 비율을 계산할 수 있게 만들어
-더욱 효율적으로 여러분의 지갑을 조금이나마 지켜드리겠습니다!
+GAMEMONEYCALC은, 아이템 금액과 현금 거래의 효율을 비교계산하는 번거로움을 줄이기 위해 만들어졌습니다.
+
+개발자의 오랜 RPG 경험으로 꼭 필요하다고 생각한 비율들을 쉽게 계산할 수 있게 만들었으니
+이 사이트를 통해 더욱 효율적으로 여러분의 지갑을 지켰으면 합니다!
+
+다들 가성비 챙기고 즐거운 게임 하세요!
 </pre>
     <div class="Mouse_img">
       <img src="../assets/images/MouseIcon.gif" title="마우스 스크롤을 내려보세요!">
@@ -51,12 +50,8 @@ export default {
   height: 937px;
 }
 
-.Title_imgText{
-  position: absolute;
-  top: 10%;
-  left:10%;
+.Title_text{
   margin-left:150px;
-  cursor: pointer;
 }
 
 .Title_img{

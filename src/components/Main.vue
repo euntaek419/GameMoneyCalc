@@ -9,21 +9,21 @@
 
     <div class="WhatMoney">
       <span class="CashShop">
-        캐시샵
-        <div>(원)</div>
+        캐시 아이템 ( 할인 적용 )
+        <div> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
       </span>
 
       <span class="Auction">
-        인게임 경매장
-        <div>(현금거래 설정 비율)</div>
+        아이템 금액
+        <div>(게임 머니)</div>
       </span>
     </div>
 
     <div class="WhenSell">
       <span class="CashSell">
-        캐시샵 판매 금액 입력
+        캐시 아이템 금액 입력
         <div>
-          <input  class="CashInput" maxlength="12" v-model="Cash">
+          <input  class="CashInput" maxlength="11" v-model="Cash">
           <div class="UnderBar_left">
             <!-- <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}"> -->
             <img src="../assets/images/UnderBar.gif">
@@ -35,14 +35,14 @@
       </span>
 
       <span class="AuctionSell">
-        경매장 판매 금액 입력
+        아이템 판매 금액 입력
         <div>
-          <input class="AuctionInput" maxlength='12' v-model="Money">
+          <input class="AuctionInput" maxlength='11' v-model="Money">
           <div class="UnderBar_right">
             <img src="../assets/images/UnderBar.gif" >
           </div>
           <div>
-            <div> {{readinput(Money)}} 머니</div>
+            <div> {{ readinput(Money) }} 머니</div>
           </div>
         </div>
       </span>
@@ -54,7 +54,7 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='2'> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='2' v-model="Persent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under">
         </span>
         
@@ -64,7 +64,7 @@
           </div>
 
           <div>
-            <button class="Add">% 추가증정</button>
+            <button class="Bonus">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -119,7 +119,9 @@ export default {
     return {
       Cash: '',
       Money: '',
-
+      Persent: '',
+      Temp: '',
+      
     }
   },
   methods:{
@@ -137,9 +139,17 @@ export default {
         return Math.floor(cash / 10000) + ' 만 ' +  cash % 10000
       }
       if(cash >= 100000000){
-        return Math.floor(cash / 100000000) + ' 억 ' +  Math.floor(cash % 10000) + ' 만 ' + cash % 10000
+        this.Temp = Math.floor(cash / 100000000) + ' 억 ' +  Math.floor( cash % 100000000 / 10000 ) + ' 만 ' + Math.floor(cash % 10000 / 100)
+        if(cash % 10000 !== 0){
+          return this.Temp = this.Temp + Math.floor(cash % 10000 / 100)
+        }
+        return Math.floor(cash / 100000000) + ' 억 ' +  Math.floor( cash % 100000000 / 10000) + ' 만 '
       }
+    },
+    cashoption(cash, persent){
+      return Math.floor( cash * ( 1 + persent/100 ) )
     }
+
   }
   
 }
@@ -191,7 +201,7 @@ export default {
 
 .WhenSell{
   position: relative;
-  top: 25%;
+  top: 20%;
   font-family: "Galmuri11";
   font-size: 30px;
   color: #9b9b9b;
@@ -325,7 +335,8 @@ export default {
 
 .Persent{
   position: absolute;
-  left:55%;
+  left:39%;
+  margin-left:100px;
   top: 5%;
   font-size: 200px;
   color: #fff;
@@ -366,7 +377,6 @@ export default {
 
 .WhatPersent{
   position: absolute;
-  font-size: 25px;
   width: 100%;
   bottom: 0;
   height: 15%;
@@ -379,6 +389,7 @@ export default {
   left:0;
   width: 50%;
   height: 100%;
+  font-size: 25px;
 }
 
 .Discount:focus{
@@ -386,16 +397,17 @@ export default {
   color:#02fa97
 }
 
-.Add{
+.Bonus{
   position: absolute;
   background-color: gray;
   font-family: 'Galmuri11';
   right:0;
   width: 50%;
   height: 100%;
+  font-size: 25px;
 }
 
-.Add:focus{
+.Bonus:focus{
   background-color: #000;
   color:#02fa97
 }
@@ -406,6 +418,7 @@ export default {
   font-family: 'Galmuri11';
   width: 100%;
   height: 100%;
+  font-size: 25px;
 }
 
 .Reverse:focus{
