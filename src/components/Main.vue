@@ -129,21 +129,20 @@ export default {
       if(cash < 10000){
         return cash
       }
-      if(cash % 10000 == 0 && cash < 100000000){
-        return cash / 10000 + ' 만 '
-      }
-      if(cash % 100000000 == 0 ){
-        return cash / 100000000 + ' 억 '
-      }
-      if(cash > 10000 && cash < 100000000){
-        return Math.floor(cash / 10000) + ' 만 ' +  cash % 10000
+      if(cash >= 10000 && cash < 100000000){
+        if(cash % 10000 == 0){
+          return Math.floor(cash / 10000) + ' 만 '
+        }
+        return Math.floor(cash / 10000) + ' 만 ' + cash % 10000
       }
       if(cash >= 100000000){
-        this.Temp = Math.floor(cash / 100000000) + ' 억 ' +  Math.floor( cash % 100000000 / 10000 ) + ' 만 ' + Math.floor(cash % 10000 / 100)
-        if(cash % 10000 !== 0){
-          return this.Temp = this.Temp + Math.floor(cash % 10000 / 100)
+        if(cash % 100000000 == 0){
+          return Math.floor(cash / 100000000) + ' 억 '
         }
-        return Math.floor(cash / 100000000) + ' 억 ' +  Math.floor( cash % 100000000 / 10000) + ' 만 '
+        if(cash % 10000 == 0){
+          return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 '
+        }
+        return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 ' + cash % 10000
       }
     },
     cashoption(cash, persent){
