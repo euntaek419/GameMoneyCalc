@@ -10,8 +10,8 @@
     <div class="WhatMoney">
       <span class="CashShop">
         캐시 아이템
-        <span v-if="isCashOption[0] == true && Persent > 0"> ( 할인 적용 ) </span>
-        <span v-if="isCashOption[1] == true && Persent > 0"> ( 추가 증정 적용 ) </span>
+        <span v-if="IscashOption[0] == true && Persent > 0"> ( 할인 적용 ) </span>
+        <span v-if="IscashOption[1] == true && Persent > 0"> ( 추가 증정 적용 ) </span>
 
         <div> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
       </span>
@@ -65,11 +65,11 @@
         
         <div class="WhatPersent">
           <div>
-            <button class="Discount" @click="isCashOption[0] = true; isCashOption[1] = false" :style="{ backgroundColor : discountback, color: discountcolor}">% 할인</button>
+            <button class="Discount" @click="IscashOption[0] = true; IscashOption[1] = false" :style="{ backgroundColor : DiscountBack, color: DiscountColor}">% 할인</button>
           </div>
 
           <div>
-            <button class="Bonus" @click="isCashOption[1] = true; isCashOption[0] = false" :style="{ backgroundColor : bonusback, color: bonuscolor}">% 추가증정</button>
+            <button class="Bonus" @click="IscashOption[1] = true; IscashOption[0] = false" :style="{ backgroundColor : BonusBack, color: BonusColor}">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -77,7 +77,9 @@
       <div class="CashRatioInputBox">
         <div class="CashRatio">
           현금 거래 비율
-        </div>
+            <span class="CashRatioText" v-if="isReverse == false">( 원 : 게임머니 )</span>
+            <span class="CashRatioText" v-if="isReverse == true">( 게임머니 : 원 )</span>
+          </div>
 
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6'>
@@ -86,7 +88,7 @@
 
         <div class="WhatPersent">
           <div>
-            <button class="Reverse">REVERSE</button>
+            <button class="Reverse" @click="Reverse">REVERSE</button>
           </div>
         </div>
       </div>
@@ -123,11 +125,12 @@ export default {
       Cash: '',
       Money: '',
       Persent: '',
-      isCashOption: [true, false],
-      discountback: '',
-      discountcolor: '',
-      bonusback: '',
-      bonuscolor: '',
+      IscashOption: [true, false],
+      DiscountBack: '',
+      DiscountColor: '',
+      BonusBack: '',
+      BonusColor: '',
+      isReverse: false,
     }
   },
   methods:{
@@ -157,20 +160,28 @@ export default {
       }
     },
     cashoption(cash, persent){
-      if(this.isCashOption[0] == true){
-        this.discountback = '#000'
-        this.discountcolor = '#02fa97'
-        this.bonusback = ''
-        this.bonuscolor = ''
+      if(this.IscashOption[0] == true){
+        this.DiscountBack = '#000'
+        this.DiscountColor = '#02fa97'
+        this.BonusBack = ''
+        this.BonusColor = ''
 
         return Math.floor( cash - cash * persent/100 )
       }
-      if(this.isCashOption[1] == true){
-        this.bonusback = '#000'
-        this.bonuscolor = '#02fa97'
-        this.discountback = ''
-        this.discountcolor = ''
+      if(this.IscashOption[1] == true){
+        this.BonusBack = '#000'
+        this.BonusColor = '#02fa97'
+        this.DiscountBack = ''
+        this.DiscountColor = ''
         return Math.floor( cash * ( 1 + persent/100 ) )
+      }
+    },
+    Reverse(){
+      if(this.isReverse == false){
+        this.isReverse = true
+      }
+      else{
+        this.isReverse = false
       }
     }
   }
@@ -371,6 +382,10 @@ export default {
   font-family: "MorganiteBold";
 }
 
+.CashRatioText{
+  background-color: gray;
+}
+
 .CashRatioInput_Under{
   position: absolute;
   right:15%;
@@ -439,7 +454,7 @@ export default {
   font-size: 25px;
 }
 
-.Reverse:focus{
+.Reverse:hover{
   background-color: #000;
   color: #fff
 }
