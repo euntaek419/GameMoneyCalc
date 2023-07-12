@@ -9,13 +9,16 @@
 
     <div class="WhatMoney">
       <span class="CashShop">
-        캐시 아이템 ( 할인 적용 )
+        캐시 아이템
+        <span v-if="isCashOption[0] == true && Persent !== ''"> ( 할인 적용 ) </span>
+        <span v-if="isCashOption[1] == true"> ( 추가 증정 적용 ) </span>
+
         <div> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
       </span>
 
       <span class="Auction">
         아이템 금액
-        <div>(게임 머니)</div>
+        <div>( 게임 머니 )</div>
       </span>
     </div>
 
@@ -26,7 +29,10 @@
           <input  class="CashInput" maxlength="11" v-model="Cash">
           <div class="UnderBar_left">
             <!-- <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}"> -->
-            <img src="../assets/images/UnderBar.gif">
+            <div>
+              <img src="../assets/images/UnderBar.gif">
+            </div>
+            
           </div>
           <div>
             <div> {{readinput(Cash)}} 원</div>
@@ -54,17 +60,17 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='2' v-model="Persent"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='4' v-model="Persent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under">
         </span>
         
         <div class="WhatPersent">
           <div>
-            <button class="Discount">% 할인</button>
+            <button class="Discount" @click="isCashOption[0] = true; isCashOption[1] = false">% 할인</button>
           </div>
 
           <div>
-            <button class="Bonus">% 추가증정</button>
+            <button class="Bonus" @click="isCashOption[1] = true; isCashOption[0] = false">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -85,8 +91,6 @@
           </div>
         </div>
       </div>
-
-
     </div>
 <!--   
   <div>
@@ -120,8 +124,7 @@ export default {
       Cash: '',
       Money: '',
       Persent: '',
-      Temp: '',
-      
+      isCashOption: [true, false],
     }
   },
   methods:{
@@ -142,15 +145,23 @@ export default {
         if(cash % 10000 == 0){
           return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 '
         }
+        
+        if(Math.floor( cash / 10000 ) % 10000 == 0){
+          return Math.floor(cash / 100000000) + ' 억 ' + cash % 10000
+        }
+        
         return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 ' + cash % 10000
       }
     },
     cashoption(cash, persent){
-      return Math.floor( cash * ( 1 + persent/100 ) )
+      if(this.isCashOption[0] == true){
+        return Math.floor( cash - cash * persent/100 )
+      }
+      if(this.isCashOption[1] == true){
+        return Math.floor( cash * ( 1 + persent/100 ) )
+      }
     }
-
   }
-  
 }
 </script>
 
@@ -218,18 +229,17 @@ export default {
 }
 
 .CashInput{
-  width: 600px;
+  width: 550px;
   height: 200px;
   color:#9b9b9b;
   font-size: 200px;
   font-family: "MorganiteBold";
   outline: none;
   border: none;
-  caret-color: transparent;
 }
 
 .AuctionInput{
-  width: 600px;
+  width: 550px;
   height: 200px;
   color:#9b9b9b;
   font-size: 200px;
@@ -237,8 +247,6 @@ export default {
   text-align: right;
   outline: none;
   border: none;
-  caret-color: transparent;
-  
 }
 
 .UnderBar_left{
@@ -391,7 +399,7 @@ export default {
   font-size: 25px;
 }
 
-.Discount:focus{
+.Discount:hover{
   background-color: #000;
   color:#02fa97
 }
@@ -406,7 +414,7 @@ export default {
   font-size: 25px;
 }
 
-.Bonus:focus{
+.Bonus:hover{
   background-color: #000;
   color:#02fa97
 }
