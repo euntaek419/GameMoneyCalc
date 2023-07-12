@@ -10,8 +10,8 @@
     <div class="WhatMoney">
       <span class="CashShop">
         캐시 아이템
-        <span v-if="isCashOption[0] == true && Persent !== ''"> ( 할인 적용 ) </span>
-        <span v-if="isCashOption[1] == true"> ( 추가 증정 적용 ) </span>
+        <span v-if="isCashOption[0] == true && Persent > 0"> ( 할인 적용 ) </span>
+        <span v-if="isCashOption[1] == true && Persent > 0"> ( 추가 증정 적용 ) </span>
 
         <div> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
       </span>
@@ -28,7 +28,6 @@
         <div>
           <input  class="CashInput" maxlength="11" v-model="Cash">
           <div class="UnderBar_left">
-            <!-- <img src="../assets/images/UnderBar.gif" :style="{marginLeft: (Cash.length) * 47 + 'px'}"> -->
             <div>
               <img src="../assets/images/UnderBar.gif">
             </div>
@@ -61,16 +60,16 @@
         </div>
         <span>
           <input class="GiftCardInput" maxlength='4' v-model="Persent"> <div class="Persent"> % </div>
-          <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under">
+          <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
         <div class="WhatPersent">
           <div>
-            <button class="Discount" @click="isCashOption[0] = true; isCashOption[1] = false">% 할인</button>
+            <button class="Discount" @click="isCashOption[0] = true; isCashOption[1] = false" :style="{ backgroundColor : discountback, color: discountcolor}">% 할인</button>
           </div>
 
           <div>
-            <button class="Bonus" @click="isCashOption[1] = true; isCashOption[0] = false">% 추가증정</button>
+            <button class="Bonus" @click="isCashOption[1] = true; isCashOption[0] = false" :style="{ backgroundColor : bonusback, color: bonuscolor}">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -82,7 +81,7 @@
 
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6'>
-          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under">
+          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" >
         </span>
 
         <div class="WhatPersent">
@@ -125,6 +124,10 @@ export default {
       Money: '',
       Persent: '',
       isCashOption: [true, false],
+      discountback: '',
+      discountcolor: '',
+      bonusback: '',
+      bonuscolor: '',
     }
   },
   methods:{
@@ -149,15 +152,24 @@ export default {
         if(Math.floor( cash / 10000 ) % 10000 == 0){
           return Math.floor(cash / 100000000) + ' 억 ' + cash % 10000
         }
-        
+
         return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 ' + cash % 10000
       }
     },
     cashoption(cash, persent){
       if(this.isCashOption[0] == true){
+        this.discountback = '#000'
+        this.discountcolor = '#02fa97'
+        this.bonusback = ''
+        this.bonuscolor = ''
+
         return Math.floor( cash - cash * persent/100 )
       }
       if(this.isCashOption[1] == true){
+        this.bonusback = '#000'
+        this.bonuscolor = '#02fa97'
+        this.discountback = ''
+        this.discountcolor = ''
         return Math.floor( cash * ( 1 + persent/100 ) )
       }
     }
@@ -327,16 +339,15 @@ export default {
 
 .GiftCardInput{
   position: absolute;
-  left:39%;
+  left:20%;
   top:5%;
-  width: 100px;
+  width: 200px;
   font-size: 200px;
   color: #fff;
   text-align: right;
   font-family: "MorganiteBold";
   outline: none;
   border: none; 
-  caret-color: transparent;
   z-index: 0;
 }
 
@@ -353,7 +364,7 @@ export default {
 
 .GiftCardInput_Under{
   position: absolute;
-  left:45%;
+  left:40%;
   bottom:20%;
   font-size: 200px;
   color: #fff;
