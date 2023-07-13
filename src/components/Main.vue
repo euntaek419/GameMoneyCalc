@@ -1,6 +1,5 @@
 <template>
-  <div class="Main">
-
+  <div>
     <div class="InfoBox">
       <div class="InfoText">  
         구매할 정보를 기입해줘 !
@@ -232,12 +231,6 @@ export default {
   left: 5%;
 }
 
-.AuctionSell{
-  position: absolute;
-  right: 5%;
-  text-align: right;
-}
-
 .CashInput{
   width: 500px;
   height: 180px;
@@ -248,6 +241,17 @@ export default {
   border: none;
 }
 
+.UnderBar_left{
+  margin-top: -50px;
+}
+
+.AuctionSell{
+  position: absolute;
+  right: 5%;
+  text-align: right;
+}
+
+
 .AuctionInput{
   width: 500px;
   height: 180px;
@@ -257,10 +261,6 @@ export default {
   text-align: right;
   outline: none;
   border: none;
-}
-
-.UnderBar_left{
-  margin-top: -50px;
 }
 
 .UnderBar_right{
@@ -277,7 +277,6 @@ export default {
   font-size: 25px;
   border: 1px solid;
   font-family: 'Galmuri11';
-  
 }
 
 .ExchangeInput{
@@ -287,6 +286,13 @@ export default {
   color:#fff;
   font-size: 25px;
 }
+
+/* .Exchange_img{
+  position: absolute;
+  background-color: gray;
+  right:0;
+  cursor: pointer;
+} */
 
 .SetBox{
   position: absolute;
@@ -327,32 +333,6 @@ export default {
   background-color: #000;
 }
 
-.Ratio{
-  position: absolute;
-  color:#fff;
-  font-size: 165px;
-  font-family: "MorganiteBold";
-  left:25%;
-  z-index: 0;
-}
-.Colon{
-  position: absolute;
-  color:#fff;
-  font-size: 165px;
-  font-family: "MorganiteBold";
-  left:50%;
-  z-index: 1;
-}
-
-.CashRatioInputBox{
-  position: absolute;
-  height: 200px;
-  width: 40%;
-  right: 5%;
-  top: 15%;
-  background-color: #000;
-}
-
 .GiftCardInput{
   position: absolute;
   left:15%;
@@ -384,31 +364,6 @@ export default {
   font-family: "MorganiteBold";
 }
 
-.CashRatioText{
-  background-color: gray;
-}
-
-.CashRatioInput_Under{
-  position: absolute;
-  right:15%;
-  bottom: 20%;
-}
-
-.CashRatioInput{
-  position: absolute;
-  top:5%;
-  right: 0;
-  width: 300px;
-  font-size: 200px;
-  color: #fff;
-  text-align: left;
-  font-family: "MorganiteBold";
-  z-index: 0;
-  text-align: center;
-  outline: none;
-  border: none;
-}
-
 .WhatPersent{
   position: absolute;
   width: 100%;
@@ -424,13 +379,6 @@ export default {
   width: 50%;
   height: 100%;
   font-size: 20px;
-}
-
-.Exchange_img{
-  position: absolute;
-  background-color: gray;
-  right:0;
-  cursor: pointer;
 }
 
 .Discount:hover{
@@ -465,5 +413,53 @@ export default {
 .Reverse:hover{
   background-color: #000;
   color: #fff
+}
+
+.CashRatioInputBox{
+  position: absolute;
+  height: 200px;
+  width: 40%;
+  right: 5%;
+  top: 15%;
+  background-color: #000;
+}
+
+.Ratio{
+  position: absolute;
+  color:#fff;
+  font-size: 165px;
+  font-family: "MorganiteBold";
+  left:25%;
+  z-index: 0;
+}
+
+.Colon{
+  position: absolute;
+  color:#fff;
+  font-size: 165px;
+  font-family: "MorganiteBold";
+  left:50%;
+  z-index: 1;
+}
+
+.CashRatioInput{
+  position: absolute;
+  top:5%;
+  right: 0;
+  width: 300px;
+  font-size: 200px;
+  color: #fff;
+  text-align: left;
+  font-family: "MorganiteBold";
+  z-index: 0;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.CashRatioInput_Under{
+  position: absolute;
+  right:15%;
+  bottom: 20%;
 }
 </style>
