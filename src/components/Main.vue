@@ -90,8 +90,8 @@
 
       <div class="CashRatioInputBox">
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6'>
-          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" >
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
+          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
 
         <div class="WhatPersent">
@@ -112,6 +112,7 @@ export default {
       Money: '',
       Persent: '',
       Exchange: '',
+      Ratio: '',
       IscashOption: [true, false],
       DiscountBack: '',
       DiscountColor: '',
@@ -298,14 +299,15 @@ export default {
   position: absolute;
   top:170%;
   width: 100%;
-  height: 250px;
+  height: 280px;
   background-color: gray;
 }
 
 .GiftCardOption{
   position: absolute;
   left:22.5%;
-  transform:translate(-22.5%, 0);
+  top:5%;
+  transform:translate(-22.5%, -5%);
   color: #fff;
   font-size: 25px;
   background-color: gray;
@@ -316,7 +318,8 @@ export default {
 .CashRatio{
   position: absolute;
   right:22.5%;
-  transform:translate(22.5%, 0);
+  top:5%;
+  transform:translate(22.5%, -5%);
   color: #fff;
   font-size: 25px;
   background-color: gray;
@@ -329,13 +332,13 @@ export default {
   height: 200px;
   width: 40%;
   left: 5%;
-  top: 15%;
+  top: 20%;
   background-color: #000;
 }
 
 .GiftCardInput{
   position: absolute;
-  left:15%;
+  left:30%;
   width: 165px;
   font-size: 165px;
   color: #fff;
@@ -343,12 +346,13 @@ export default {
   outline: none;
   border: none; 
   z-index: 0;
+  text-align: center;
 }
 
 .Persent{
   position: absolute;
-  left:40%;
-  margin-left:100px;
+  left:30%;
+  margin-left:170px;
   font-size: 165px;
   color: #fff;
   font-family: "MorganiteBold";
@@ -357,9 +361,8 @@ export default {
 
 .GiftCardInput_Under{
   position: absolute;
-  left:40%;
+  left:45%;
   bottom:20%;
-  font-size: 200px;
   color: #fff;
   font-family: "MorganiteBold";
 }
@@ -408,6 +411,7 @@ export default {
   width: 100%;
   height: 100%;
   font-size: 20px;
+  z-index: 1;
 }
 
 .Reverse:hover{
@@ -420,7 +424,7 @@ export default {
   height: 200px;
   width: 40%;
   right: 5%;
-  top: 15%;
+  top: 20%;
   background-color: #000;
 }
 
@@ -444,10 +448,9 @@ export default {
 
 .CashRatioInput{
   position: absolute;
-  top:5%;
   right: 0;
   width: 300px;
-  font-size: 200px;
+  font-size: 180px;
   color: #fff;
   text-align: left;
   font-family: "MorganiteBold";
