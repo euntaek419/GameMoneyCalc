@@ -9,10 +9,11 @@
     <div class="WhatMoney">
       <span class="CashShop">
         캐시 아이템
-        <span v-if="IscashOption[0] == true && Persent > 0"> ( 할인 적용 ) </span>
-        <span v-if="IscashOption[1] == true && Persent > 0"> ( 추가 증정 적용 ) </span>
+        <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
+        <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
 
-        <div> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
+        <div v-if="Persent <= 100"> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
+        <div v-if='Persent > 100'> 100% 이하의 수치를 입력해주세요.</div>
       </span>
 
       <span class="Auction">
@@ -33,7 +34,7 @@
             
           </div>
           <div>
-            <div> {{readinput(Cash)}} 원</div>
+            <div> {{ readinput(Cash) }} 원</div>
           </div>
         </div>
       </span>
@@ -153,8 +154,8 @@ export default {
         this.DiscountColor = '#02fa97'
         this.BonusBack = ''
         this.BonusColor = ''
-
         return Math.floor( cash - cash * persent/100 )
+
       }
       if(this.IscashOption[1] == true){
         this.BonusBack = '#000'
@@ -346,13 +347,13 @@ export default {
   outline: none;
   border: none; 
   z-index: 0;
-  text-align: center;
+  text-align: right;
 }
 
 .Persent{
   position: absolute;
   left:30%;
-  margin-left:170px;
+  margin-left:180px;
   font-size: 165px;
   color: #fff;
   font-family: "MorganiteBold";
@@ -361,7 +362,8 @@ export default {
 
 .GiftCardInput_Under{
   position: absolute;
-  left:45%;
+  left:30%; 
+  margin-left:110px;
   bottom:20%;
   color: #fff;
   font-family: "MorganiteBold";
