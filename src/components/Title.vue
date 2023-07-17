@@ -46,10 +46,6 @@ export default {
 </script>
 
 <style>
-.Title{
-  height: 937px;
-}
-
 .Title_text{
   margin-left:150px;
 }

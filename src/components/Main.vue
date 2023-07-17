@@ -23,56 +23,50 @@
     </div>
 
     <div class="WhenSell">
-      <span class="CashSell">
-        캐시 아이템 금액 입력
-        <div>
-          <input  class="CashInput" maxlength="11" v-model="Cash">
-          <div class="UnderBar_left">
-            <div>
-              <img src="../assets/images/UnderBar.gif">
+      <label>
+        <span class="CashSell">
+          캐시 아이템 금액 입력
+          <div>
+            <input  class="CashInput" maxlength="11" v-model="Cash">
+            <div class="UnderBar_left">
+                <img src="../assets/images/UnderBar.gif">
             </div>
-            
+            <div>
+              <div> {{ readinput(Cash) }} 원</div>
+            </div>
           </div>
+        </span>
+      </label>
+
+      <label>
+        <span class="AuctionSell">
+          아이템 판매 금액 입력
           <div>
-            <div> {{ readinput(Cash) }} 원</div>
+            <input class="AuctionInput" maxlength='11' v-model="Money"> 
+            <div class="UnderBar_right">
+              <img src="../assets/images/UnderBar.gif" >
+            </div>
+            <div>
+              <div> {{ readinput(Money) }} 머니</div>
+            </div>
           </div>
-        </div>
-      </span>
-
-      <span class="AuctionSell">
-        아이템 판매 금액 입력
-        <div>
-          <input class="AuctionInput" maxlength='11' v-model="Money"> 
-          <div class="UnderBar_right">
-            <img src="../assets/images/UnderBar.gif" >
-          </div>
-          <div>
-            <div> {{ readinput(Money) }} 머니</div>
-          </div>
-        </div>
-      </span>
-    </div>
-
-
-    <div class="ExchangeBox">
-      1 =
-      <span class="ExchangeInputBox">
-        <input class="ExchangeInput" maxlength='6'>
-      </span>
-      {{ readinput(Exchange) }}
+        </span>
+      </label>
     </div>
 
     <div class="SetBox">
-
-      <div class="GiftCardOption">
-        상품권 옵션 설정
+      <div class="ExchangeBox">
+        1 =
+        <span class="ExchangeInputBox">
+          <input class="ExchangeInput" maxlength='6'>
+        </span>
+        {{ readinput(Exchange) }}
       </div>
-        <div class="CashRatio">
-          현금 거래 비율
-          <!-- <span class="CashRatioText" v-if="isReverse == false">( 원 : 게임머니 )</span> -->
-          <!-- <span class="CashRatioText" v-if="isReverse == true">( 게임머니 : 원 )</span> -->
-        </div>
+
       <div class="GiftCardInputBox">
+        <div class="GiftCardOption">
+          상품권 옵션 설정
+        </div>
         <span>
           <input class="GiftCardInput" maxlength='4' v-model="Persent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
@@ -88,8 +82,12 @@
           </div>
         </div>
       </div>
-
       <div class="CashRatioInputBox">
+        <div class="CashRatio">
+          현금 거래 비율
+          <!-- <span class="CashRatioText" v-if="isReverse == false">( 원 : 게임머니 )</span> -->
+          <!-- <span class="CashRatioText" v-if="isReverse == true">( 게임머니 : 원 )</span> -->
+        </div>
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
@@ -271,7 +269,7 @@ export default {
 
 .ExchangeBox{
   position : absolute;
-  top:160%;
+  margin-top: -55px;
   width: 40%;
   right: 5%;
   height: 50px;
@@ -282,7 +280,7 @@ export default {
 }
 
 .ExchangeInput{
-  height: 50px;
+  height: 40px;
   width: 10%;
   font-family: 'Galmuri11';
   color:#fff;
@@ -300,70 +298,63 @@ export default {
   position: absolute;
   top:170%;
   width: 100%;
-  height: 280px;
+  height: 30%;
   background-color: gray;
 }
 
 .GiftCardOption{
   position: absolute;
-  left:22.5%;
-  top:5%;
-  transform:translate(-22.5%, -5%);
+  width: 100%;
+  text-align: center;
+  left:50%;
+  transform:translate(-50%, 0);
   color: #fff;
   font-size: 25px;
   background-color: gray;
   font-family: 'Galmuri11';
-  z-index: 1;
-}
-
-.CashRatio{
-  position: absolute;
-  right:22.5%;
-  top:5%;
-  transform:translate(22.5%, -5%);
-  color: #fff;
-  font-size: 25px;
-  background-color: gray;
-  font-family: 'Galmuri11';
-  z-index: 1;
+  z-index: 2;
+  padding: 1%;
 }
 
 .GiftCardInputBox{
   position: absolute;
-  height: 200px;
+  height: 95%;
   width: 40%;
   left: 5%;
-  top: 20%;
   background-color: #000;
 }
 
 .GiftCardInput{
   position: absolute;
-  left:30%;
-  width: 165px;
+  width: 100%;
   font-size: 165px;
   color: #fff;
   font-family: "MorganiteBold";
   outline: none;
   border: none; 
   z-index: 0;
-  text-align: right;
+  text-align: center;
+  top: 50%;
+  transform:translate(0, -50%);
+  padding:0px;
 }
 
 .Persent{
   position: absolute;
-  left:30%;
-  margin-left:180px;
+  left:50%;
+  margin-left:120px;
   font-size: 165px;
   color: #fff;
   font-family: "MorganiteBold";
   z-index: 0;
+  top: 50%;
+  transform:translate(-50%, -50%);
 }
 
 .GiftCardInput_Under{
   position: absolute;
-  left:30%; 
-  margin-left:110px;
+  left:50%;
+  transform:translate(-50%, 0);
   bottom:20%;
   color: #fff;
   font-family: "MorganiteBold";
@@ -383,7 +374,9 @@ export default {
   left:0;
   width: 50%;
   height: 100%;
-  font-size: 20px;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
 }
 
 .Discount:hover{
@@ -398,7 +391,9 @@ export default {
   right:0;
   width: 50%;
   height: 100%;
-  font-size: 20px;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
 }
 
 .Bonus:hover{
@@ -411,9 +406,11 @@ export default {
   background-color: gray;
   font-family: 'Galmuri11';
   width: 100%;
+  font-size: 25px;
   height: 100%;
-  font-size: 20px;
   z-index: 1;
+  top:50%;
+  transform:translate(0, -50%);
 }
 
 .Reverse:hover{
@@ -423,11 +420,24 @@ export default {
 
 .CashRatioInputBox{
   position: absolute;
-  height: 200px;
+  height: 95%;
   width: 40%;
   right: 5%;
-  top: 20%;
   background-color: #000;
+}
+
+.CashRatio{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  right:50%;
+  transform:translate(50%, 0);
+  color: #fff;
+  font-size: 25px;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  z-index: 2;
+  padding: 1%;
 }
 
 .Ratio{
@@ -436,6 +446,8 @@ export default {
   font-size: 165px;
   font-family: "MorganiteBold";
   left:25%;
+  top: 50%;
+  transform:translate(0, -50%);
   z-index: 0;
 }
 
@@ -445,14 +457,18 @@ export default {
   font-size: 165px;
   font-family: "MorganiteBold";
   left:50%;
-  z-index: 1;
+  top: 50%;
+  transform:translate(-50%, -60%);
+  z-index: 0;
 }
 
 .CashRatioInput{
   position: absolute;
   right: 0;
-  width: 300px;
-  font-size: 180px;
+  top: 50%;
+  width: 45%;
+  transform:translate(0, -50%);
+  font-size: 165px;
   color: #fff;
   text-align: left;
   font-family: "MorganiteBold";
@@ -464,7 +480,8 @@ export default {
 
 .CashRatioInput_Under{
   position: absolute;
-  right:15%;
+  transform:translate(-20%, 0);
+  right:20%;
   bottom: 20%;
 }
 </style>
