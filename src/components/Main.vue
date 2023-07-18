@@ -12,8 +12,8 @@
         <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
         <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
 
-        <div v-if="Persent <= 100"> {{ cashoption(Cash,Persent) }} 원 ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
-        <div v-if='Persent > 100'> 100% 이하의 수치를 입력해주세요.</div>
+        <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
+        <!-- <div v-if='Persent > 100'> 100% 이하의 수치를 입력해주세요.</div> -->
       </span>
 
       <span class="Auction">
@@ -28,7 +28,7 @@
           캐시 아이템 금액 입력
           <div>
             <input  class="CashInput" maxlength="11" v-model="Cash">
-            <div class="UnderBar_left">
+            <div v-if="Cash == ''" class="UnderBar_left">
                 <img src="../assets/images/UnderBar.gif">
             </div>
             <div>
@@ -43,7 +43,7 @@
           아이템 판매 금액 입력
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money"> 
-            <div class="UnderBar_right">
+            <div v-if="Money == ''" class="UnderBar_right">
               <img src="../assets/images/UnderBar.gif" >
             </div>
             <div>
@@ -277,6 +277,7 @@ export default {
   font-size: 25px;
   border: 1px solid;
   font-family: 'Galmuri11';
+  z-index: 1;
 }
 
 .ExchangeInput{
@@ -312,7 +313,7 @@ export default {
   font-size: 25px;
   background-color: gray;
   font-family: 'Galmuri11';
-  z-index: 2;
+  z-index: 1;
   padding: 1%;
 }
 
@@ -327,6 +328,7 @@ export default {
 .GiftCardInput{
   position: absolute;
   width: 100%;
+  height: 65%;
   font-size: 165px;
   color: #fff;
   font-family: "MorganiteBold";
@@ -334,8 +336,8 @@ export default {
   border: none; 
   z-index: 0;
   text-align: center;
-  top: 50%;
-  transform:translate(0, -50%);
+  top: 55%;
+  transform:translate(0, -55%);
   padding:0px;
 }
 
@@ -347,8 +349,8 @@ export default {
   color: #fff;
   font-family: "MorganiteBold";
   z-index: 0;
-  top: 50%;
-  transform:translate(-50%, -50%);
+  top: 55%;
+  transform:translate(-50%, -55%);
 }
 
 .GiftCardInput_Under{
@@ -373,7 +375,6 @@ export default {
   font-family: 'Galmuri11';
   left:0;
   width: 50%;
-  height: 100%;
   font-size: 25px;
   top:50%;
   transform:translate(0, -50%);
@@ -390,7 +391,6 @@ export default {
   font-family: 'Galmuri11';
   right:0;
   width: 50%;
-  height: 100%;
   font-size: 25px;
   top:50%;
   transform:translate(0, -50%);
@@ -407,7 +407,6 @@ export default {
   font-family: 'Galmuri11';
   width: 100%;
   font-size: 25px;
-  height: 100%;
   z-index: 1;
   top:50%;
   transform:translate(0, -50%);
@@ -436,7 +435,7 @@ export default {
   font-size: 25px;
   background-color: gray;
   font-family: 'Galmuri11';
-  z-index: 2;
+  z-index: 1;
   padding: 1%;
 }
 
@@ -446,8 +445,8 @@ export default {
   font-size: 165px;
   font-family: "MorganiteBold";
   left:25%;
-  top: 50%;
-  transform:translate(0, -50%);
+  top: 55%;
+  transform:translate(0, -55%);
   z-index: 0;
 }
 
@@ -457,17 +456,17 @@ export default {
   font-size: 165px;
   font-family: "MorganiteBold";
   left:50%;
-  top: 50%;
-  transform:translate(-50%, -60%);
+  top: 55%;
+  transform:translate(-50%, -65%);
   z-index: 0;
 }
 
 .CashRatioInput{
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 55%;
   width: 45%;
-  transform:translate(0, -50%);
+  transform:translate(0, -55%);
   font-size: 165px;
   color: #fff;
   text-align: left;
