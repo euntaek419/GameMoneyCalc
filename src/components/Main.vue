@@ -56,11 +56,15 @@
 
     <div class="SetBox">
       <div class="ExchangeBox">
-        1 =
-        <span class="ExchangeInputBox">
-          <input class="ExchangeInput" maxlength='6'>
+        <span class="ExchangeRatio">
+           1 =
         </span>
-        {{ readinput(Exchange) }}
+        <span class="ExchangeInputBox">
+          <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
+        </span>
+        <span class="ExchangeRead">
+          ( {{ readinput( ExchangeRatio ) }} 원 )
+        </span>
       </div>
 
       <div class="GiftCardInputBox">
@@ -85,8 +89,6 @@
       <div class="CashRatioInputBox">
         <div class="CashRatio">
           현금 거래 비율
-          <!-- <span class="CashRatioText" v-if="isReverse == false">( 원 : 게임머니 )</span> -->
-          <!-- <span class="CashRatioText" v-if="isReverse == true">( 게임머니 : 원 )</span> -->
         </div>
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
@@ -112,6 +114,7 @@ export default {
       Persent: '',
       Exchange: '',
       Ratio: '',
+      ExchangeRatio: '',
       IscashOption: [true, false],
       DiscountBack: '',
       DiscountColor: '',
@@ -280,12 +283,36 @@ export default {
   z-index: 1;
 }
 
+.ExchangeRatio{
+  position : absolute;
+  font-size: 25px;
+  left: 0;
+  top: 50%;
+  left : 5%;
+  transform:translate(0, -50%);
+}
+
 .ExchangeInput{
+  position : absolute;
   height: 40px;
-  width: 10%;
+  width: 160px;
   font-family: 'Galmuri11';
   color:#fff;
   font-size: 25px;
+  top:50%;
+  left:5%;
+  margin-left:50px;
+  transform:translate(0, -50%);
+  text-align: center;
+
+}
+
+.ExchangeRead{
+  position : absolute;
+  right: 5%;
+  top: 50%;
+  transform:translate(0, -50%);
+
 }
 
 /* .Exchange_img{
