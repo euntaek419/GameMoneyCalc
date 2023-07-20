@@ -29,12 +29,13 @@
             캐시 아이템 금액 입력
           </span>
 
-          <span v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            N원, N % 만큼 이득이야!_
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            N원, N % 만큼 이득이야!_ {{ resultcalc() }}
           </span>
 
           <div>
-            <input  class="CashInput" maxlength="11" v-model="Cash">
+            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == false">
+            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == true" style="color:#02fa97;">
             <div v-if="Cash == ''" class="UnderBar_left">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -51,8 +52,8 @@
             아이템 판매 금액 입력
           </span>
 
-          <span v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            N원, N % 만큼 이득이야!_
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            N원, N % 만큼 이득이야!_ {{ resultcalc() }}
           </span>
 
           <div>
@@ -136,6 +137,8 @@ export default {
       BonusBack: '',
       BonusColor: '',
       isReverse: false,
+      isWin: [false, false],
+      temp: '',
     }
   },
   methods:{
@@ -168,6 +171,12 @@ export default {
       if(this.Persent > 100 && this.IscashOption[0] == true){
         return this.Persent = 100
       }
+    },
+    resultcalc(){
+      console.log(this.temp)
+      this.temp = this.Money / this.Ratio
+      this.isWin[0] = true
+      return this.temp
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
@@ -247,6 +256,10 @@ export default {
   font-family: "Galmuri11";
   font-size: 30px;
   color: #9b9b9b;
+}
+
+.ResultCalc{
+  color : #02fa97;
 }
 
 .CashSell{
