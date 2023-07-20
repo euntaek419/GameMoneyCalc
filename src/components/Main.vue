@@ -25,7 +25,14 @@
     <div class="WhenSell">
       <label>
         <span class="CashSell">
-          캐시 아이템 금액 입력
+          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
+            캐시 아이템 금액 입력
+          </span>
+
+          <span v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            N원, N % 만큼 이득이야!_
+          </span>
+
           <div>
             <input  class="CashInput" maxlength="11" v-model="Cash">
             <div v-if="Cash == ''" class="UnderBar_left">
@@ -40,7 +47,14 @@
 
       <label>
         <span class="AuctionSell">
-          아이템 판매 금액 입력
+          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
+            아이템 판매 금액 입력
+          </span>
+
+          <span v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            N원, N % 만큼 이득이야!_
+          </span>
+
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money"> 
             <div v-if="Money == ''" class="UnderBar_right">
@@ -55,7 +69,8 @@
     </div>
 
     <div class="SetBox">
-      <div class="ExchangeBox">
+
+      <!-- <div class="ExchangeBox">
         <span class="ExchangeRatio">
            1 =
         </span>
@@ -65,14 +80,14 @@
         <span class="ExchangeRead">
           ( {{ readinput( ExchangeRatio ) }} 원 )
         </span>
-      </div>
+      </div> -->
 
       <div class="GiftCardInputBox">
         <div class="GiftCardOption">
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='4' v-model="Persent"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='4' v-model="Persent" @keyup="limit"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
@@ -147,6 +162,11 @@ export default {
         }
 
         return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 ' + cash % 10000
+      }
+    },
+    limit(){
+      if(this.Persent > 100 && this.IscashOption[0] == true){
+        return this.Persent = 100
       }
     },
     cashoption(cash, persent){
