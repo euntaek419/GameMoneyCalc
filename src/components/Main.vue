@@ -526,8 +526,8 @@ export default {
 
 .CashRatioInput_Under{
   position: absolute;
-  transform:translate(-20%, 0);
-  right:20%;
+  right : 20%;
+  transform:translate(15%, 0);
   bottom: 20%;
 }
 </style>
