@@ -30,7 +30,7 @@
           </span>
 
           <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            N원, N % 만큼 이득이야!_ {{ resultcalc() }}
+            {{ resultcalc() }} 원, {{ resultcalc() / Cash }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -53,7 +53,7 @@
           </span>
 
           <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            N원, N % 만큼 이득이야!_ {{ resultcalc() }}
+            {{ resultcalc() }} 원, {{ resultcalc() / Money }} % 만큼 이득이야!_ 
           </span>
 
           <div>
@@ -174,8 +174,11 @@ export default {
     },
     resultcalc(){
       console.log(this.temp)
-      this.temp = this.Money / this.Ratio
       this.isWin[0] = true
+
+      this.temp = this.Money / this.Ratio
+      this.temp = this.temp - this.Cash
+      
       return this.temp
     },
     cashoption(cash, persent){
