@@ -103,9 +103,12 @@
         </div>
       </div>
       <div class="CashRatioInputBox">
-        <div class="CashRatio">
+        <span class="CashRatio">
           현금 거래 비율
-        </div>
+          <span class="Exchange_img">
+            <img src="../assets/images/Exchange.png">
+          </span>
+        </span>
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
@@ -351,12 +354,13 @@ export default {
 
 }
 
-/* .Exchange_img{
+.Exchange_img{
   position: absolute;
+  color:gray;
   background-color: gray;
-  right:0;
+  right:1%;
   cursor: pointer;
-} */
+}
 
 .SetBox{
   position: absolute;
