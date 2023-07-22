@@ -70,19 +70,6 @@
     </div>
 
     <div class="SetBox">
-
-      <!-- <div class="ExchangeBox">
-        <span class="ExchangeRatio">
-           1 =
-        </span>
-        <span class="ExchangeInputBox">
-          <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
-        </span>
-        <span class="ExchangeRead">
-          ( {{ readinput( ExchangeRatio ) }} 원 )
-        </span>
-      </div> -->
-
       <div class="GiftCardInputBox">
         <div class="GiftCardOption">
           상품권 옵션 설정
@@ -105,19 +92,25 @@
       <div class="CashRatioInputBox">
         <span class="CashRatio">
           현금 거래 비율
-          <span class="Exchange_img">
-            <img src="../assets/images/Exchange.png">
+          <span>
+            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false">
           </span>
         </span>
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
-
-        <div class="WhatPersent">
-          <div>
-            <button class="Reverse" @click="Reverse">REVERSE</button>
-          </div>
+        <div class="ExchangeBox">
+          <span class="ExchangeRatio">
+             1 =
+          </span>
+          <span class="ExchangeInputBox">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
+          </span>
+          <span class="ExchangeRead">
+            ( {{ readinput( ExchangeRatio ) }} 원 )
+          </span>
         </div>
       </div>
     </div>
@@ -142,6 +135,7 @@ export default {
       isReverse: false,
       isWin: [false, false],
       temp: '',
+      IsExchange: false,
     }
   },
   methods:{
@@ -311,11 +305,10 @@ export default {
 
 .ExchangeBox{
   position : absolute;
-  margin-top: -55px;
-  width: 40%;
-  right: 5%;
-  height: 50px;
-  color:#fff;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color:white;
   font-size: 25px;
   border: 1px solid;
   font-family: 'Galmuri11';
@@ -356,7 +349,6 @@ export default {
 
 .Exchange_img{
   position: absolute;
-  color:gray;
   background-color: gray;
   right:1%;
   cursor: pointer;

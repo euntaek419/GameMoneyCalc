@@ -114,10 +114,8 @@ export default {
 .Mouse_img{
   position: absolute;
   bottom:5%;
-  
   left: 50%;
   transform:translate(-50%, 0);
-  
   z-index: 0;
 }
 
