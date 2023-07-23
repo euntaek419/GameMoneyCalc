@@ -29,8 +29,8 @@
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{ resultcalc() }} 원, {{ resultcalc() / Cash }} % 만큼 이득이야!_
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Cash >= Money">
+            {{ resultcalc() }} 원, {{ Math.round((Cash / Money - 1) * 100) }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -52,8 +52,8 @@
             아이템 판매 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{ resultcalc() }} 원, {{ resultcalc() / Money }} % 만큼 이득이야!_ 
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Money >= Cash ">
+            {{ resultcalc() }} 원, {{ Math.round((Money / Cash - 1) * 100) }} % 만큼 이득이야!_ 
           </span>
 
           <div>
@@ -134,8 +134,8 @@ export default {
       BonusColor: '',
       isReverse: false,
       isWin: [false, false],
-      temp: '',
       IsExchange: false,
+      temp: '',
     }
   },
   methods:{
@@ -170,13 +170,8 @@ export default {
       }
     },
     resultcalc(){
-      console.log(this.temp)
-      this.isWin[0] = true
-
-      this.temp = this.Money / this.Ratio
-      this.temp = this.temp - this.Cash
-      
-      return this.temp
+      // this.isWin[0] = true
+      return (this.Money / this.Ratio) - this.Cash
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
