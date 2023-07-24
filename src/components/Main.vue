@@ -7,58 +7,33 @@
     </div>
 
     <div class="WhatMoney">
-      <span class="CashShop">
-        캐시 아이템
-        <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
-        <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
-
-        <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
-        <!-- <div v-if='Persent > 100'> 100% 이하의 수치를 입력해주세요.</div> -->
-      </span>
-
       <span class="Auction">
         아이템 금액
         <div>( 게임 머니 )</div>
+      </span>
+
+      <span class="CashShop">
+        캐시
+        <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
+        <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
+        <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
       </span>
     </div>
 
     <div class="WhenSell">
       <label>
-        <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
-            캐시 아이템 금액 입력
-          </span>
-
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Cash >= Money">
-            {{ resultcalc() }} 원, {{ Math.round((Cash / Money - 1) * 100) }} % 만큼 이득이야!_
-          </span>
-
-          <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == false">
-            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == true" style="color:#02fa97;">
-            <div v-if="Cash == ''" class="UnderBar_left">
-                <img src="../assets/images/UnderBar.gif">
-            </div>
-            <div>
-              <div> {{ readinput(Cash) }} 원</div>
-            </div>
-          </div>
-        </span>
-      </label>
-
-      <label>
         <span class="AuctionSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || Money <= Cash ">
             아이템 판매 금액 입력
           </span>
 
           <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Money >= Cash ">
-            {{ resultcalc() }} 원, {{ Math.round((Money / Cash - 1) * 100) }} % 만큼 이득이야!_ 
+            {{ resultcalc() }} 원, {{ Cash / resultcalc() }} % 만큼 이득이야!_ 
           </span>
 
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money"> 
-            <div v-if="Money == ''" class="UnderBar_right">
+            <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
             <div>
@@ -67,7 +42,32 @@
           </div>
         </span>
       </label>
+      
+      <label>
+        <span class="CashSell">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || Cash <= Money ">
+            캐시 아이템 금액 입력
+          </span>
+
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Cash >= Money">
+            {{ resultcalc() }} 원, {{ resultcalc() }} % 만큼 이득이야!_
+          </span>
+
+          <div>
+            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == false">
+            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == true" style="color:#02fa97;">
+            <div v-if="Cash == ''" class="UnderBar">
+                <img src="../assets/images/UnderBar.gif">
+            </div>
+            <div>
+              <div> {{ readinput(Cash) }} 원</div>
+            </div>
+          </div>
+        </span>
+      </label>
     </div>
+
+    <!-- ---------------------------------------------------------------------------------------------------------- -->
 
     <div class="SetBox">
       <div class="GiftCardInputBox">
@@ -101,7 +101,7 @@
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
-        <div class="ExchangeBox">
+        <div class="ExchangeBox"  v-if="IsExchange == true">
           <span class="ExchangeRatio">
              1 =
           </span>
@@ -112,6 +112,12 @@
             ( {{ readinput( ExchangeRatio ) }} 원 )
           </span>
         </div>
+
+        <div class="ExchangeBox"  v-if="IsExchange == false">
+          <div class="MiniLogo">
+            GAMEMONEYCALC
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -121,12 +127,12 @@
 export default {
   data: () => {
     return {
-      Cash: '',
-      Money: '',
-      Persent: '',
+      Cash: '10000',
+      Money: '15000000',
+      Persent: '0',
+      Ratio: '100',
       Exchange: '',
-      Ratio: '',
-      ExchangeRatio: '',
+      ExchangeRatio: '20000',
       IscashOption: [true, false],
       DiscountBack: '',
       DiscountColor: '',
@@ -136,6 +142,10 @@ export default {
       isWin: [false, false],
       IsExchange: false,
       temp: '',
+      temp0 : '',
+      temp1 : '',
+      temp2 : '',
+      temp3 : '',
     }
   },
   methods:{
@@ -170,8 +180,9 @@ export default {
       }
     },
     resultcalc(){
-      // this.isWin[0] = true
-      return (this.Money / this.Ratio) - this.Cash
+      this.temp = this.Money / this.Ratio
+
+      return this.temp
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
@@ -233,12 +244,12 @@ export default {
   color: #fff;
 }
 
-.CashShop{
+.Auction{
   position: absolute;
   left: 5%;
 }
 
-.Auction{
+.CashShop{
   position: absolute;
   right: 5%;
   text-align: right;
@@ -257,31 +268,10 @@ export default {
   color : #02fa97;
 }
 
-.CashSell{
+.AuctionSell{
   position: absolute;
   left: 5%;
 }
-
-.CashInput{
-  width: 500px;
-  height: 180px;
-  color:#9b9b9b;
-  font-size: 180px;
-  font-family: "MorganiteBold";
-  outline: none;
-  border: none;
-}
-
-.UnderBar_left{
-  margin-top: -50px;
-}
-
-.AuctionSell{
-  position: absolute;
-  right: 5%;
-  text-align: right;
-}
-
 
 .AuctionInput{
   width: 500px;
@@ -289,12 +279,29 @@ export default {
   color:#9b9b9b;
   font-size: 180px;
   font-family: "MorganiteBold";
+  outline: none;
+  border: none;
+}
+
+.CashSell{
+  position: absolute;
+  right: 5%;
+  text-align: right;
+}
+
+
+.CashInput{
+  width: 500px;
+  height: 180px;
+  color:#9b9b9b;
+  font-size: 180px;
+  font-family: "MorganiteBold";
   text-align: right;
   outline: none;
   border: none;
 }
 
-.UnderBar_right{
+.UnderBar{
   margin-top: -50px;
 }
 
@@ -340,6 +347,13 @@ export default {
   top: 50%;
   transform:translate(0, -50%);
 
+}
+
+.MiniLogo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
 }
 
 .Exchange_img{
@@ -498,7 +512,7 @@ export default {
   color:#fff;
   font-size: 165px;
   font-family: "MorganiteBold";
-  left:25%;
+  right:25%;
   top: 55%;
   transform:translate(0, -55%);
   z-index: 0;
@@ -517,13 +531,13 @@ export default {
 
 .CashRatioInput{
   position: absolute;
-  right: 0;
+  left: 0;
   top: 55%;
   width: 45%;
   transform:translate(0, -55%);
   font-size: 165px;
   color: #fff;
-  text-align: left;
+  text-align: right;
   font-family: "MorganiteBold";
   z-index: 0;
   text-align: center;
