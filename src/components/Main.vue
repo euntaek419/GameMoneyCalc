@@ -26,9 +26,9 @@
           <span v-if="Cash == '' || Money == '' || Ratio == '' || Money <= Cash ">
             아이템 판매 금액 입력
           </span>
-
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Money >= Cash ">
-            {{ resultcalc() }} 원, {{ Cash / resultcalc() }} % 만큼 이득이야!_ 
+<!-- ------------------------------------------------------------------------------------------------------ -->
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            {{ (resultcalc('Money'))  }} 원, {{ resultpersent() }} % 만큼 이득이야!_  <!-- Money line -->
           </span>
 
           <div>
@@ -42,15 +42,15 @@
           </div>
         </span>
       </label>
-      
+
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || Cash <= Money ">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && Cash >= Money">
-            {{ resultcalc() }} 원, {{ resultcalc() }} % 만큼 이득이야!_
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            {{ Math.abs(resultcalc('Cash')) }} 원, {{ resultpersent() }} % 만큼 이득이야!_ <!-- Cash line -->
           </span>
 
           <div>
@@ -70,6 +70,37 @@
     <!-- ---------------------------------------------------------------------------------------------------------- -->
 
     <div class="SetBox">
+      <div class="CashRatioInputBox">
+        <span class="CashRatio">
+          현금 거래 비율
+          <span>
+            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false">
+          </span>
+        </span>
+        <span>
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
+          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
+        </span>
+        <div class="ExchangeBox"  v-if="IsExchange == true">
+          <span class="ExchangeRatio">
+             1 =
+          </span>
+          <span class="ExchangeRead">
+            ( {{ readinput( ExchangeRatio ) }} 원 )
+          </span>
+          <span class="ExchangeInputBox">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
+          </span>
+        </div>
+
+        <div class="ExchangeBox"  v-if="IsExchange == false">
+          <div class="MiniLogo">
+            게임머니 : 원
+          </div>
+        </div>
+      </div>
+
       <div class="GiftCardInputBox">
         <div class="GiftCardOption">
           상품권 옵션 설정
@@ -89,37 +120,8 @@
           </div>
         </div>
       </div>
-      <div class="CashRatioInputBox">
-        <span class="CashRatio">
-          현금 거래 비율
-          <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false">
-          </span>
-        </span>
-        <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
-          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
-        </span>
-        <div class="ExchangeBox"  v-if="IsExchange == true">
-          <span class="ExchangeRatio">
-             1 =
-          </span>
-          <span class="ExchangeInputBox">
-            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
-          </span>
-          <span class="ExchangeRead">
-            ( {{ readinput( ExchangeRatio ) }} 원 )
-          </span>
-        </div>
-
-        <div class="ExchangeBox"  v-if="IsExchange == false">
-          <div class="MiniLogo">
-            GAMEMONEYCALC
-          </div>
-        </div>
-      </div>
     </div>
+
   </div>
 </template>
 
@@ -128,11 +130,11 @@ export default {
   data: () => {
     return {
       Cash: '10000',
-      Money: '15000000',
+      Money: '70000000',
       Persent: '0',
-      Ratio: '100',
+      Ratio: '7000',
       Exchange: '',
-      ExchangeRatio: '20000',
+      ExchangeRatio: '1',
       IscashOption: [true, false],
       DiscountBack: '',
       DiscountColor: '',
@@ -149,29 +151,29 @@ export default {
     }
   },
   methods:{
-    readinput(cash) {
-      if(cash < 10000){
-        return cash
+    readinput(payload) {
+      if(payload < 10000){
+        return payload
       }
-      if(cash >= 10000 && cash < 100000000){
-        if(cash % 10000 == 0){
-          return Math.floor(cash / 10000) + ' 만 '
+      if(payload >= 10000 && payload < 100000000){
+        if(payload % 10000 == 0){
+          return Math.floor(payload / 10000) + ' 만 '
         }
-        return Math.floor(cash / 10000) + ' 만 ' + cash % 10000
+        return Math.floor(payload / 10000) + ' 만 ' + payload % 10000
       }
-      if(cash >= 100000000){
-        if(cash % 100000000 == 0){
-          return Math.floor(cash / 100000000) + ' 억 '
+      if(payload >= 100000000){
+        if(payload % 100000000 == 0){
+          return Math.floor(payload / 100000000) + ' 억 '
         }
-        if(cash % 10000 == 0){
-          return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 '
+        if(payload % 10000 == 0){
+          return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 '
         }
         
-        if(Math.floor( cash / 10000 ) % 10000 == 0){
-          return Math.floor(cash / 100000000) + ' 억 ' + cash % 10000
+        if(Math.floor( payload / 10000 ) % 10000 == 0){
+          return Math.floor(payload / 100000000) + ' 억 ' + payload % 10000
         }
 
-        return Math.floor(cash / 100000000) + ' 억 ' + Math.floor(cash % 100000000 / 10000) + ' 만 ' + cash % 10000
+        return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
       }
     },
     limit(){
@@ -179,10 +181,28 @@ export default {
         return this.Persent = 100
       }
     },
-    resultcalc(){
-      this.temp = this.Money / this.Ratio
+    resultcalc(payload){
+      if(payload == 'Cash'){
+        this.temp = this.Money / this.Ratio
+        return console.log('yes')
+      }
 
-      return this.temp
+      if(payload == 'Money'){
+        this.temp0 = this.Money / this.Ratio
+      }
+
+      return
+    },
+    resultpersent(){
+      // if(this.resultcalc() !== 0){
+      //   return (this.Cash / this.resultcalc()).toFixed(0)
+      // }
+      // if(this.resultcalc() > 0){
+      //   return (this.Money / this.resultcalc())
+      // }
+      // else{
+      //   return 0
+      // }
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
@@ -320,9 +340,9 @@ export default {
 .ExchangeRatio{
   position : absolute;
   font-size: 25px;
-  left: 0;
   top: 50%;
-  left : 5%;
+  right : 5%;
+  margin-right: 150px;
   transform:translate(0, -50%);
 }
 
@@ -334,8 +354,7 @@ export default {
   color:#fff;
   font-size: 25px;
   top:50%;
-  left:5%;
-  margin-left:50px;
+  right:0;
   transform:translate(0, -50%);
   text-align: center;
 
@@ -343,10 +362,9 @@ export default {
 
 .ExchangeRead{
   position : absolute;
-  right: 5%;
+  left: 5%;
   top: 50%;
   transform:translate(0, -50%);
-
 }
 
 .MiniLogo{
@@ -389,7 +407,7 @@ export default {
   position: absolute;
   height: 95%;
   width: 40%;
-  left: 5%;
+  right: 5%;
   background-color: #000;
 }
 
@@ -489,7 +507,7 @@ export default {
   position: absolute;
   height: 95%;
   width: 40%;
-  right: 5%;
+  left: 5%;
   background-color: #000;
 }
 
@@ -547,8 +565,8 @@ export default {
 
 .CashRatioInput_Under{
   position: absolute;
-  right : 20%;
-  transform:translate(15%, 0);
+  left : 20%;
+  transform:translate(-15%, 0);
   bottom: 20%;
 }
 </style>
