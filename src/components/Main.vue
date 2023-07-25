@@ -28,7 +28,7 @@
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && isWin[0] == true ">
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true ">
             {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  <!-- Money line -->
           </span>
 
@@ -46,11 +46,11 @@
 
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || isWin[1] == false">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false">
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && isWin[1] == true ">
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
             {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_ <!-- Cash line -->
           </span>
 
@@ -129,11 +129,11 @@
 export default {
   data: () => {
     return {
-      Cash: '10000',
-      Money: '70000000',
-      Persent: '0',
-      Ratio: '7000',
-      ExchangeRatio: '1',
+      Cash: '',
+      Money: '',
+      Persent: '',
+      Ratio: '',
+      ExchangeRatio: '',
       isWin: [false, false], // 누가이겼는지 표시,
       IsExchange: false, //환율 변경 체크했는지 클릭
       leftresult: '', // 좌측 계산용
@@ -179,8 +179,17 @@ export default {
       }
     },
     resultcalc(){
-      this.leftresult = this.Money / this.Ratio
-      if(this.IsExchange == true){
+      if(this.IscashOption[0] == true && this.Persent > 0){
+        this.leftresult = this.Money / this.Ratio
+      }
+      if(this.IscashOption[0] == true && this.Persent > 0){
+        this.leftresult = this.Money / this.Ratio
+      }
+      else{
+        this.leftresult = this.Money / this.Ratio
+      }
+
+      if(this.IsExchange == true && this.ExchangeRatio > 0){
         this.rightresult = this.Cash / this.ExchangeRatio
       }
       else{
@@ -191,6 +200,8 @@ export default {
         this.isWin[0] = true
         this.isWin[1] = false
         this.compair = this.leftresult - this.rightresult
+        this.compair = (this.compair).toFixed(0)
+        this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
         
       }
 
@@ -198,6 +209,7 @@ export default {
         this.isWin[0] = false
         this.isWin[1] = true
         this.compair = this.rightresult - this.leftresult
+        this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
       }
 
       if(this.rightresult == this.leftresult){
@@ -206,10 +218,6 @@ export default {
         this.compair = 0
         this.compairpersent = 0
       }
-    },
-    resultpersent(){
-
-
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
