@@ -33,7 +33,7 @@
           </span>
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money">
+            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange}">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -55,7 +55,7 @@
           </span>
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash">
+            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -136,6 +136,7 @@ export default {
       ExchangeRatio: '',
       isWin: [false, false], // 누가이겼는지 표시,
       IsExchange: false, //환율 변경 체크했는지 클릭
+      cashresult: '', // 캐시 할인&증정 계산용
       leftresult: '', // 좌측 계산용
       rightresult : '', // 우측 계산용
       compair : '', // 좌우 비교용
@@ -145,6 +146,8 @@ export default {
       DiscountColor: '', //Discount 색상 변환
       BonusBack: '', // 보너스백그라운드 변환
       BonusColor: '', // 보너스 색상 변환
+      fontchange: '',
+      fontchange2: '',
     }
   },
   methods:{
@@ -179,40 +182,43 @@ export default {
       }
     },
     resultcalc(){
-      if(this.IscashOption[0] == true && this.Persent > 0){
-        this.leftresult = this.Money / this.Ratio
-      }
-      if(this.IscashOption[0] == true && this.Persent > 0){
-        this.leftresult = this.Money / this.Ratio
+      this.leftresult = this.Money / this.Ratio
+
+      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){
+        this.cashresult =  Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
       }
       else{
-        this.leftresult = this.Money / this.Ratio
+        this.cashresult = this.Cash
       }
 
       if(this.IsExchange == true && this.ExchangeRatio > 0){
-        this.rightresult = this.Cash / this.ExchangeRatio
+        this.rightresult = this.cashresult / this.ExchangeRatio
       }
       else{
-        this.rightresult = this.Cash / 1
+        this.rightresult = this.cashresult / 1
       }
 
-      if(this.leftresult > this.rightresult){
+      if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
         this.isWin[0] = true
         this.isWin[1] = false
+        this.fontchange = '#02fa97'
+        this.fontchange2 = ''
         this.compair = this.leftresult - this.rightresult
         this.compair = (this.compair).toFixed(0)
         this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
         
       }
 
-      if(this.rightresult > this.leftresult){
+      if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
         this.isWin[0] = false
         this.isWin[1] = true
+        this.fontchange2 = '#02fa97'
+        this.fontchange = ''
         this.compair = this.rightresult - this.leftresult
         this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
       }
 
-      if(this.rightresult == this.leftresult){
+      if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
         this.isWin[0] = true
         this.isWin[1] = true
         this.compair = 0
