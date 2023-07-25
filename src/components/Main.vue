@@ -24,16 +24,16 @@
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || Money <= Cash ">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{   }} 원, {{  }} % 만큼 이득이야!_  <!-- Money line -->
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && isWin[0] == true ">
+            {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  <!-- Money line -->
           </span>
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money"> 
+            <input class="AuctionInput" maxlength='11' v-model="Money">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -46,17 +46,16 @@
 
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
+          <span v-if="Cash == '' || Money == '' || isWin[1] == false">
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{  }} 원, {{  }} % 만큼 이득이야!_ <!-- Cash line -->
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && isWin[1] == true ">
+            {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_ <!-- Cash line -->
           </span>
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == false">
-            <input class="CashInput" maxlength="11" v-model="Cash" v-if="isWin[0] == true" style="color:#02fa97;">
+            <input class="CashInput" maxlength="11" v-model="Cash">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -135,16 +134,17 @@ export default {
       Persent: '0',
       Ratio: '7000',
       ExchangeRatio: '1',
-      IscashOption: [true, false], // %할인, %추가증정 여부
-      DiscountBack: '', //Discount 백그라운드 변환
-      DiscountColor: '', //Discount 색상 변환
-      BonusBack: '', // 보너스백그라운드 변환
-      BonusColor: '', // 보너스 색상 변환
       isWin: [false, false], // 누가이겼는지 표시,
       IsExchange: false, //환율 변경 체크했는지 클릭
       leftresult: '', // 좌측 계산용
       rightresult : '', // 우측 계산용
       compair : '', // 좌우 비교용
+      compairpersent : '', // 좌우 비교용
+      IscashOption: [true, false], // %할인, %추가증정 여부
+      DiscountBack: '', //Discount 백그라운드 변환
+      DiscountColor: '', //Discount 색상 변환
+      BonusBack: '', // 보너스백그라운드 변환
+      BonusColor: '', // 보너스 색상 변환
     }
   },
   methods:{
@@ -188,11 +188,23 @@ export default {
       }
 
       if(this.leftresult > this.rightresult){
-        console.log(this.leftresult)
+        this.isWin[0] = true
+        this.isWin[1] = false
+        this.compair = this.leftresult - this.rightresult
+        
       }
 
       if(this.rightresult > this.leftresult){
-        console.log(this.rightresult)
+        this.isWin[0] = false
+        this.isWin[1] = true
+        this.compair = this.rightresult - this.leftresult
+      }
+
+      if(this.rightresult == this.leftresult){
+        this.isWin[0] = true
+        this.isWin[1] = true
+        this.compair = 0
+        this.compairpersent = 0
       }
     },
     resultpersent(){
