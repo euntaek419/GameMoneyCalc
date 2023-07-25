@@ -20,6 +20,7 @@
       </span>
     </div>
 
+    <div v-show="Boolean"> {{ resultcalc() }}</div>
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
@@ -28,7 +29,7 @@
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
           <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{ (resultcalc('Money'))  }} 원, {{ resultpersent() }} % 만큼 이득이야!_  <!-- Money line -->
+            {{   }} 원, {{  }} % 만큼 이득이야!_  <!-- Money line -->
           </span>
 
           <div>
@@ -50,7 +51,7 @@
           </span>
 
           <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{ Math.abs(resultcalc('Cash')) }} 원, {{ resultpersent() }} % 만큼 이득이야!_ <!-- Cash line -->
+            {{  }} 원, {{  }} % 만큼 이득이야!_ <!-- Cash line -->
           </span>
 
           <div>
@@ -133,21 +134,17 @@ export default {
       Money: '70000000',
       Persent: '0',
       Ratio: '7000',
-      Exchange: '',
       ExchangeRatio: '1',
-      IscashOption: [true, false],
-      DiscountBack: '',
-      DiscountColor: '',
-      BonusBack: '',
-      BonusColor: '',
-      isReverse: false,
-      isWin: [false, false],
-      IsExchange: false,
-      temp: '',
-      temp0 : '',
-      temp1 : '',
-      temp2 : '',
-      temp3 : '',
+      IscashOption: [true, false], // %할인, %추가증정 여부
+      DiscountBack: '', //Discount 백그라운드 변환
+      DiscountColor: '', //Discount 색상 변환
+      BonusBack: '', // 보너스백그라운드 변환
+      BonusColor: '', // 보너스 색상 변환
+      isWin: [false, false], // 누가이겼는지 표시,
+      IsExchange: false, //환율 변경 체크했는지 클릭
+      leftresult: '', // 좌측 계산용
+      rightresult : '', // 우측 계산용
+      compair : '', // 좌우 비교용
     }
   },
   methods:{
@@ -181,28 +178,26 @@ export default {
         return this.Persent = 100
       }
     },
-    resultcalc(payload){
-      if(payload == 'Cash'){
-        this.temp = this.Money / this.Ratio
-        return console.log('yes')
+    resultcalc(){
+      this.leftresult = this.Money / this.Ratio
+      if(this.IsExchange == true){
+        this.rightresult = this.Cash / this.ExchangeRatio
+      }
+      else{
+        this.rightresult = this.Cash / 1
       }
 
-      if(payload == 'Money'){
-        this.temp0 = this.Money / this.Ratio
+      if(this.leftresult > this.rightresult){
+        console.log(this.leftresult)
       }
 
-      return
+      if(this.rightresult > this.leftresult){
+        console.log(this.rightresult)
+      }
     },
     resultpersent(){
-      // if(this.resultcalc() !== 0){
-      //   return (this.Cash / this.resultcalc()).toFixed(0)
-      // }
-      // if(this.resultcalc() > 0){
-      //   return (this.Money / this.resultcalc())
-      // }
-      // else{
-      //   return 0
-      // }
+
+
     },
     cashoption(cash, persent){
       if(this.IscashOption[0] == true){
@@ -221,14 +216,6 @@ export default {
         return Math.floor( cash * ( 1 + persent/100 ) )
       }
     },
-    Reverse(){
-      if(this.isReverse == false){
-        this.isReverse = true
-      }
-      else{
-        this.isReverse = false
-      }
-    }
   }
 }
 </script>
