@@ -472,6 +472,7 @@ export default {
   position: absolute;
   background-color: gray;
   font-family: 'Galmuri11';
+  height:40px;
   left:0;
   width: 50%;
   font-size: 25px;
@@ -488,6 +489,7 @@ export default {
   position: absolute;
   background-color: gray;
   font-family: 'Galmuri11';
+  height:40px;
   right:0;
   width: 50%;
   font-size: 25px;
