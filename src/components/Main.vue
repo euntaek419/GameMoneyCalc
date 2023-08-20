@@ -20,7 +20,7 @@
       </span>
     </div>
 
-    <div v-show="Boolean"> {{ resultcalc() }}</div>
+    <div> {{ resultcalc() }}</div>
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
@@ -155,9 +155,9 @@ export default {
       if(payload < 10000){
         return payload
       }
-      if(payload >= 10000 && payload < 100000000){
+      if(payload >= 10000 && payload < 100000000){ 
         if(payload % 10000 == 0){
-          return Math.floor(payload / 10000) + ' 만 '
+          return Math.floor(payload / 10000) + ' 만 ' 
         }
         return Math.floor(payload / 10000) + ' 만 ' + payload % 10000
       }
@@ -203,8 +203,7 @@ export default {
         this.isWin[1] = false
         this.fontchange = '#02fa97'
         this.fontchange2 = ''
-        this.compair = this.leftresult - this.rightresult
-        this.compair = (this.compair).toFixed(0)
+        this.compair = (this.leftresult - this.rightresult).toFixed(1)
         this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
         
       }
@@ -214,7 +213,7 @@ export default {
         this.isWin[1] = true
         this.fontchange2 = '#02fa97'
         this.fontchange = ''
-        this.compair = this.rightresult - this.leftresult
+        this.compair = (this.rightresult - this.leftresult).toFixed(1)
         this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
       }
 
