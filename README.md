@@ -1,19 +1,35 @@
 # GAMEMONEYCALC [링크 준비중입니다]() 
 
 ### 프로젝트 주제
+- 모든 게임 아이템의 가치를 현금과 비교한다.
 
 ### 프로젝트 배경
+- 게임을 
 
 ### 프로젝트 목적
+-
 
 ### 프로젝트 사용방법
+-
 
 ### 개발환경 & 기술스택
+<div>
+  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+  <img src='https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D'/>
+  <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white"/>
+</div>
 
 ### 프로젝트에서 잘한 부분
+- 기능적인 부분으로 원하던 부분을 전부 개발하였다.
+- 
 
 ### 프로젝트에서 부족한 부분
-
+- 다른 프로젝트에서 CSS를 사용할 때 %를 잘 사용하지 않는 이유를 알게 되었다.
+- 다른 프로젝트에서 CSS를 사용할 때 position : fixed를 자제하는지 알게 되었다.
+- 이전 프로젝트보다는 발전했지만, 클린 코드를 아직도 제대로 반영하지 못하였다.
+- 
 
 ---
 ### 고려 중 사항
