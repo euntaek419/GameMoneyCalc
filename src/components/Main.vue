@@ -220,6 +220,8 @@ export default {
       if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
         this.isWin[0] = true
         this.isWin[1] = true
+        this.fontchange2 = '#02fa97'
+        this.fontchange = '#02fa97'
         this.compair = 0
         this.compairpersent = 0
       }
@@ -231,8 +233,8 @@ export default {
         this.BonusBack = ''
         this.BonusColor = ''
         return Math.floor( cash - cash * persent/100 )
-
       }
+      
       if(this.IscashOption[1] == true){
         this.BonusBack = '#000'
         this.BonusColor = '#02fa97'
