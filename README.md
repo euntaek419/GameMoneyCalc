@@ -31,6 +31,9 @@
   <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white"/>
 </div>
 
+### LightHouse Score
+![너의 재료는 속도](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/3bdf8930-6e03-4d32-980c-8f599f421195)
+
 ### 프로젝트에서 잘한 부분
 - 기능적인 부분에서 원하던 기능을 전부 개발하였다.
 - 게임 사이트에 맞는 디자인으로 개발하였다.
@@ -44,6 +47,7 @@
 - 다른 프로젝트에서 왜 화면 전체에 디자인을 하지 않고 width의 범위를 지정하는지 알게 되었다.
 - 이전 프로젝트보다는 발전했지만, 클린 코드를 아직도 제대로 반영하지 못하였다.
 - 데이터 사용에 있어 조금 더 효율이 좋은 방향으로 코드 리팩토링이 필요할 것 같다.
+- payload를 남발하여 사용하는 것이 페이지를 로드함에 있어 막대한 성능 손실을 일으킨다는 것을 알게 되었다.
 
 ---
 ### 고려 중 사항
