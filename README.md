@@ -32,7 +32,7 @@
 </div>
 
 ### LightHouse Score
-![너의 재료는 속도](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/3bdf8930-6e03-4d32-980c-8f599f421195)
+![performance](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/f71d629b-7fb2-4570-8ef2-3749ca7534ce)
 
 ### 프로젝트에서 잘한 부분
 - 기능적인 부분에서 원하던 기능을 전부 개발하였다.
