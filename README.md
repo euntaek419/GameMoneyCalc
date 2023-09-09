@@ -22,6 +22,9 @@
 4. 상품권 옵션 설정
 5. 상품권 옵션 비율 입력
 
+![ezgif-5-37bd2a46ba](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/e8eae662-4967-4e4f-86c0-293ac70c98e8)
+
+
 ### 개발환경 & 기술스택
 <div>
   <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
