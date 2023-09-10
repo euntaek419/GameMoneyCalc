@@ -38,7 +38,7 @@
 ![Lighthouse score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/7e35936d-9d65-4d84-aee1-3a53e1ebb4e3)
 
 ### 트러블 슈팅
-1. 폰트의 크기가 너무 큰 문제 <br/>
+1. 성능 향상 시키기<br/>
    ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/d4d595e9-9bc7-4b0c-860d-ee7763037ce9)
    - 폰트로 인한 지연이 무려 650ms 정도 발생하고 있다. 우선 폰트 규격을 woff로 변경하여, 폰트의 로드를 최소화 했다. <br/> ( 기존 6개 폰트 9.53MB / woff 변환 후 2.86MB 약 3.3배의 데이터 압축률 )
    - 이후 Preload를 사용해보았으나, 효과가 없어서 제거하였다.
