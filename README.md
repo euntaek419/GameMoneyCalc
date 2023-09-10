@@ -35,7 +35,6 @@
 </div>
 
 ### LightHouse Score
-![Lighthouse score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/7e35936d-9d65-4d84-aee1-3a53e1ebb4e3)
 ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/58d51efb-9519-4720-97c8-2f4cafcba131)
 
 
