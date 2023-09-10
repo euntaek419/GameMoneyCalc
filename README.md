@@ -37,6 +37,9 @@
 ### LightHouse Score
 ![Lighthouse score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/7e35936d-9d65-4d84-aee1-3a53e1ebb4e3)
 
+### 트러블 슈팅
+1. 폰트의 크기가 너무 큰 문제
+
 ### 프로젝트에서 잘한 부분
 - 기능적인 부분에서 원하던 기능을 전부 개발하였다.
 - 게임 사이트에 맞는 디자인으로 개발하였다.
