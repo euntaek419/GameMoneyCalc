@@ -36,12 +36,20 @@
 
 ### LightHouse Score
 ![Lighthouse score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/7e35936d-9d65-4d84-aee1-3a53e1ebb4e3)
+![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/6a943de1-f311-49a4-9de1-6070d102cbb5)
 
 ### 트러블 슈팅
 1. 성능 향상 시키기<br/>
    ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/d4d595e9-9bc7-4b0c-860d-ee7763037ce9)
    - 폰트로 인한 지연이 무려 650ms 정도 발생하고 있다. 우선 폰트 규격을 woff로 변경하여, 폰트의 로드를 최소화 했다. <br/> ( 기존 6개 폰트 9.53MB / woff 변환 후 2.86MB 약 3.3배의 데이터 압축률 )
-   - 이후 Preload를 사용해보았으나, 효과가 없어서 제거하였다.
+   - GIF로 인한 지연 또한 webp로 변경하여 이미지의 로드를 최소화 했다. <br/>
+   - Total Bloking Time 변경 전 780ms -> 변경 후 250ms 까지 낮추는데 성공했다! ( 3.12배 )
+   - ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/0ae4b2e8-910a-47b1-96cb-24fcf776e45c)
+   - ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/319056aa-b132-44e2-83c8-87b78a29c3b8)
+
+   
+
+
 
 ### 프로젝트에서 잘한 부분
 - 기능적인 부분에서 원하던 기능을 전부 개발하였다.
