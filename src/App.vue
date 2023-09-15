@@ -27,32 +27,32 @@ export default {
 <style>
 @font-face{
   font-family: 'MorganiteBold';
-  src : url('assets/fonts/MorganiteBold.ttf');
+  src : url('assets/fonts/MorganiteBold.woff');
 }
 
 @font-face{
   font-family: 'NeurimboGothicRegular';
-  src : url('assets/fonts/neurimboGothicRegular.otf');
+  src : url('assets/fonts/neurimboGothicRegular.woff');
 }
 
 @font-face{
   font-family: 'PretendardMedium';
-  src : url('assets/fonts/PretendardMedium.otf');
+  src : url('assets/fonts/PretendardMedium.woff');
 }
 
 @font-face{
   font-family: 'PyeongChangPeaceBold';
-  src : url('assets/fonts/PyeongChangPeaceBold.ttf');
+  src : url('assets/fonts/PyeongChangPeaceBold.woff');
 }
 
 @font-face{
   font-family: 'PyeongChangPeaceLight';
-  src : url('assets/fonts/PyeongChangPeaceLight.ttf');
+  src : url('assets/fonts/PyeongChangPeaceLight.woff');
 }
 
 @font-face{
   font-family: 'Galmuri11';
-  src : url('assets/fonts/Galmuri11.ttf');
+  src : url('assets/fonts/Galmuri11.woff');
 }
 
 

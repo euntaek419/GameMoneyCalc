@@ -2,12 +2,12 @@
   <div class="Title">
     <div class="Title_img Title_text">
       <a href="https://cet4713.cafe24.com/">
-        <img src="../assets/images/PumpkinBallText.gif">
+        <img src="../assets/images/PumpkinBallText.webp">
       </a>
     </div>
     <div class="Title_img">
       <a href="https://cet4713.cafe24.com/">
-        <img src="../assets/images/PumpkinBall.gif">
+        <img src="../assets/images/PumpkinBall.webp">
       </a>
     </div>
 

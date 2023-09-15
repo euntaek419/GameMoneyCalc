@@ -205,7 +205,6 @@ export default {
         this.fontchange2 = ''
         this.compair = (this.leftresult - this.rightresult).toFixed(1)
         this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
-        
       }
 
       if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
