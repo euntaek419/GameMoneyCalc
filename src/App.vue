@@ -32,27 +32,32 @@ export default {
 
 @font-face{
   font-family: 'NeurimboGothicRegular';
-  src : url('assets/fonts/neurimboGothicRegular.woff');
+  src : url('assets/fonts/neurimboGothicRegular.woff'), url('assets/fonts/MorganiteBold.woff');
+  font-display: fallback;
 }
 
 @font-face{
   font-family: 'PretendardMedium';
-  src : url('assets/fonts/PretendardMedium.woff');
+  src : url('assets/fonts/PretendardMedium.woff'), url('assets/fonts/MorganiteBold.woff');
+  font-display: fallback;
 }
 
 @font-face{
   font-family: 'PyeongChangPeaceBold';
-  src : url('assets/fonts/PyeongChangPeaceBold.woff');
+  src : url('assets/fonts/PyeongChangPeaceBold.woff'), url('assets/fonts/MorganiteBold.woff');
+  font-display: fallback;
 }
 
 @font-face{
   font-family: 'PyeongChangPeaceLight';
-  src : url('assets/fonts/PyeongChangPeaceLight.woff');
+  src : url('assets/fonts/PyeongChangPeaceLight.woff'), url('assets/fonts/MorganiteBold.woff');
+  font-display: fallback;
 }
 
 @font-face{
   font-family: 'Galmuri11';
-  src : url('assets/fonts/Galmuri11.woff');
+  src : url('assets/fonts/Galmuri11.woff'), url('assets/fonts/MorganiteBold.woff');
+  font-display: fallback;
 }
 
 
