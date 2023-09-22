@@ -46,6 +46,7 @@
    - GIF로 인한 지연 또한 webp로 변경하여 이미지의 로드를 최소화 했다. <br/>
    - Total Bloking Time 변경 전 780ms -> 변경 후 250ms 까지 낮추는데 성공했다! ( 3.12배 )
    - ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/0ae4b2e8-910a-47b1-96cb-24fcf776e45c) ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/319056aa-b132-44e2-83c8-87b78a29c3b8)
+   - 리팩토링을 통해 기존 methods 에서 시행되던 계산의 일부를 computed 로 변경하여 로딩의 속도를 줄이도록 노력하였습니다.
 
    
 
