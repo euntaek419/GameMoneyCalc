@@ -136,7 +136,6 @@ export default {
       ExchangeRatio: '',
       isWin: [false, false], // 누가이겼는지 표시,
       IsExchange: false, //환율 변경 체크했는지 클릭
-      // cashresult: '', // 캐시 할인&증정 계산용
       compair : '', // 좌우 비교용
       compairpersent : '', // 좌우 비교용
       IscashOption: [true, false], // %할인, %추가증정 여부
@@ -165,7 +164,7 @@ export default {
         return this.cashresult / this.ExchangeRatio
       }
       else{
-        return this.cashresult / 1
+        return this.cashresult
       }
     },
 
