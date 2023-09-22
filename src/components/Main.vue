@@ -136,7 +136,7 @@ export default {
       ExchangeRatio: '',
       isWin: [false, false], // 누가이겼는지 표시,
       IsExchange: false, //환율 변경 체크했는지 클릭
-      cashresult: '', // 캐시 할인&증정 계산용
+      // cashresult: '', // 캐시 할인&증정 계산용
       compair : '', // 좌우 비교용
       compairpersent : '', // 좌우 비교용
       IscashOption: [true, false], // %할인, %추가증정 여부
@@ -151,6 +151,14 @@ export default {
   computed:{
     leftresult() {
       return this.Money / this.Ratio // 좌측 환율
+    },
+    cashresult() {
+      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
+        return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
+      }
+      else{
+        return this.Cash
+      }
     },
     rightresult() {
       if(this.IsExchange == true && this.ExchangeRatio > 0){ // 우측 환율 변경을 선택했을 때 환율 변경 적용
@@ -194,13 +202,6 @@ export default {
       }
     },
     resultcalc(){
-      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
-        this.cashresult =  Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
-      }
-      else{
-        this.cashresult = this.Cash
-      }
-
       if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 좌측 계산값이 더 크고 값들이 비어있지 않으면 동작
         this.isWin[0] = true
         this.isWin[1] = false
