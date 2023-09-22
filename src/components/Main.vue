@@ -150,6 +150,9 @@ export default {
       fontchange2: '',
     }
   },
+  computed:{
+
+  },
   methods:{
     readinput(payload) {
       if(payload < 10000){
@@ -182,23 +185,23 @@ export default {
       }
     },
     resultcalc(){
-      this.leftresult = this.Money / this.Ratio
+      this.leftresult = this.Money / this.Ratio // 좌측 계산
 
-      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){
+      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
         this.cashresult =  Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
       }
       else{
         this.cashresult = this.Cash
       }
 
-      if(this.IsExchange == true && this.ExchangeRatio > 0){
+      if(this.IsExchange == true && this.ExchangeRatio > 0){ // 우측 환율 변경을 선택했을 때 환율 변경 적용
         this.rightresult = this.cashresult / this.ExchangeRatio
       }
       else{
         this.rightresult = this.cashresult / 1
       }
 
-      if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
+      if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 좌측 계산값이 더 크고 값들이 비어있지 않으면 동작
         this.isWin[0] = true
         this.isWin[1] = false
         this.fontchange = '#02fa97'
@@ -207,7 +210,7 @@ export default {
         this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
       }
 
-      if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
+      if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 우측 계산값이 더 크고 값들이 비어있지 않으면 동작
         this.isWin[0] = false
         this.isWin[1] = true
         this.fontchange2 = '#02fa97'
@@ -216,7 +219,7 @@ export default {
         this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
       }
 
-      if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){
+      if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 계산값이 같으며, 값들이 비어있지 않으면 동작
         this.isWin[0] = true
         this.isWin[1] = true
         this.fontchange2 = '#02fa97'
