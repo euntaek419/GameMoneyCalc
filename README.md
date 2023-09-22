@@ -41,7 +41,7 @@
 ### 트러블 슈팅
 1. 성능 향상 시키기<br/>
    ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/d4d595e9-9bc7-4b0c-860d-ee7763037ce9)
-   - 폰트로 인한 지연이 무려 650ms 정도 발생하고 있다. 우선 폰트 규격을 woff로 변경하여, 폰트의 로드를 최소화 했다. <br/> ( 기존 6개 폰트 9.53MB / woff 변환 후 2.86MB 약 3.3배의 데이터 압축률 )
+   - 폰트로 인한 지연이 무려 650ms 정도 발생하고 있다. 우선 폰트 규격을 woff로 변경하였고, 가장 로드가 빠른 MorganiteBold를 먼저 적용시킨 뒤, 이후 폰트가 로드 되면 교체될 수 있도록 하였다. 폰트의 로드를 최소화 했다. <br/> ( 기존 6개 폰트 9.53MB / woff 변환 후 2.86MB 약 3.3배의 데이터 압축률, 기존 650ms의 지연 -> 수정 후 20ms의 지연 )
    - GIF로 인한 지연 또한 webp로 변경하여 이미지의 로드를 최소화 했다. <br/>
    - Total Bloking Time 변경 전 780ms -> 변경 후 250ms 까지 낮추는데 성공했다! ( 3.12배 )
    - ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/0ae4b2e8-910a-47b1-96cb-24fcf776e45c) ![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/319056aa-b132-44e2-83c8-87b78a29c3b8)
