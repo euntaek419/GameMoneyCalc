@@ -126,6 +126,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   data: () => {
     return {
@@ -148,6 +150,7 @@ export default {
     }
   },
   computed:{
+    ...mapState(['Cash']),
     leftresult() {
       return this.Money / this.Ratio // 좌측 환율
     },
