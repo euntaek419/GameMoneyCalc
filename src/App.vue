@@ -12,10 +12,6 @@ import Main from './components/Main.vue'
 import Title from './components/Title.vue'
 
 export default {
-  data: () => {
-    return {
-    }
-  },
   name: 'App',
   components: {
     Title,

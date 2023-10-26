@@ -14,23 +14,23 @@
 
       <span class="CashShop">
         캐시
-        <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
-        <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
-        <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div>
+        <!-- <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span> -->
+        <!-- <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span> -->
+        <!-- <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div> -->
       </span>
     </div>
 
-    <div> {{ resultcalc() }}</div>
+    <!-- <div> {{ resultcalc() }}</div> -->
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
+          <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false"> -->
             아이템 판매 금액 입력
-          </span>
+          <!-- </span> -->
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true ">
-            {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  <!-- Money line -->
-          </span>
+          <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true "> -->
+            <!-- {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  Money line -->
+          <!-- </span> -->
 
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange}">
@@ -38,7 +38,7 @@
               <img src="../assets/images/UnderBar.gif" >
             </div>
             <div>
-              <div> {{ readinput(Money) }} 머니</div>
+              <!-- <div> {{ readinput(Money) }} 머니</div> -->
             </div>
           </div>
         </span>
@@ -46,13 +46,13 @@
 
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false">
+          <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false"> -->
             캐시 아이템 금액 입력
-          </span>
+          <!-- </span> -->
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
-            {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_ <!-- Cash line -->
-          </span>
+          <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true "> -->
+            <!-- {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  -->
+          <!-- </span> -->
 
           <div>
             <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}">
@@ -60,7 +60,7 @@
                 <img src="../assets/images/UnderBar.gif">
             </div>
             <div>
-              <div> {{ readinput(Cash) }} 원</div>
+              <!-- <div> {{ readinput(Cash) }} 원</div> -->
             </div>
           </div>
         </span>
@@ -74,31 +74,31 @@
         <span class="CashRatio">
           현금 거래 비율
           <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false">
+            <!-- <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true"> -->
+            <!-- <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false"> -->
           </span>
         </span>
         <span>
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
-        <div class="ExchangeBox"  v-if="IsExchange == true">
+        <!-- <div class="ExchangeBox"  v-if="IsExchange == true"> -->
           <span class="ExchangeRatio">
              1 =
           </span>
           <span class="ExchangeRead">
-            ( {{ readinput( ExchangeRatio ) }} 원 )
+            <!-- ( {{ readinput( ExchangeRatio ) }} 원 ) -->
           </span>
           <span class="ExchangeInputBox">
             <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
           </span>
-        </div>
+        <!-- </div> -->
 
-        <div class="ExchangeBox"  v-if="IsExchange == false">
+        <!-- <div class="ExchangeBox"  v-if="IsExchange == false"> -->
           <div class="MiniLogo">
             게임머니 : 원
           </div>
-        </div>
+        <!-- </div> -->
       </div>
 
       <div class="GiftCardInputBox">
@@ -112,11 +112,11 @@
         
         <div class="WhatPersent">
           <div>
-            <button class="Discount" @click="IscashOption[0] = true; IscashOption[1] = false" :style="{ backgroundColor : DiscountBack, color: DiscountColor}">% 할인</button>
+            <!-- <button class="Discount" @click="IscashOption[0] = true; IscashOption[1] = false" :style="{ backgroundColor : DiscountBack, color: DiscountColor}">% 할인</button> -->
           </div>
 
           <div>
-            <button class="Bonus" @click="IscashOption[1] = true; IscashOption[0] = false" :style="{ backgroundColor : BonusBack, color: BonusColor}">% 추가증정</button>
+            <!-- <button class="Bonus" @click="IscashOption[1] = true; IscashOption[0] = false" :style="{ backgroundColor : BonusBack, color: BonusColor}">% 추가증정</button> -->
           </div>
         </div>
       </div>
@@ -131,123 +131,19 @@ import { mapState } from 'vuex'
 export default {
   data: () => {
     return {
-      Cash: '',
-      Money: '',
+      Cash : '',
+      Money : '',
       Persent: '',
-      Ratio: '',
+      Ratio : '',
       ExchangeRatio: '',
-      isWin: [false, false], // 누가이겼는지 표시,
-      IsExchange: false, //환율 변경 체크했는지 클릭
-      compair : '', // 좌우 비교용
-      compairpersent : '', // 좌우 비교용
-      IscashOption: [true, false], // %할인, %추가증정 여부
-      DiscountBack: '', //Discount 백그라운드 변환
-      DiscountColor: '', //Discount 색상 변환
-      BonusBack: '', // 보너스백그라운드 변환
-      BonusColor: '', // 보너스 색상 변환
-      fontchange: '',
-      fontchange2: '',
     }
   },
   computed:{
-    ...mapState(['Cash']),
-    leftresult() {
-      return this.Money / this.Ratio // 좌측 환율
-    },
-    cashresult() {
-      if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
-        return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
-      }
-      else{
-        return this.Cash
-      }
-    },
-    rightresult() {
-      if(this.IsExchange == true && this.ExchangeRatio > 0){ // 우측 환율 변경을 선택했을 때 환율 변경 적용
-        return this.cashresult / this.ExchangeRatio
-      }
-      else{
-        return this.cashresult
-      }
-    },
-
-  },
-  methods:{
-    readinput(payload) {
-      if(payload < 10000){
-        return payload
-      }
-      if(payload >= 10000 && payload < 100000000){ 
-        if(payload % 10000 == 0){
-          return Math.floor(payload / 10000) + ' 만 ' 
-        }
-        return Math.floor(payload / 10000) + ' 만 ' + payload % 10000
-      }
-      if(payload >= 100000000){
-        if(payload % 100000000 == 0){
-          return Math.floor(payload / 100000000) + ' 억 '
-        }
-        if(payload % 10000 == 0){
-          return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 '
-        }
-        
-        if(Math.floor( payload / 10000 ) % 10000 == 0){
-          return Math.floor(payload / 100000000) + ' 억 ' + payload % 10000
-        }
-
-        return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
-      }
-    },
-    limit(){
-      if(this.Persent > 100 && this.IscashOption[0] == true){
-        return this.Persent = 100
-      }
-    },
-    resultcalc(){
-      if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 좌측 계산값이 더 크고 값들이 비어있지 않으면 동작
-        this.isWin[0] = true
-        this.isWin[1] = false
-        this.fontchange = '#02fa97'
-        this.fontchange2 = ''
-        this.compair = (this.leftresult - this.rightresult).toFixed(1)
-        this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
-      }
-
-      if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 우측 계산값이 더 크고 값들이 비어있지 않으면 동작
-        this.isWin[0] = false
-        this.isWin[1] = true
-        this.fontchange2 = '#02fa97'
-        this.fontchange = ''
-        this.compair = (this.rightresult - this.leftresult).toFixed(1)
-        this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
-      }
-
-      if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 계산값이 같으며, 값들이 비어있지 않으면 동작
-        this.isWin[0] = true
-        this.isWin[1] = true
-        this.fontchange2 = '#02fa97'
-        this.fontchange = '#02fa97'
-        this.compair = 0
-        this.compairpersent = 0
-      }
-    },
-    cashoption(cash, persent){
-      if(this.IscashOption[0] == true){
-        this.DiscountBack = '#000'
-        this.DiscountColor = '#02fa97'
-        this.BonusBack = ''
-        this.BonusColor = ''
-        return Math.floor( cash - cash * persent/100 )
-      }
-      
-      if(this.IscashOption[1] == true){
-        this.BonusBack = '#000'
-        this.BonusColor = '#02fa97'
-        this.DiscountBack = ''
-        this.DiscountColor = ''
-        return Math.floor( cash * ( 1 + persent/100 ) )
-      }
-    },
+    ...mapState([
+      'isWin','IsExchange','compair','compairpersent','IscashOption',
+      'DiscountBack','DiscountColor','BonusBack','BonusColor','fontchange',
+      'fontchange2'
+      ]),
   }
 }
 </script>
