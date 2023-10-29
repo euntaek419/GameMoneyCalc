@@ -17,9 +17,6 @@ export default createStore({
         }
     },
 //     getter: {
-//     leftresult() {
-//       return this.Money / this.Ratio // 좌측 환율
-//     },
 //     cashresult() {
 //       if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
 //         return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )

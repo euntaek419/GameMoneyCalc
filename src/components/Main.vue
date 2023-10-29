@@ -144,6 +144,10 @@ export default {
       'DiscountBack','DiscountColor','BonusBack','BonusColor','fontchange',
       'fontchange2'
       ]),
+
+    leftresult() {
+      return this.Money / this.Ratio // 좌측 환율
+    },
   }
 }
 </script>
