@@ -1,6 +1,6 @@
 # GAMEMONEYCALC
 
-###### GAMEMONEYCALC [바로 가기](https://cet4713.cafe24.com/) ( 주소가 만료되었습니다. ) 
+###### GAMEMONEYCALC [URL 바로 가기](http://ssuegg.site/) / [CloudFront](https://d33pay1yrazuf5.cloudfront.net)
 
 ### 프로젝트 주제
 - 모든 게임 아이템의 가치를 현금과 비교
