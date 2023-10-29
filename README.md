@@ -1,6 +1,7 @@
 # GAMEMONEYCALC
 
 ###### GAMEMONEYCALC [URL 바로 가기](http://ssuegg.site/) / [CloudFront](https://d33pay1yrazuf5.cloudfront.net)
+( URL로 인한 접속이 원할하지 않아 분리하였습니다. )
 
 ### 프로젝트 주제
 - 모든 게임 아이템의 가치를 현금과 비교
