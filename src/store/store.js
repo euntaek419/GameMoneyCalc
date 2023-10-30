@@ -7,11 +7,6 @@ export default createStore({
             IsExchange: false,
             compair: '',
             compairpersent: '',
-            IscashOption: [true, false],
-            DiscountBack: '',
-            DiscountColor: '',
-            BonusBack: '',
-            BonusColor: '',
             fontchange: '',
             fontchange2: '',
         }

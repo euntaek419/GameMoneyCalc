@@ -112,11 +112,13 @@
         
         <div class="WhatPersent">
           <div>
-            <!-- <button class="Discount" @click="IscashOption[0] = true; IscashOption[1] = false" :style="{ backgroundColor : DiscountBack, color: DiscountColor}">% 할인</button> -->
+            <button class="DiscountF" @click="IscashOption[0] = true; IscashOption[1] = false;" v-if="IscashOption[0] == false">% 할인</button>
+            <button class="DiscountT" @click="IscashOption[0] = true; IscashOption[1] = false;" v-if="IscashOption[0] == true">% 할인</button>
           </div>
 
           <div>
-            <!-- <button class="Bonus" @click="IscashOption[1] = true; IscashOption[0] = false" :style="{ backgroundColor : BonusBack, color: BonusColor}">% 추가증정</button> -->
+            <button class="BonusF" @click="IscashOption[1] = true; IscashOption[0] = false" v-if="IscashOption[1] == false">% 추가증정</button>
+            <button class="BonusT" @click="IscashOption[1] = true; IscashOption[0] = false" v-if="IscashOption[1] == true">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -136,19 +138,22 @@ export default {
       Persent: '',
       Ratio : '',
       ExchangeRatio: '',
+      IscashOption: [true, false],
     }
   },
   computed:{
     ...mapState([
-      'isWin','IsExchange','compair','compairpersent','IscashOption',
-      'DiscountBack','DiscountColor','BonusBack','BonusColor','fontchange',
+      'isWin','IsExchange','compair','compairpersent',
+      'fontchange',
       'fontchange2'
       ]),
 
     leftresult() {
       return this.Money / this.Ratio // 좌측 환율
     },
-  }
+  },
+  methods: {
+  },
 }
 </script>
 
@@ -374,7 +379,7 @@ export default {
   height: 15%;
 }
 
-.Discount{
+.DiscountF{
   position: absolute;
   background-color: gray;
   font-family: 'Galmuri11';
@@ -386,12 +391,25 @@ export default {
   transform:translate(0, -50%);
 }
 
-.Discount:hover{
+.DiscountF:hover{
   background-color: #000;
   color:#02fa97
 }
 
-.Bonus{
+.DiscountT{
+  position: absolute;
+  background-color: #000;
+  color:#02fa97;
+  font-family: 'Galmuri11';
+  height:40px;
+  left:0;
+  width: 50%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.BonusF{
   position: absolute;
   background-color: gray;
   font-family: 'Galmuri11';
@@ -403,9 +421,22 @@ export default {
   transform:translate(0, -50%);
 }
 
-.Bonus:hover{
+.BonusF:hover{
   background-color: #000;
   color:#02fa97
+}
+
+.BonusT{
+  position: absolute;
+  background-color: #000;
+  color:#02fa97;
+  font-family: 'Galmuri11';
+  height:40px;
+  right:0;
+  width: 50%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
 }
 
 .Reverse{
