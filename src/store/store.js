@@ -4,7 +4,6 @@ export default createStore({
     state() {
         return {
             isWin: [false, false],
-            IsExchange: false,
             compair: '',
             compairpersent: '',
             fontchange: '',

@@ -82,7 +82,7 @@
           <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
-        <!-- <div class="ExchangeBox"  v-if="IsExchange == true"> -->
+        <div class="ExchangeBox"  v-if="IsExchange == true">
           <span class="ExchangeRatio">
              1 =
           </span>
@@ -92,13 +92,13 @@
           <span class="ExchangeInputBox">
             <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
           </span>
-        <!-- </div> -->
+        </div>
 
-        <!-- <div class="ExchangeBox"  v-if="IsExchange == false"> -->
+        <div class="ExchangeBox"  v-if="IsExchange == false">
           <div class="MiniLogo">
             게임머니 : 원
           </div>
-        <!-- </div> -->
+        </div>
       </div>
 
       <div class="GiftCardInputBox">
@@ -139,11 +139,12 @@ export default {
       Ratio : '',
       ExchangeRatio: '',
       IscashOption: [true, false],
+      IsExchange: false,
     }
   },
   computed:{
     ...mapState([
-      'isWin','IsExchange','compair','compairpersent',
+      'isWin','compair','compairpersent',
       'fontchange',
       'fontchange2'
       ]),
