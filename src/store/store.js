@@ -91,18 +91,10 @@ export default createStore({
 //     },
 //     cashoption(cash, persent){
 //       if(this.IscashOption[0] == true){
-//         this.DiscountBack = '#000'
-//         this.DiscountColor = '#02fa97'
-//         this.BonusBack = ''
-//         this.BonusColor = ''
 //         return Math.floor( cash - cash * persent/100 )
 //       }
       
 //       if(this.IscashOption[1] == true){
-//         this.BonusBack = '#000'
-//         this.BonusColor = '#02fa97'
-//         this.DiscountBack = ''
-//         this.DiscountColor = ''
 //         return Math.floor( cash * ( 1 + persent/100 ) )
 //       }
 //     },
