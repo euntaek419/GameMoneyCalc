@@ -112,13 +112,13 @@
         
         <div class="WhatPersent">
           <div>
-            <button class="DiscountF" @click="IscashOption[0] = true; IscashOption[1] = false;" v-if="IscashOption[0] == false">% 할인</button>
-            <button class="DiscountT" @click="IscashOption[0] = true; IscashOption[1] = false;" v-if="IscashOption[0] == true">% 할인</button>
+            <button class="DiscountF" @click="changeCashOption" v-if="IscashOption[0] == false">% 할인</button>
+            <button class="DiscountT" @click="changeCashOption" v-if="IscashOption[0] == true">% 할인</button>
           </div>
 
           <div>
-            <button class="BonusF" @click="IscashOption[1] = true; IscashOption[0] = false" v-if="IscashOption[1] == false">% 추가증정</button>
-            <button class="BonusT" @click="IscashOption[1] = true; IscashOption[0] = false" v-if="IscashOption[1] == true">% 추가증정</button>
+            <button class="BonusF" @click="changeCashOption('B')" v-if="IscashOption[1] == false">% 추가증정</button>
+            <button class="BonusT" @click="changeCashOption('B')" v-if="IscashOption[1] == true">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -153,6 +153,16 @@ export default {
     },
   },
   methods: {
+    changeCashOption(payload) {
+      if(payload == 'B'){
+        this.IscashOption[0] = false;
+        this.IscashOption[1] = true;
+      }
+      else{
+        this.IscashOption[0] = true;
+        this.IscashOption[1] = false;
+      }
+    }
   },
 }
 </script>
