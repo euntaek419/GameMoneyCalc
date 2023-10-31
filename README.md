@@ -1,6 +1,6 @@
 # GAMEMONEYCALC
 
-###### GAMEMONEYCALC [바로가기](https://www.ssuegg.site/) / [바로가기 2](https://d33pay1yrazuf5.cloudfront.net)
+###### GAMEMONEYCALC [바로 가기](https://www.ssuegg.site/) / [바로 가기 2](https://d33pay1yrazuf5.cloudfront.net)
 
 ### 프로젝트 주제
 - 모든 게임 아이템의 가치를 현금과 비교
