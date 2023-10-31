@@ -1,7 +1,6 @@
 # GAMEMONEYCALC
 
-###### GAMEMONEYCALC [Route53 주소 바로가기](https://www.ssuegg.site/) / [CloudFront 주소 바로가기](https://d33pay1yrazuf5.cloudfront.net)
-( 도메인으로 인하여, URL로 인한 접속이 원할하지 않아 분리하였습니다. )
+###### GAMEMONEYCALC [주소 바로가기](https://www.ssuegg.site/) / [주소 바로가기 2](https://d33pay1yrazuf5.cloudfront.net)
 
 ### 프로젝트 주제
 - 모든 게임 아이템의 가치를 현금과 비교
