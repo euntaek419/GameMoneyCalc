@@ -3,11 +3,8 @@ import { createStore } from 'vuex';
 export default createStore({
     state() {
         return {
-            isWin: [false, false],
             compair: '',
             compairpersent: '',
-            fontchange: '',
-            fontchange2: '',
         }
     },
 //     getter: {
@@ -53,11 +50,6 @@ export default createStore({
 //         }
 
 //         return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
-//       }
-//     },
-//     limit(){
-//       if(this.Persent > 100 && this.IscashOption[0] == true){
-//         return this.Persent = 100
 //       }
 //     },
 //     resultcalc(){

@@ -33,7 +33,7 @@
           <!-- </span> -->
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange}">
+            <input class="AuctionInput" maxlength='11' v-model="Money" type="number" :style="{ color : fontchange}">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -55,7 +55,7 @@
           <!-- </span> -->
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}">
+            <input class="CashInput" maxlength="11" v-model="Cash" type="number" :style="{ color : fontchange2}">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -79,7 +79,7 @@
           </span>
         </span>
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio">
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio" type="number">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
@@ -90,7 +90,7 @@
             <!-- ( {{ readinput( ExchangeRatio ) }} 원 ) -->
           </span>
           <span class="ExchangeInputBox">
-            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" type="number">
           </span>
         </div>
 
@@ -106,7 +106,7 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='4' v-model="Persent" @keyup="limit"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='4' v-model="Persent" @keyup="limit" type="number"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
@@ -133,20 +133,21 @@ import { mapState } from 'vuex'
 export default {
   data: () => {
     return {
-      Cash : '',
-      Money : '',
-      Persent: '',
-      Ratio : '',
-      ExchangeRatio: '',
-      IscashOption: [true, false],
-      IsExchange: false,
+      Cash : '', //캐시 입력창
+      Money : '', // 현금 입력창
+      Ratio : '', // 비율 입력창
+      Persent: '', // 할인, 추가증정 입력창
+      ExchangeRatio: '', // 비율 변경 입력창
+      IsExchange: false, // 비율 변경 여부
+      IscashOption: [true, false], // 할인, 추가증정 여부
+      isWin: [false, false], // 승리 여부
+      fontchange: '',
+      fontchange2: '',
     }
   },
   computed:{
     ...mapState([
-      'isWin','compair','compairpersent',
-      'fontchange',
-      'fontchange2'
+      'compair','compairpersent',
       ]),
 
     leftresult() {
@@ -163,12 +164,23 @@ export default {
         this.IscashOption[0] = true;
         this.IscashOption[1] = false;
       }
-    }
+    },
+    limit(){
+      if(this.Persent > 100 && this.IscashOption[0] == true){
+        return this.Persent = 100
+      }
+    },
   },
 }
 </script>
 
 <style>
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .InfoBox{
   width: 350px;
   height: 65px;
