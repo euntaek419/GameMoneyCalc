@@ -14,9 +14,13 @@
 
       <span class="CashShop">
         캐시
-        <span v-if="IscashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
-        <span v-if="IscashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
-        <!-- <div> {{ cashoption(Cash,Persent) }}  ( {{readinput( cashoption(Cash,Persent) ) }} 원 )</div> -->
+        <span v-if="isCashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
+        <span v-if="isCashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
+        <div>
+          <!-- {{ cashoption(Cash,Persent) }} -->
+          {{ this.$store.getters.cashOption }} 원
+          <!-- ( {{readinput( cashoption(Cash,Persent) ) }} 원 ) -->
+        </div>
       </span>
     </div>
 
@@ -87,7 +91,7 @@
              1 =
           </span>
           <span class="ExchangeRead">
-            <!-- ( {{ readinput( ExchangeRatio ) }} 원 ) -->
+            ( {{ this.$store.getters.readinput(ExchangeRatio) }} 원 )
           </span>
           <span class="ExchangeInputBox">
             <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" keyup="updateExchangeRatio">
@@ -112,13 +116,13 @@
         
         <div class="WhatPersent">
           <div>
-            <button class="DiscountF" @click="changeCashOption" v-if="IscashOption[0] == false">% 할인</button>
-            <button class="DiscountT" @click="changeCashOption" v-if="IscashOption[0] == true">% 할인</button>
+            <button class="DiscountF" @click="changeCashOption" v-if="isCashOption[0] == false">% 할인</button>
+            <button class="DiscountT" @click="changeCashOption" v-if="isCashOption[0] == true">% 할인</button>
           </div>
 
           <div>
-            <button class="BonusF" @click="changeCashOption('B')" v-if="IscashOption[1] == false">% 추가증정</button>
-            <button class="BonusT" @click="changeCashOption('B')" v-if="IscashOption[1] == true">% 추가증정</button>
+            <button class="BonusF" @click="changeCashOption('B')" v-if="isCashOption[1] == false">% 추가증정</button>
+            <button class="BonusT" @click="changeCashOption('B')" v-if="isCashOption[1] == true">% 추가증정</button>
           </div>
         </div>
       </div>
@@ -139,7 +143,7 @@ export default {
       Persent: '', // 할인, 추가증정 입력창
       ExchangeRatio: '', // 비율 변경 입력창
       IsExchange: false, // 비율 변경 여부
-      IscashOption: [true, false], // 할인, 추가증정 여부
+      isCashOption: [true, false], // 할인, 추가증정 여부
       isWin: [false, false], // 승리 여부
       fontchange: '',
       fontchange2: '',
@@ -153,12 +157,14 @@ export default {
   methods: {
     changeCashOption(payload) {
       if(payload == 'B'){
-        this.IscashOption[0] = false;
-        this.IscashOption[1] = true;
+        this.isCashOption[0] = false;
+        this.isCashOption[1] = true;
+        this.updateisCashOption()
       }
       else{
-        this.IscashOption[0] = true;
-        this.IscashOption[1] = false;
+        this.isCashOption[0] = true;
+        this.isCashOption[1] = false;
+        this.updateisCashOption()
       }
     },
     updateMoney(){
@@ -171,7 +177,7 @@ export default {
       this.$store.commit('updateRatio', this.Ratio)
     },
     updatePersent(){
-      if(this.Persent > 100 && this.IscashOption[0] == true){
+      if(this.Persent > 100 && this.isCashOption[0] == true){
         this.Persent = 100
       }
       this.$store.commit('updatePersent', this.Persent)
@@ -179,6 +185,9 @@ export default {
     updateExchangeRatio(){
       this.$store.commit('updateExchangeRatio', this.ExchangeRatio)
     },
+    updateisCashOption(){
+      this.$store.commit('updateisCashOption', this.isCashOption)
+    }
   },
 }
 </script>

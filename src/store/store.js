@@ -9,6 +9,7 @@ export default createStore({
             Ratio : '',
             Persent : '',
             ExchangeRatio : '',
+            isCashOption: [true, false],
             compair: '',
             compairpersent: '',
         }
@@ -16,7 +17,7 @@ export default createStore({
     actions: {
     },
     getters: {
-        readinput: () => (payload) => {
+        readinput: () => (payload) => { //getter factory
             if(payload < 10000){
                 return payload 
             }
@@ -38,7 +39,15 @@ export default createStore({
                 }
                 return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
             }
-        }
+        },
+        cashOption(state){
+            if(state.isCashOption[0] == true){
+                return Math.floor( state.Cash - state.Cash * state.Persent/100 )
+            }
+            if(state.isCashOption[1] == true){
+                return Math.floor( state.Cash * ( 1 + state.Persent/100 ) )
+            }
+        },
         //cashresult() {
         //   if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
         //      return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
@@ -72,6 +81,9 @@ export default createStore({
         updateExchangeRatio(state, payload){
             state.ExchangeRatio = payload
         },
+        updateisCashOption(state, payload){
+            state.isCashOption = payload
+        },
     // resultcalc(){
     //   if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 좌측 계산값이 더 크고 값들이 비어있지 않으면 동작
     //     this.isWin[0] = true
@@ -98,15 +110,6 @@ export default createStore({
     //     this.fontchange = '#02fa97'
     //     this.compair = 0
     //     this.compairpersent = 0
-    //   }
-    // },
-    // cashoption(cash, persent){
-    //   if(this.IscashOption[0] == true){
-    //     return Math.floor( cash - cash * persent/100 )
-    //   }
-      
-    //   if(this.IscashOption[1] == true){
-    //     return Math.floor( cash * ( 1 + persent/100 ) )
     //   }
     // },
     },
