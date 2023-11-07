@@ -33,12 +33,12 @@
           <!-- </span> -->
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money" type="number" :style="{ color : fontchange}">
+            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange}" @keyup="updateMoney">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
             <div>
-              <!-- <div> {{ readinput(Money) }} 머니</div> -->
+              <div> {{ this.$store.getters.readinput(Money) }} 머니</div>
             </div>
           </div>
         </span>
@@ -55,12 +55,12 @@
           <!-- </span> -->
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" type="number" :style="{ color : fontchange2}">
+            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}" @keyup="updateCash">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
             <div>
-              <!-- <div> {{ readinput(Cash) }} 원</div> -->
+              <div> {{ this.$store.getters.readinput(Cash) }} 원</div>
             </div>
           </div>
         </span>
@@ -79,7 +79,7 @@
           </span>
         </span>
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio" type="number">
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio" keyup="updateRatio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
@@ -90,7 +90,7 @@
             <!-- ( {{ readinput( ExchangeRatio ) }} 원 ) -->
           </span>
           <span class="ExchangeInputBox">
-            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" type="number">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" keyup="updateExchangeRatio">
           </span>
         </div>
 
@@ -106,7 +106,7 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='4' v-model="Persent" @keyup="limit" type="number"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='5' v-model="Persent" @keyup="updatePersent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
@@ -149,10 +149,6 @@ export default {
     ...mapState([
       'compair','compairpersent',
       ]),
-
-    leftresult() {
-      return this.Money / this.Ratio // 좌측 환율
-    },
   },
   methods: {
     changeCashOption(payload) {
@@ -165,10 +161,23 @@ export default {
         this.IscashOption[1] = false;
       }
     },
-    limit(){
+    updateMoney(){
+      this.$store.commit('updateMoney',this.Money)
+    },
+    updateCash(){
+      this.$store.commit('updateCash', this.Cash)
+    },
+    updateRatio(){
+      this.$store.commit('updateRatio', this.Ratio)
+    },
+    updatePersent(){
       if(this.Persent > 100 && this.IscashOption[0] == true){
-        return this.Persent = 100
+        this.Persent = 100
       }
+      this.$store.commit('updatePersent', this.Persent)
+    },
+    updateExchangeRatio(){
+      this.$store.commit('updateExchangeRatio', this.ExchangeRatio)
     },
   },
 }
