@@ -40,7 +40,7 @@
           </span>
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange }" @keyup="updateMoney">
+            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange }" @input="updateMoney">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -62,7 +62,7 @@
           </span>
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2 }" @keyup="updateCash">
+            <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange2 }" @input="updateCash">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -81,12 +81,12 @@
         <span class="CashRatio">
           현금 거래 비율
           <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true; ExchangeRatio = ''">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false; ExchangeRatio = ''">
+            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="updateisExchange">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="updateisExchange">
           </span>
         </span>
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='9' v-model="Ratio" @keyup="updateRatio">
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='9' v-model="Ratio" @input="updateRatio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
@@ -97,7 +97,7 @@
             ( {{ this.$store.getters.readinput(ExchangeRatio) }} 원 )
           </span>
           <span class="ExchangeInputBox">
-            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" @keyup="updateExchangeRatio">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" @input="updateExchangeRatio">
           </span>
         </div>
 
@@ -113,7 +113,7 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='5' v-model="Persent" @keyup="updatePersent"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='5' v-model="Persent" @input="updatePersent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
@@ -173,6 +173,11 @@ export default {
         this.Persent = 100
       }
       this.$store.dispatch('updatePersent', this.Persent)
+    },
+    updateisExchange(){
+      this.IsExchange = !this.IsExchange
+      this.ExchangeRatio = '';
+      this.$store.dispatch('updateisExchange', this.IsExchange)
     },
     updateExchangeRatio(){
       this.$store.dispatch('updateExchangeRatio', this.ExchangeRatio)

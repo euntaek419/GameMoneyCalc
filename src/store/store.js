@@ -19,59 +19,50 @@ export default createStore({
             isWin: [false, false],
         }
     },
-    actions: {
-        updateMoney(context, payload) {
-            context.commit('updateMoney', payload)
-        },
-        updateCash(context, payload){
-            context.commit('updateCash', payload)
-        },
-        updateRatio(context, payload){
-            context.commit('updateRatio', payload)
-        },
-        updatePersent(context, payload){
-            context.commit('updatePersent', payload)
-        },
-        updateExchangeRatio(context, payload){
-            context.commit('updateExchangeRatio', payload)
-        },
-        updateisCashOption(context, payload){
-            context.commit('updateisCashOption', payload)
-        },
-    },
     getters: {
-        cashResult(state) { // rightresult의 exchangeratio는 우측에 영향받기에 우측을 신경써서 코딩할 것
-            
-            state.leftresult = state.Money / state.Ratio
-
-            if(state.isCashOption[0] == true || state.isCashOption[1] == true && state.Persent > 0){
-                state.rightresult = Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
+        cashOption(state){
+            if(state.isCashOption[0] == true){
+                return Math.floor( state.Cash - state.Cash * state.Persent/100 )
             }
-            else{
+            else if(state.isCashOption[1] == true){
+                return Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
+            }
+        },
+        cashResult(state) {
+            state.leftresult = state.Money / state.Ratio //좌측 계산
+
+            if(state.isCashOption[0] == true && state.Persent > 0){ // 할인 셜정
+                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent/100 )
+            }
+            else if(state.isCashOption[1] == true && state.Persent > 0){ // 추가증정 설정
+                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent/100 )
+            }
+            else{ // 비설정
                 state.rightresult = state.Cash
             }
 
-            if(state.isExchange == true && state.ExchangeRatio > 0){
+            if(state.isExchange == true && state.ExchangeRatio > 0){ // 거래 비율 조정
                 state.rightresult = state.rightresult / state.ExchangeRatio
             }
 
             // ------------------------------------- 중간선 --------------------------------------
 
             if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = true
-                state.isWin[1] = false
-                state.fontchange = '#02fa97'
-                state.fontchange2 = ''
+                state.isWin[0] = false
+                state.isWin[1] = true
+                state.fontchange = ''
+                state.fontchange2 = '#02fa97'
                 state.compair = (state.leftresult - state.rightresult).toFixed(1)
+                
                 state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
                 return state.compair
             }
 
             if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = false
-                state.isWin[1] = true
-                state.fontchange = ''
-                state.fontchange2 = '#02fa97'
+                state.isWin[0] = true
+                state.isWin[1] = false
+                state.fontchange = '#02fa97'
+                state.fontchange2 = ''
                 state.compair = (state.rightresult - state.leftresult).toFixed(1)
                 state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
                 return state.compair
@@ -108,14 +99,7 @@ export default createStore({
                     return Math.floor(payload / 100000000) + ' 억 ' + payload % 10000
                 }
                 return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
-            }
-        },
-        cashOption(state){
-            if(state.isCashOption[0] == true){
-                return Math.floor( state.Cash - state.Cash * state.Persent/100 )
-            }
-            if(state.isCashOption[1] == true){
-                return Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
+                
             }
         },
     },
@@ -135,8 +119,34 @@ export default createStore({
         updateExchangeRatio(state, payload){
             state.ExchangeRatio = payload
         },
+        updateisExchange(state, payload){
+            state.isExchange = payload
+        },
         updateisCashOption(state, payload){
             state.isCashOption = payload
-        }
+        },
+    },
+    actions: {
+        updateMoney(context, payload) {
+            context.commit('updateMoney', payload)
+        },
+        updateCash(context, payload){
+            context.commit('updateCash', payload)
+        },
+        updateRatio(context, payload){
+            context.commit('updateRatio', payload)
+        },
+        updatePersent(context, payload){
+            context.commit('updatePersent', payload)
+        },
+        updateExchangeRatio(context, payload){
+            context.commit('updateExchangeRatio', payload)
+        },
+        updateisExchange(context, payload){
+            context.commit('updateisExchange', payload)
+        },
+        updateisCashOption(context, payload){
+            context.commit('updateisCashOption', payload)
+        },
     },
 })
