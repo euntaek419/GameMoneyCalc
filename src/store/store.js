@@ -20,6 +20,24 @@ export default createStore({
         }
     },
     actions: {
+        updateMoney(context, payload) {
+            context.commit('updateMoney', payload)
+        },
+        updateCash(context, payload){
+            context.commit('updateCash', payload)
+        },
+        updateRatio(context, payload){
+            context.commit('updateRatio', payload)
+        },
+        updatePersent(context, payload){
+            context.commit('updatePersent', payload)
+        },
+        updateExchangeRatio(context, payload){
+            context.commit('updateExchangeRatio', payload)
+        },
+        updateisCashOption(context, payload){
+            context.commit('updateisCashOption', payload)
+        },
     },
     getters: {
         cashResult(state) { // rightresult의 exchangeratio는 우측에 영향받기에 우측을 신경써서 코딩할 것
@@ -46,8 +64,7 @@ export default createStore({
                 state.fontchange2 = ''
                 state.compair = (state.leftresult - state.rightresult).toFixed(1)
                 state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
-                console.log('좌측 승리')
-                return (state.leftresult - state.rightresult).toFixed(1)
+                return state.compair
             }
 
             if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
@@ -57,8 +74,7 @@ export default createStore({
                 state.fontchange2 = '#02fa97'
                 state.compair = (state.rightresult - state.leftresult).toFixed(1)
                 state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
-                console.log('우측 승리')
-                return (state.rightresult - state.leftresult).toFixed(1)
+                return state.compair
             }
 
             if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
@@ -68,7 +84,7 @@ export default createStore({
                 state.fontchange2 = '#02fa97'
                 state.compair = 0
                 state.compairpersent = 0
-                return 0
+                return state.compair
             }
         },
         readinput: () => (payload) => { //getter factory
@@ -104,7 +120,7 @@ export default createStore({
         },
     },
     mutations : {
-        updateMoney(state, payload) {
+        updateMoney(state, payload){
             state.Money = payload
         },
         updateCash(state, payload){
@@ -121,6 +137,6 @@ export default createStore({
         },
         updateisCashOption(state, payload){
             state.isCashOption = payload
-        },
+        }
     },
 })

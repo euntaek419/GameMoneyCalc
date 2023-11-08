@@ -160,25 +160,25 @@ export default {
 
   methods: {
     updateMoney(){
-      this.$store.commit('updateMoney',this.Money)
+      this.$store.dispatch('updateMoney',this.Money)
     },
     updateCash(){
-      this.$store.commit('updateCash', this.Cash)
+      this.$store.dispatch('updateCash', this.Cash)
     },
     updateRatio(){
-      this.$store.commit('updateRatio', this.Ratio)
+      this.$store.dispatch('updateRatio', this.Ratio)
     },
     updatePersent(){
       if(this.Persent > 100 && this.isCashOption[0] == true){
         this.Persent = 100
       }
-      this.$store.commit('updatePersent', this.Persent)
+      this.$store.dispatch('updatePersent', this.Persent)
     },
     updateExchangeRatio(){
-      this.$store.commit('updateExchangeRatio', this.ExchangeRatio)
+      this.$store.dispatch('updateExchangeRatio', this.ExchangeRatio)
     },
     updateisCashOption(){
-      this.$store.commit('updateisCashOption', this.isCashOption)
+      this.$store.dispatch('updateisCashOption', this.isCashOption)
     },
     changeCashOption(payload) {
       if(payload == 'B'){
