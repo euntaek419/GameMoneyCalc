@@ -9,17 +9,21 @@
     <div class="WhatMoney">
       <span class="Auction">
         아이템 금액
-        <div>( 게임 머니 )</div>
+        <div v-if="Ratio <= 0">( 게임 머니 )</div>
+        <div v-if="Ratio > 0 && ExchangeRatio <= 0">1 원당 ( {{ this.$store.getters.readinput(Ratio) }} 게임 머니 )</div>
+        <div v-if="Ratio > 0 && ExchangeRatio > 0 "> {{ ExchangeRatio }} 원당 ( {{ this.$store.getters.readinput(Ratio) }} 게임 머니 ) </div>
       </span>
 
       <span class="CashShop">
         캐시
-        <span v-if="isCashOption[0] == true && Persent > 0 && Cash !== ''"> ( 할인 적용 ) </span>
-        <span v-if="isCashOption[1] == true && Persent > 0 && Cash !== ''" > ( 추가 증정 적용 ) </span>
-        <div>
-          <!-- {{ cashoption(Cash,Persent) }} -->
-          {{ this.$store.getters.cashOption }} 원
-          <!-- ( {{readinput( cashoption(Cash,Persent) ) }} 원 ) -->
+        <span v-if="isCashOption[0] == true && Persent > 0 && Cash !== ''"> ( {{ Persent }} % 할인 적용 ) </span>
+        <span v-if="isCashOption[1] == true && Persent > 0 && Cash !== ''" > ( {{ Persent }} % 추가 증정 적용 ) </span>
+        <div v-if="Persent != '' && isCashOption[0] == true || Persent != '' && isCashOption[1] == true">
+          {{ this.$store.getters.cashOption }}
+          ( {{ this.$store.getters.readinput(this.$store.getters.cashOption) }} 원 )
+        </div>
+        <div v-else>
+          ( 원 )
         </div>
       </span>
     </div>
@@ -29,15 +33,15 @@
       <label>
         <span class="AuctionSell">
           <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false"> -->
-            아이템 판매 금액 입력
+            <!-- 아이템 판매 금액 입력 -->
           <!-- </span> -->
 <!-- ------------------------------------------------------------------------------------------------------ -->
           <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true "> -->
-            <!-- {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  Money line -->
+            {{ this.$store.getters.cashResult }} 원, <!-- {{ compairpersent }} % 만큼 이득이야!_  Money line -->
           <!-- </span> -->
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange}" @keyup="updateMoney">
+            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange }" @keyup="updateMoney">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -78,12 +82,12 @@
         <span class="CashRatio">
           현금 거래 비율
           <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false">
+            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true; Ratio = ''">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false; Ratio = ''">
           </span>
         </span>
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='6' v-model="Ratio" keyup="updateRatio">
+          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='9' v-model="Ratio" @keyup="updateRatio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
@@ -94,7 +98,7 @@
             ( {{ this.$store.getters.readinput(ExchangeRatio) }} 원 )
           </span>
           <span class="ExchangeInputBox">
-            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" keyup="updateExchangeRatio">
+            <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" @keyup="updateExchangeRatio">
           </span>
         </div>
 
@@ -155,18 +159,6 @@ export default {
       ]),
   },
   methods: {
-    changeCashOption(payload) {
-      if(payload == 'B'){
-        this.isCashOption[0] = false;
-        this.isCashOption[1] = true;
-        this.updateisCashOption()
-      }
-      else{
-        this.isCashOption[0] = true;
-        this.isCashOption[1] = false;
-        this.updateisCashOption()
-      }
-    },
     updateMoney(){
       this.$store.commit('updateMoney',this.Money)
     },
@@ -187,7 +179,19 @@ export default {
     },
     updateisCashOption(){
       this.$store.commit('updateisCashOption', this.isCashOption)
-    }
+    },
+    changeCashOption(payload) {
+      if(payload == 'B'){
+        this.isCashOption[0] = false;
+        this.isCashOption[1] = true;
+        this.updateisCashOption()
+      }
+      else{
+        this.isCashOption[0] = true;
+        this.isCashOption[1] = false;
+        this.updateisCashOption()
+      }
+    },
   },
 }
 </script>
@@ -401,7 +405,7 @@ input[type="number"]::-webkit-inner-spin-button {
   font-family: "MorganiteBold";
   z-index: 0;
   top: 55%;
-  transform:translate(-50%, -55%);
+  transform:translate(-35%, -55%);
 }
 
 .GiftCardInput_Under{
@@ -546,7 +550,8 @@ input[type="number"]::-webkit-inner-spin-button {
   top: 55%;
   width: 45%;
   transform:translate(0, -55%);
-  font-size: 165px;
+  font-size: 130px;
+  /* font-size: 165px; */
   color: #fff;
   text-align: right;
   font-family: "MorganiteBold";

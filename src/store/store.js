@@ -4,17 +4,21 @@ export default createStore({
     state() {
         return {
             Money : '',
-            readMoney : '',
             Cash : '',
             Ratio : '',
             Persent : '',
             ExchangeRatio : '',
             isCashOption: [true, false],
+            isExchange: false, // 비율 변경 여부
             compair: '',
             compairpersent: '',
+            leftresult : '',
+            rightresult: '',
+            result: '',
         }
     },
     actions: {
+        
     },
     getters: {
         readinput: () => (payload) => { //getter factory
@@ -48,22 +52,32 @@ export default createStore({
                 return Math.floor( state.Cash * ( 1 + state.Persent/100 ) )
             }
         },
-        //cashresult() {
-        //   if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
-        //      return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
-        //   }
-        //   else{
-        //       return this.Cash
-        //   }
-        //},
+        cashResult() {
+            // state.leftresult = state.Money / state.Ratio
+
+            
+
+            // if(state.isExchange == true && state.ExchangeRatio > 0){
+            //    console.log('yes')
+            //}
+
+        },
+        // cashresult() {
+        //     if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
+        //         return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
+        //     }
+        //     else{
+        //         return this.Cash
+        //     }
+        // },
         // rightresult() {
         //    if(this.IsExchange == true && this.ExchangeRatio > 0){ // 우측 환율 변경을 선택했을 때 환율 변경 적용
-        //        return this.cashresult / this.ExchangeRatio
-        //    }
-        //    else{
-        //        return this.cashresult
-        //    }
-        // },
+        //         return this.cashresult / this.ExchangeRatio
+        //     }
+        //     else{
+        //         return this.cashresult
+        //     }
+        //  },
     },
     mutations : {
         updateMoney(state, payload) {
