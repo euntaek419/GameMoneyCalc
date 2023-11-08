@@ -120,33 +120,5 @@ export default createStore({
         updateisCashOption(state, payload){
             state.isCashOption = payload
         },
-    // resultcalc(){
-    //   if(this.leftresult > this.rightresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 좌측 계산값이 더 크고 값들이 비어있지 않으면 동작
-    //     this.isWin[0] = true
-    //     this.isWin[1] = false
-    //     this.fontchange = '#02fa97'
-    //     this.fontchange2 = ''
-    //     this.compair = (this.leftresult - this.rightresult).toFixed(1)
-    //     this.compairpersent = (this.compair / this.rightresult * 100).toFixed(1)
-    //   }
-
-    //   if(this.rightresult > this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 우측 계산값이 더 크고 값들이 비어있지 않으면 동작
-    //     this.isWin[0] = false
-    //     this.isWin[1] = true
-    //     this.fontchange2 = '#02fa97'
-    //     this.fontchange = ''
-    //     this.compair = (this.rightresult - this.leftresult).toFixed(1)
-    //     this.compairpersent = (this.compair / this.leftresult * 100).toFixed(1)
-    //   }
-
-    //   if(this.rightresult == this.leftresult && this.Cash !== '' && this.Money !== '' && this.Ratio !== ''){ // 계산값이 같으며, 값들이 비어있지 않으면 동작
-    //     this.isWin[0] = true
-    //     this.isWin[1] = true
-    //     this.fontchange2 = '#02fa97'
-    //     this.fontchange = '#02fa97'
-    //     this.compair = 0
-    //     this.compairpersent = 0
-    //   }
-    // },
     },
 })

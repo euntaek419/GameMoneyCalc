@@ -31,14 +31,12 @@
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
-          <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false"> -->
-          <span v-if="Cash == '' || Money == '' || Ratio == ''">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true "> -->
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== ''">
-            {{ this.$store.getters.cashResult }} 원, {{ this.$store.state.compairpersent }} % 만큼 이득이야!_
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
+            {{ this.$store.getters.cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -55,12 +53,12 @@
 
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
+          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false ">
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
-            {{ this.$store.getters.cashResult }} 원, {{ this.$store.state.compairpersent }} % 만큼 이득이야!_ 
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
+            {{ this.$store.getters.cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_ 
           </span>
 
           <div>
@@ -149,13 +147,11 @@ export default {
       ExchangeRatio: '', // 비율 변경 입력창
       IsExchange: false, // 비율 변경 여부
       isCashOption: [true, false], // 할인, 추가증정 여부
-      fontchange: '',
-      fontchange2: '',
     }
   },
   computed:{
     ...mapState([
-      'isWin',
+      'isWin','compairpersent'
       ]),
   },
   methods: {
