@@ -10,17 +10,17 @@
       <span class="Auction">
         아이템 금액
         <div v-if="Ratio <= 0">( 게임 머니 )</div>
-        <div v-if="Ratio > 0 && ExchangeRatio <= 0">1 원당 ( {{ readinput(Ratio) }} 게임 머니 )</div>
-        <div v-if="Ratio > 0 && ExchangeRatio > 0 "> {{ ExchangeRatio }} 원당 ( {{ readinput(Ratio) }} 게임 머니 ) </div>
+        <div v-if="Ratio > 0 && ExchangeRatio <= 0">1 원당 ( {{ this.$store.getters.readinput(Ratio) }} 게임 머니 )</div>
+        <div v-if="Ratio > 0 && ExchangeRatio > 0 "> {{ ExchangeRatio }} 원당 ( {{ this.$store.getters.readinput(Ratio) }} 게임 머니 ) </div>
       </span>
 
       <span class="CashShop">
         캐시
         <span v-if="isCashOption[0] == true && Persent > 0 && Cash !== ''"> ( {{ Persent }} % 할인 적용 ) </span>
         <span v-if="isCashOption[1] == true && Persent > 0 && Cash !== ''" > ( {{ Persent }} % 추가 증정 적용 ) </span>
-        <div v-if="Persent != '' && isCashOption[0] == true || Persent != '' && isCashOption[1] == true">
+        <div v-if="Persent >= 0 && isCashOption[0] == true || Persent >= 0 && isCashOption[1] == true">
           {{ cashOption }}
-          ( {{ readinput(cashOption) }} 원 )
+          ( {{ this.$store.getters.readinput(cashOption) }} 원 )
         </div>
         <div v-else>
           ( 원 )
@@ -45,7 +45,7 @@
               <img src="../assets/images/UnderBar.gif" >
             </div>
             <div>
-              <div> {{ readinput(Money) }} 머니</div>
+              <div> {{ this.$store.getters.readinput(Money) }} 머니</div>
             </div>
           </div>
         </span>
@@ -67,7 +67,7 @@
                 <img src="../assets/images/UnderBar.gif">
             </div>
             <div>
-              <div> {{ readinput(Cash) }} 원</div>
+              <div> {{ this.$store.getters.readinput(Cash) }} 원</div>
             </div>
           </div>
         </span>
@@ -94,7 +94,7 @@
              1 =
           </span>
           <span class="ExchangeRead">
-            ( {{ readinput(ExchangeRatio) }} 원 )
+            ( {{ this.$store.getters.readinput(ExchangeRatio) }} 원 )
           </span>
           <span class="ExchangeInputBox">
             <input class="ExchangeInput" maxlength='9' v-model="ExchangeRatio" @keyup="updateExchangeRatio">
@@ -154,7 +154,7 @@ export default {
       'isWin','compairpersent','fontchange','fontchange2',
       ]),
     ...mapGetters([
-      'readinput','cashResult','cashOption'
+      'cashResult','cashOption'
     ])
   },
 
