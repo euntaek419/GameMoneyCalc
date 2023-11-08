@@ -31,11 +31,11 @@
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
+          <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
             {{ this.$store.getters.cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_
           </span>
 
@@ -53,16 +53,16 @@
 
       <label>
         <span class="CashSell">
-          <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false ">
+          <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false ">
             캐시 아이템 금액 입력
           </span>
 
-          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
             {{ this.$store.getters.cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_ 
           </span>
 
           <div>
-            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}" @keyup="updateCash">
+            <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2 }" @keyup="updateCash">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -151,9 +151,10 @@ export default {
   },
   computed:{
     ...mapState([
-      'isWin','compairpersent'
+      'isWin','compairpersent','fontchange','fontchange2',
       ]),
   },
+
   methods: {
     updateMoney(){
       this.$store.commit('updateMoney',this.Money)

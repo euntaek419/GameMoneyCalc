@@ -20,9 +20,57 @@ export default createStore({
         }
     },
     actions: {
-        
     },
     getters: {
+        cashResult(state) { // rightresult의 exchangeratio는 우측에 영향받기에 우측을 신경써서 코딩할 것
+            
+            state.leftresult = state.Money / state.Ratio
+
+            if(state.isCashOption[0] == true || state.isCashOption[1] == true && state.Persent > 0){
+                state.rightresult = Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
+            }
+            else{
+                state.rightresult = state.Cash
+            }
+
+            if(state.isExchange == true && state.ExchangeRatio > 0){
+                state.rightresult = state.rightresult / state.ExchangeRatio
+            }
+
+            // ------------------------------------- 중간선 --------------------------------------
+
+            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = true
+                state.isWin[1] = false
+                state.fontchange = '#02fa97'
+                state.fontchange2 = ''
+                state.compair = (state.leftresult - state.rightresult).toFixed(1)
+                state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                console.log('좌측 승리')
+                return (state.leftresult - state.rightresult).toFixed(1)
+            }
+
+            if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = false
+                state.isWin[1] = true
+                state.fontchange = ''
+                state.fontchange2 = '#02fa97'
+                state.compair = (state.rightresult - state.leftresult).toFixed(1)
+                state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                console.log('우측 승리')
+                return (state.rightresult - state.leftresult).toFixed(1)
+            }
+
+            if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = true
+                state.isWin[1] = true
+                state.fontchange = '#02fa97'
+                state.fontchange2 = '#02fa97'
+                state.compair = 0
+                state.compairpersent = 0
+                return 0
+            }
+        },
         readinput: () => (payload) => { //getter factory
             if(payload < 10000){
                 return payload 
@@ -51,53 +99,7 @@ export default createStore({
                 return Math.floor( state.Cash - state.Cash * state.Persent/100 )
             }
             if(state.isCashOption[1] == true){
-                return Math.floor( state.Cash * ( 1 + state.Persent/100 ) )
-            }
-        },
-        cashResult(state) { // rightresult의 exchangeratio는 우측에 영향받기에 우측을 신경써서 코딩할 것
-            state.leftresult = state.Money / state.Ratio
-
-            if(state.isCashOption[0] == true || state.isCashOption[1] == true && state.Persent > 0){
-                state.rightresult = Math.floor( state.Cash * ( 1 + state.Persent / 100 ))
-            }
-            else{
-                state.rightresult = state.Cash
-            }
-
-            if(state.isExchange == true && state.ExchangeRatio > 0){
-                state.rightresult = state.rightresult / state.ExchangeRatio
-            }
-
-            // ------------------------------------- 중간선 --------------------------------------
-
-            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = true
-                state.isWin[1] = false
-                state.fontchange = '#02fa97'
-                state.fontchange = ''
-                state.compair = (state.leftresult - state.rightresult).toFixed(1)
-                state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
-                return (state.leftresult - state.rightresult).toFixed(1)
-            }
-
-            if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = false
-                state.isWin[1] = true
-                state.fontchange = ''
-                state.fontchange = '#02fa97'
-                state.compair = (state.rightresult - state.leftresult).toFixed(1)
-                state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
-                return (state.rightresult - state.leftresult).toFixed(1)
-            }
-
-            if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = true
-                state.isWin[1] = true
-                state.fontchange = '#02fa97'
-                state.fontchange = '#02fa97'
-                state.compair = 0
-                state.compairpersent = 0
-                return 0
+                return Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
             }
         },
     },
