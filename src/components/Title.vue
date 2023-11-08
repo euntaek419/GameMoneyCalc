@@ -1,14 +1,14 @@
 <template>
   <div class="Title">
     <div class="Title_img Title_text">
-      <a href="https://cet4713.cafe24.com/">
-        <img src="../assets/images/PumpkinBallText.webp">
-      </a>
+      <!-- <a href="https://cet4713.cafe24.com/"> -->
+        <img src="../assets/images/PumpkinBallText.webp" @click="click">
+      <!-- </a> -->
     </div>
     <div class="Title_img">
-      <a href="https://cet4713.cafe24.com/">
-        <img src="../assets/images/PumpkinBall.webp">
-      </a>
+      <!-- <a href="https://cet4713.cafe24.com/"> -->
+        <img src="../assets/images/PumpkinBall.webp" @click="click">
+      <!-- </a> -->
     </div>
 
     <div>
@@ -41,6 +41,11 @@ GAMEMONEYCALC은, 아이템 금액과 현금 거래의 효율을 비교계산하
 
 <script>
 export default {
+  methods:{
+    click(){
+      alert('지금은 아무일도 일어나지 않습니다. 업데이트 이후를 기대해주세요!')
+    }
+  }
 
 }
 </script>

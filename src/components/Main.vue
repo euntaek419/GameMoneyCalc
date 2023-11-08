@@ -28,17 +28,18 @@
       </span>
     </div>
 
-    <!-- <div> {{ resultcalc() }}</div> -->
     <div class="WhenSell">
       <label>
         <span class="AuctionSell">
           <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false"> -->
-            <!-- 아이템 판매 금액 입력 -->
-          <!-- </span> -->
+          <span v-if="Cash == '' || Money == '' || Ratio == ''">
+            아이템 판매 금액 입력
+          </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
           <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true "> -->
-            {{ this.$store.getters.cashResult }} 원, <!-- {{ compairpersent }} % 만큼 이득이야!_  Money line -->
-          <!-- </span> -->
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== ''">
+            {{ this.$store.getters.cashResult }} 원, {{ this.$store.state.compairpersent }} % 만큼 이득이야!_
+          </span>
 
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange }" @keyup="updateMoney">
@@ -54,13 +55,13 @@
 
       <label>
         <span class="CashSell">
-          <!-- <span v-if="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false"> -->
+          <span v-if="Cash == '' || Money == '' || Ratio == '' ">
             캐시 아이템 금액 입력
-          <!-- </span> -->
+          </span>
 
-          <!-- <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true "> -->
-            <!-- {{ compair }} 원, {{ compairpersent }} % 만큼 이득이야!_  -->
-          <!-- </span> -->
+          <span class="ResultCalc" v-if="Cash !== '' && Money !== '' && Ratio !== '' ">
+            {{ this.$store.getters.cashResult }} 원, {{ this.$store.state.compairpersent }} % 만큼 이득이야!_ 
+          </span>
 
           <div>
             <input class="CashInput" maxlength="11" v-model="Cash" :style="{ color : fontchange2}" @keyup="updateCash">
@@ -82,8 +83,8 @@
         <span class="CashRatio">
           현금 거래 비율
           <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true; Ratio = ''">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false; Ratio = ''">
+            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="IsExchange = true; ExchangeRatio = ''">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="IsExchange = false; ExchangeRatio = ''">
           </span>
         </span>
         <span>
@@ -148,14 +149,13 @@ export default {
       ExchangeRatio: '', // 비율 변경 입력창
       IsExchange: false, // 비율 변경 여부
       isCashOption: [true, false], // 할인, 추가증정 여부
-      isWin: [false, false], // 승리 여부
       fontchange: '',
       fontchange2: '',
     }
   },
   computed:{
     ...mapState([
-      'compair','compairpersent',
+      'isWin',
       ]),
   },
   methods: {

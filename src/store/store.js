@@ -14,7 +14,9 @@ export default createStore({
             compairpersent: '',
             leftresult : '',
             rightresult: '',
-            result: '',
+            fontchange: '',
+            fontchange2: '',
+            isWin: [false, false],
         }
     },
     actions: {
@@ -52,32 +54,52 @@ export default createStore({
                 return Math.floor( state.Cash * ( 1 + state.Persent/100 ) )
             }
         },
-        cashResult() {
-            // state.leftresult = state.Money / state.Ratio
+        cashResult(state) { // rightresult의 exchangeratio는 우측에 영향받기에 우측을 신경써서 코딩할 것
+            state.leftresult = state.Money / state.Ratio
 
-            
+            if(state.isCashOption[0] == true || state.isCashOption[1] == true && state.Persent > 0){
+                state.rightresult = Math.floor( state.Cash * ( 1 + state.Persent / 100 ))
+            }
+            else{
+                state.rightresult = state.Cash
+            }
 
-            // if(state.isExchange == true && state.ExchangeRatio > 0){
-            //    console.log('yes')
-            //}
+            if(state.isExchange == true && state.ExchangeRatio > 0){
+                state.rightresult = state.rightresult / state.ExchangeRatio
+            }
 
+            // ------------------------------------- 중간선 --------------------------------------
+
+            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = true
+                state.isWin[1] = false
+                state.fontchange = '#02fa97'
+                state.fontchange = ''
+                state.compair = (state.leftresult - state.rightresult).toFixed(1)
+                state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                return (state.leftresult - state.rightresult).toFixed(1)
+            }
+
+            if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = false
+                state.isWin[1] = true
+                state.fontchange = ''
+                state.fontchange = '#02fa97'
+                state.compair = (state.rightresult - state.leftresult).toFixed(1)
+                state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                return (state.rightresult - state.leftresult).toFixed(1)
+            }
+
+            if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+                state.isWin[0] = true
+                state.isWin[1] = true
+                state.fontchange = '#02fa97'
+                state.fontchange = '#02fa97'
+                state.compair = 0
+                state.compairpersent = 0
+                return 0
+            }
         },
-        // cashresult() {
-        //     if(this.IscashOption[0] == true || this.IscashOption[1] == true && this.Persent > 0){ // % 할인 또는 추가증정 활성화이며, 값이 0 이상일때 캐시 결과값 출력
-        //         return Math.floor( this.Cash * ( 1 + this.Persent/100 ) )
-        //     }
-        //     else{
-        //         return this.Cash
-        //     }
-        // },
-        // rightresult() {
-        //    if(this.IsExchange == true && this.ExchangeRatio > 0){ // 우측 환율 변경을 선택했을 때 환율 변경 적용
-        //         return this.cashresult / this.ExchangeRatio
-        //     }
-        //     else{
-        //         return this.cashresult
-        //     }
-        //  },
     },
     mutations : {
         updateMoney(state, payload) {
