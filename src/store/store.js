@@ -53,8 +53,12 @@ export default createStore({
                 state.fontchange = ''
                 state.fontchange2 = '#02fa97'
                 state.compair = (state.leftresult - state.rightresult).toFixed(1)
-                
-                state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                if(state.isCashOption[0] == true){
+                    state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                }
+                if(state.isCashOption[1] == true){
+                    state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                }
                 return state.compair
             }
 
@@ -64,7 +68,12 @@ export default createStore({
                 state.fontchange = '#02fa97'
                 state.fontchange2 = ''
                 state.compair = (state.rightresult - state.leftresult).toFixed(1)
-                state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                if(state.isCashOption[0] == true){
+                    state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                }
+                if(state.isCashOption[1] == true){
+                    state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                }
                 return state.compair
             }
 

@@ -189,12 +189,16 @@ export default {
       if(payload == 'B'){
         this.isCashOption[0] = false;
         this.isCashOption[1] = true;
+        this.Persent = ''
         this.updateisCashOption()
+        this.updatePersent()
       }
       else{
         this.isCashOption[0] = true;
         this.isCashOption[1] = false;
+        this.Persent = ''
         this.updateisCashOption()
+        this.updatePersent()
       }
     },
   },
