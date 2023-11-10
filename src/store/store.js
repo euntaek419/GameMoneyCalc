@@ -14,15 +14,14 @@ export default createStore({
             compairpersent: '',
             leftresult : '',
             rightresult: '',
-            fontchange: '',
-            fontchange2: '',
+            fontchange: [],
             isWin: [false, false],
         }
     },
     getters: {
         cashOption(state){
             if(state.isCashOption[0] == true){
-                return Math.floor( state.Cash - state.Cash * state.Persent/100 )
+                return Math.floor( state.Cash - state.Cash * state.Persent / 100 )
             }
             else if(state.isCashOption[1] == true){
                 return Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
@@ -32,10 +31,10 @@ export default createStore({
             state.leftresult = state.Money / state.Ratio //좌측 계산
 
             if(state.isCashOption[0] == true && state.Persent > 0){ // 할인 셜정
-                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent/100 )
+                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
             }
             else if(state.isCashOption[1] == true && state.Persent > 0){ // 추가증정 설정
-                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent/100 )
+                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
             }
             else{ // 비설정
                 state.rightresult = state.Cash
@@ -47,29 +46,32 @@ export default createStore({
 
             // ------------------------------------- 중간선 --------------------------------------
 
-            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = false
-                state.isWin[1] = true
-                state.fontchange = ''
-                state.fontchange2 = '#02fa97'
-                state.compair = (state.leftresult - state.rightresult).toFixed(1)
+            console.log("left 할인 완료", state.leftresult)
+            console.log("right 계산 완료", state.rightresult)
+            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== '')
+            { //leftresult가 더 비쌀 때
+                state.isWin = [false,true]
+                state.fontchange = ['','#02fa97']
+                state.compair = ( state.leftresult - state.rightresult).toFixed(1)
+                
                 if(state.isCashOption[0] == true){
-                    state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                    state.compairpersent = ( state.rightresult / state.leftresult ).toFixed(1)
                 }
                 if(state.isCashOption[1] == true){
-                    state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
+                    state.compairpersent = ( state.compair / state.leftresult * 100).toFixed(1)
                 }
                 return state.compair
             }
 
-            if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = true
-                state.isWin[1] = false
-                state.fontchange = '#02fa97'
-                state.fontchange2 = ''
+            if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== '')
+            { // rightresult 가 더 비쌀 때
+                state.isWin = [true,false]
+                state.fontchange = ['#02fa97', '']
+
                 state.compair = (state.rightresult - state.leftresult).toFixed(1)
+
                 if(state.isCashOption[0] == true){
-                    state.compairpersent = (state.compair / state.rightresult * 100).toFixed(1)
+                    state.compairpersent = (state.leftresult / state.rightresult).toFixed(1)
                 }
                 if(state.isCashOption[1] == true){
                     state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
@@ -78,12 +80,9 @@ export default createStore({
             }
 
             if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin[0] = true
-                state.isWin[1] = true
-                state.fontchange = '#02fa97'
-                state.fontchange2 = '#02fa97'
-                state.compair = 0
-                state.compairpersent = 0
+                state.isWin = [true, true]
+                state.fontchange = ['#02fa97','#02fa97']
+                state.compair = state.compairpersent = 0
                 return state.compair
             }
         },

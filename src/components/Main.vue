@@ -40,7 +40,7 @@
           </span>
 
           <div>
-            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange }" @input="updateMoney">
+            <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange[0] }" @input="updateMoney">
             <div v-if="Money == ''" class="UnderBar">
               <img src="../assets/images/UnderBar.gif" >
             </div>
@@ -62,7 +62,7 @@
           </span>
 
           <div>
-            <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange2 }" @input="updateCash">
+            <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange[1] }" @input="updateCash">
             <div v-if="Cash == ''" class="UnderBar">
                 <img src="../assets/images/UnderBar.gif">
             </div>
@@ -86,7 +86,9 @@
           </span>
         </span>
         <span>
-          <div class="Ratio"> 1 </div> <div class="Colon"> : </div><input class="CashRatioInput" maxlength='9' v-model="Ratio" @input="updateRatio">
+          <div class="Ratio"> 1 </div>
+          <div class="Colon"> : </div>
+          <input class="CashRatioInput" maxlength='9' v-model="Ratio" @input="updateRatio">
           <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
@@ -151,7 +153,7 @@ export default {
   },
   computed:{
     ...mapState([
-      'isWin','compairpersent','fontchange','fontchange2',
+      'isWin','compairpersent','fontchange',
       ]),
     ...mapGetters([
       'cashResult','cashOption'
@@ -177,6 +179,7 @@ export default {
     updateisExchange(){
       this.IsExchange = !this.IsExchange
       this.ExchangeRatio = '';
+      this.updateExchangeRatio()
       this.$store.dispatch('updateisExchange', this.IsExchange)
     },
     updateExchangeRatio(){
@@ -187,15 +190,13 @@ export default {
     },
     changeCashOption(payload) {
       if(payload == 'B'){
-        this.isCashOption[0] = false;
-        this.isCashOption[1] = true;
+        this.isCashOption = [false, true];
         this.Persent = ''
         this.updateisCashOption()
         this.updatePersent()
       }
       else{
-        this.isCashOption[0] = true;
-        this.isCashOption[1] = false;
+        this.isCashOption = [true,false]
         this.Persent = ''
         this.updateisCashOption()
         this.updatePersent()
