@@ -1,5 +1,3 @@
-// @ts-check
-
 import { createStore, Store } from 'vuex';
 
 interface State {

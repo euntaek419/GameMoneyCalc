@@ -69,7 +69,6 @@ export default {
 
   color:#fff;
   font-size: 220px;
-  font-family: "MorganiteBold";
   background-color: transparent;
 }
 
