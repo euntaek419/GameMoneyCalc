@@ -1,7 +1,25 @@
-import { createStore } from 'vuex';
+// @ts-check
 
-export default createStore({
-    state() {
+import { createStore, Store } from 'vuex';
+
+interface State {
+    Money: string;
+    Cash: string;
+    Ratio: string;
+    Persent: string;
+    ExchangeRatio: string;
+    isCashOption: [boolean, boolean];
+    isExchange: boolean;
+    compair: string;
+    compairpersent: string;
+    leftresult: string;
+    rightresult: string;
+    fontchange: string[];
+    isWin: [boolean, boolean];
+}
+
+const store: Store<State> = createStore({
+    state(): State {
         return {
             Money : '',
             Cash : '',
@@ -19,7 +37,7 @@ export default createStore({
         }
     },
     getters: {
-        cashOption(state){
+        cashOption(state: any): number{
             if(state.isCashOption[0] == true){ // 할인일 때
                 return Math.floor( state.Cash - state.Cash * state.Persent / 100 )
             }
@@ -28,7 +46,7 @@ export default createStore({
             }
         },
 
-        cashResult(state) {
+        cashResult(state:any):string {
             state.leftresult = state.Money * state.Ratio //좌측 계산
 
             if(state.Persent > 0){ // 할인 설정
@@ -106,7 +124,7 @@ export default createStore({
                 return state.compair
             }
         },
-        readinput: () => (payload) => { //getter factory
+        readinput: () => (payload:any) => { //getter factory
             if(payload < 10000){
                 return payload 
             }
@@ -178,3 +196,6 @@ export default createStore({
         },
     },
 })
+
+
+export default store;
