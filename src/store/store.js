@@ -29,12 +29,12 @@ export default createStore({
         },
 
         cashResult(state) {
-            state.leftresult = state.Money * state.Ratio //좌측 계산
+            state.leftresult = state.Cash * state.Ratio //좌측 계산
 
             if(state.Persent > 0){ // 할인 설정
-                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
+                state.rightresult = Math.floor( state.Money - state.Money * state.Persent / 100 )
             }else{ // 비설정
-                state.rightresult = state.Cash
+                state.rightresult = state.Money
             }
 
             if( state.isExchange == true ){ // 거래 비율 조정
