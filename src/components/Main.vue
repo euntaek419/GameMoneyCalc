@@ -142,8 +142,8 @@ import { mapGetters, mapState } from 'vuex'
 export default {
   data: () => {
     return {
-      Cash : '', //캐시 입력창
-      Money : '', // 현금 입력창
+      Cash : '', //게임캐시 입력창
+      Money : '', // 게임머니 입력창
       Ratio : '', // 비율 입력창
       Persent: '', // 할인, 추가증정 입력창
       ExchangeRatio: '', // 비율 변경 입력창

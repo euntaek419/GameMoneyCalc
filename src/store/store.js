@@ -3,11 +3,11 @@ import { createStore } from 'vuex';
 export default createStore({
     state() {
         return {
-            Money : '',
-            Cash : '',
-            Ratio : '',
-            Persent : '',
-            ExchangeRatio : '',
+            Money : '', // 게임 머니
+            Cash : '', // 현금
+            Ratio : '', // 왼쪽 비율
+            ExchangeRatio : '', // 오른쪽 비율
+            Persent : '', // 할인,추가증정 %
             isCashOption: [true, false],
             isExchange: false, // 비율 변경 여부
             compair: '',
@@ -16,94 +16,51 @@ export default createStore({
             rightresult: '',
             fontchange: [],
             isWin: [false, false],
+            number_X : '',
+            number_Y : '',
         }
     },
     getters: {
         cashOption(state){
             if(state.isCashOption[0] == true){ // 할인일 때
                 return Math.floor( state.Cash - state.Cash * state.Persent / 100 )
-            }
+            } // 이상없음
             else if(state.isCashOption[1] == true){ // 추가 지급 일 때
                 return Math.floor( state.Cash * ( 1 + state.Persent / 100 ) )
-            }
+            } // 이상없음
         },
 
         cashResult(state) {
-            state.leftresult = state.Cash * state.Ratio //좌측 계산
-
-            if(state.Persent > 0){ // 할인 설정
-                state.rightresult = Math.floor( state.Money - state.Money * state.Persent / 100 )
-            }else{ // 비설정
-                state.rightresult = state.Money
+            if(state.ExchangeRatio > 0){
+                state.number_X = state.Money / state.Ratio * state.ExchangeRatio
+            }else{
+                state.number_X = state.Money / state.Ratio
             }
 
-            if( state.isExchange == true ){ // 거래 비율 조정
-                state.rightresult = state.rightresult * state.ExchangeRatio
+            if(state.Persent > 0){
+                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
+            }else{
+                state.rightresult = state.Cash
             }
 
-            // ------------------------------------- 중간선 --------------------------------------
-
-            if(state.leftresult > state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== '')
-            { //leftresult가 더 비쌀 때
-                state.isWin = [false,true]
-                state.fontchange = ['','#02fa97']
-                state.compair = ( state.leftresult - state.rightresult ).toFixed(1)
-                state.compairpersent = ( state.compair / state.rightresult * 100).toFixed(1)
-                // state.compairpersent = ( 100 - state.rightresult / state.leftresult * 100 )
-                // state.compairpersent = ( state.leftresult / state.rightresult * 100 - 100 ).toFixed(1)
-                
-                //if(state.isCashOption[0] == true){
-                    //state.compairpersent = ( 100 - state.rightresult / state.leftresult * 100 )
-                    // state.compairpersent = ( state.leftresult / state.rightresult * 100 - 100 ).toFixed(1)
-                //    state.compairpersent = ( state.compair / state.rightresult * 100).toFixed(1)
-                //    if(state.isExchange == true && state.ExchangeRatio > 1){
-                //        state.compairpersent = state.compairpersent * 100
-                //    }
-                //}else if(state.isCashOption[1] == true){
-                //    state.compairpersent = ( state.compair / state.rightresult * 100).toFixed(1)
-                //    if(state.isExchange == true && state.ExchangeRatio > 1){
-                //        state.compairpersent = state.compairpersent * 100
-                //    }
-                //}
-                
-                if(state.isExchange == true && state.ExchangeRatio > 1){
-                    state.compair = state.compairpersent * state.Cash / 100
-                }
-
-                return state.compair
-
-            }else if(state.leftresult < state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== '')
-            { // rightresult 가 더 비쌀 때
-                state.isWin = [true,false]
-                state.fontchange = ['#02fa97', '']
-                state.compair = ( state.rightresult - state.leftresult ).toFixed(1)
-                state.compairpersent = ( state.compair / state.leftresult * 100).toFixed(1)
-
-                // if(state.isCashOption[0] == true){
-                //     state.compairpersent = (state.leftresult / state.rightresult  ).toFixed(1)
-                //     state.compairpersent = ( state.rightresult / state.leftresult ).toFixed(1)
-                //     if(state.isExchange == true && state.ExchangeRatio > 1){
-                //         state.compairpersent = state.compairpersent * 100
-                //     }
-                // }
-                // else if(state.isCashOption[1] == true){
-                //     state.compairpersent = (state.compair / state.leftresult * 100).toFixed(1)
-                //     if(state.isExchange == true && state.ExchangeRatio > 1){
-                //         state.compairpersent = state.compairpersent * 100
-                //     }
-                // }
-                if(state.isExchange == true){
-                    state.compair = state.compairpersent * state.Cash / 100
-                }
-                
-                return state.compair
-            }
-
-            else if(state.leftresult == state.rightresult && state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
-                state.isWin = [true, true]
-                state.fontchange = ['#02fa97','#02fa97']
-                state.compair = state.compairpersent = 0
-                return state.compair
+            if(state.rightresult == state.number_X){
+                state.compair = 0
+                state.compairpersent = 0
+                state.isWin = [true, true];
+                state.fontchange = ["#02fa97", "#02fa97"];
+                return 0;
+            }else if(state.rightresult < state.number_X){
+                state.compair = state.number_X - state.rightresult
+                state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
+                state.isWin = [false, true];
+                state.fontchange = ["", "#02fa97"];
+                return state.compair.toFixed(1);
+            }else if(state.rightresult > state.number_X){
+                state.compair = state.rightresult - state.number_X
+                state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
+                state.isWin = [true, false];
+                state.fontchange = ["#02fa97", ""];
+                return state.compair.toFixed(1);
             }
         },
         readinput: () => (payload) => { //getter factory
