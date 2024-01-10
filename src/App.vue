@@ -47,19 +47,16 @@ export default {
 
       // console.log(e.deltaY); // 스크롤 이벤트 발생 시 deltaY 값 출력
       wrap.style.top = page * -100 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
-    };
+    }
 
-    // 초기 스크롤 이벤트를 확인하여 deltaY 값이 존재하는 경우에도 핸들러 실행
-    window.addEventListener('wheel', handleWheel, { passive: false });
+      window.addEventListener('wheel', handleWheel, { passive: true });
 
-    // 초기 스크롤 이벤트를 확인하는 부분
-    const initialScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
-    window.dispatchEvent(initialScrollEvent);
+      const initialScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
+      window.dispatchEvent(initialScrollEvent);
+      
+    }
+  };
 
-    // 이후에는 일반적인 스크롤 이벤트 리스너만 등록
-    // window.addEventListener('wheel', handleWheel, { passive: false });
-},
-  }
 </script>
 
 <style>
