@@ -49,8 +49,6 @@ export default {
 
       const initScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
       window.dispatchEvent(initScrollEvent);
-
-      window.scrollBy(0, window.innerHeight); // 세로로 한 화면만큼 스크롤합니다.
     },
   };
 
