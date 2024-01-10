@@ -38,7 +38,7 @@
 </div>
 
 ### LightHouse Score
-![image](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/58d51efb-9519-4720-97c8-2f4cafcba131)
+
 
 
 ### 트러블 슈팅
