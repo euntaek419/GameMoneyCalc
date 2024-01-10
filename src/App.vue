@@ -1,7 +1,6 @@
 <template>
-
   <div class="wrap">
-    <Title class="container"></Title>
+    <Title class="container yes" id="yes"></Title>
     <Main class="container"></Main>
   </div>
 
@@ -29,8 +28,6 @@ export default {
 
     // 스크롤 이벤트 리스너 등록
     const handleWheel = (e) => {
-      e.preventDefault(); // 기본 스크롤 동작 막기
-
       // 스크롤 방향에 따라 페이지 위치 업데이트
       if(e.deltaY > 0){
         page++;
@@ -47,14 +44,14 @@ export default {
 
       // console.log(e.deltaY); // 스크롤 이벤트 발생 시 deltaY 값 출력
       wrap.style.top = page * -100 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
-    }
-
+    };
       window.addEventListener('wheel', handleWheel, { passive: true });
 
-      const initialScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
-      window.dispatchEvent(initialScrollEvent);
-      
-    }
+      const initScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
+      window.dispatchEvent(initScrollEvent);
+
+      window.scrollBy(0, window.innerHeight); // 세로로 한 화면만큼 스크롤합니다.
+    },
   };
 
 </script>
