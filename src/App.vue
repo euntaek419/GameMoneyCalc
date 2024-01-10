@@ -1,8 +1,8 @@
 <template>
 
-  <div>
-    <Title></Title>
-    <Main></Main>
+  <div class="wrap">
+    <Title class="container"></Title>
+    <Main class="container"></Main>
   </div>
 
 </template>
@@ -17,7 +17,49 @@ export default {
     Title,
     Main,
   },
-}
+  mounted() {
+    // 페이지를 감싸고 있는 영역 선택 (클래스명이 'wrap'인 첫 번째 요소)
+    const wrap = document.getElementsByClassName('wrap')[0];
+  
+    // 각 페이지를 담고 있는 컨테이너들을 선택 (클래스명이 'container'인 모든 요소들)
+    const container = document.getElementsByClassName('container');
+  
+    let page = 0; // 현재 페이지의 위치 (초기값은 0)
+    const lastPage = container.length - 1; // 마지막 페이지의 인덱스
+
+    // 스크롤 이벤트 리스너 등록
+    const handleWheel = (e) => {
+      e.preventDefault(); // 기본 스크롤 동작 막기
+
+      // 스크롤 방향에 따라 페이지 위치 업데이트
+      if(e.deltaY > 0){
+        page++;
+      }else if(e.deltaY < 0){
+        page--;
+      }
+
+      // 페이지 범위 체크 (음수인 경우 0, 마지막 페이지를 초과하는 경우 마지막 페이지로 설정)
+      if (page < 0){
+        page = 0;
+      }else if(page > lastPage){
+        page = lastPage;
+      }
+
+      // console.log(e.deltaY); // 스크롤 이벤트 발생 시 deltaY 값 출력
+      wrap.style.top = page * -100 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
+    };
+
+    // 초기 스크롤 이벤트를 확인하여 deltaY 값이 존재하는 경우에도 핸들러 실행
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    // 초기 스크롤 이벤트를 확인하는 부분
+    const initialScrollEvent = new WheelEvent('wheel', { deltaY: 0 });
+    window.dispatchEvent(initialScrollEvent);
+
+    // 이후에는 일반적인 스크롤 이벤트 리스너만 등록
+    // window.addEventListener('wheel', handleWheel, { passive: false });
+},
+  }
 </script>
 
 <style>
@@ -65,5 +107,16 @@ export default {
 body {
   padding: 0;
   margin: 0;
+}
+
+.wrap {
+    position:absolute;
+    width:100%;
+    height:100%;
+    transition: 1.0s;
+}
+.container {
+    /* width:100%; */
+    height:100%;
 }
 </style>

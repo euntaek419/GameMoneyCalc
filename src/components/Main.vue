@@ -308,7 +308,7 @@ input[type="number"]::-webkit-inner-spin-button {
   position : absolute;
   bottom: 0;
   width: 100%;
-  height: 40px;
+  height: 15%;
   color:white;
   font-size: 25px;
   border: 1px solid;
@@ -441,6 +441,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height:40px;
   left:0;
   width: 50%;
+  height: 100%;
   font-size: 25px;
   top:50%;
   transform:translate(0, -50%);
@@ -456,7 +457,7 @@ input[type="number"]::-webkit-inner-spin-button {
   background-color: #000;
   color:#02fa97;
   font-family: 'Galmuri11';
-  height:40px;
+  height:100%;
   left:0;
   width: 50%;
   font-size: 25px;
@@ -466,9 +467,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .BonusF{
   position: absolute;
+  bottom:0;
   background-color: gray;
   font-family: 'Galmuri11';
-  height:40px;
+  height:100%;
   right:0;
   width: 50%;
   font-size: 25px;
@@ -489,6 +491,7 @@ input[type="number"]::-webkit-inner-spin-button {
   height:40px;
   right:0;
   width: 50%;
+  height: 100%;
   font-size: 25px;
   top:50%;
   transform:translate(0, -50%);
@@ -559,6 +562,7 @@ input[type="number"]::-webkit-inner-spin-button {
   left: 0;
   top: 55%;
   width: 45%;
+  height: 65%;
   transform:translate(0, -55%);
   font-size: 130px;
   /* font-size: 165px; */
