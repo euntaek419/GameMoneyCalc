@@ -31,36 +31,41 @@ export default createStore({
         },
 
         cashResult(state) {
-            if(state.ExchangeRatio > 0){
-                state.number_X = state.Money / state.Ratio * state.ExchangeRatio
-            }else{
-                state.number_X = state.Money / state.Ratio
-            }
+            if(state.Cash > 0 && state.Money > 0 && state.Ratio > 0){
+                if(state.ExchangeRatio > 0){
+                    state.number_X = state.Money / state.Ratio * state.ExchangeRatio
+                }else{
+                    state.number_X = state.Money / state.Ratio
+                }
 
-            if(state.Persent > 0){
-                state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
-            }else{
-                state.rightresult = state.Cash
-            }
+                if(state.Persent > 0){
+                    state.rightresult = Math.floor( state.Cash - state.Cash * state.Persent / 100 )
+                }else{
+                    state.rightresult = state.Cash
+                }
 
-            if(state.rightresult == state.number_X){
-                state.compair = 0
-                state.compairpersent = 0
-                state.isWin = [true, true];
-                state.fontchange = ["#02fa97", "#02fa97"];
-                return 0;
-            }else if(state.rightresult < state.number_X){
-                state.compair = state.number_X - state.rightresult
-                state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
-                state.isWin = [false, true];
-                state.fontchange = ["", "#02fa97"];
-                return state.compair.toFixed(1);
-            }else if(state.rightresult > state.number_X){
-                state.compair = state.rightresult - state.number_X
-                state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
-                state.isWin = [true, false];
-                state.fontchange = ["#02fa97", ""];
-                return state.compair.toFixed(1);
+                if(state.rightresult == state.number_X){
+                    state.compair = 0
+                    state.compairpersent = 0
+                    state.isWin = [true, true];
+                    state.fontchange = ["#02fa97", "#02fa97"];
+                    return 0;
+                }else if(state.rightresult < state.number_X){
+                    state.compair = state.number_X - state.rightresult
+                    state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
+                    state.isWin = [false, true];
+                    state.fontchange = ["", "#02fa97"];
+                    return state.compair.toFixed(1);
+                }else if(state.rightresult > state.number_X){
+                    state.compair = state.rightresult - state.number_X
+                    state.compairpersent = ((state.compair / state.rightresult) * 100).toFixed(1);
+                    state.isWin = [true, false];
+                    state.fontchange = ["#02fa97", ""];
+                    return state.compair.toFixed(1);
+                }
+            }else{
+                state.isWin = [false, false]
+                state.fontchange = ["", ""]
             }
         },
         readinput: () => (payload) => { //getter factory
