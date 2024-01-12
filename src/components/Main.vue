@@ -36,7 +36,7 @@
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
           <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
-            {{ cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_
+            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -54,11 +54,14 @@
       <label>
         <span class="CashSell">
           <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false ">
-            캐시 아이템 금액 입력
+            캐시 아이템 금액 입력 
           </span>
 
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true ">
-            {{ cashResult }} 원, {{ compairpersent }} % 만큼 이득이야!_ 
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-if="compairpersentweened !== Infinity">
+            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_ 
+          </span>
+          <span v-else>
+            {{ cashResult }}
           </span>
 
           <div>
@@ -138,6 +141,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
+import gsap from 'gsap'
 
 export default {
   data: () => {
@@ -149,6 +153,9 @@ export default {
       ExchangeRatio: '', // 비율 변경 입력창
       IsExchange: false, // 비율 변경 여부
       isCashOption: [true, false], // 할인, 추가증정 여부
+      cashResultweened: 0,
+      compairpersentweened: 0,
+      Cashtweened: 0, // 테스트
     }
   },
   computed:{
@@ -203,6 +210,15 @@ export default {
       }
     },
   },
+
+  watch: {
+    cashResult(n) {
+      gsap.to(this, { duration: 0.5, cashResultweened: Number(n).toFixed(1) || 0 })
+    },
+    compairpersent(n) {
+      gsap.to(this, { duration: 0.5, compairpersentweened: Number(n) || 0 })
+    },
+  }
 }
 </script>
 
@@ -323,6 +339,7 @@ input[type="number"]::-webkit-inner-spin-button {
   right : 5%;
   margin-right: 150px;
   transform:translate(0, -50%);
+  background-color: transparent;
 }
 
 .ExchangeInput{
@@ -344,6 +361,7 @@ input[type="number"]::-webkit-inner-spin-button {
   left: 5%;
   top: 50%;
   transform:translate(0, -50%);
+  background-color: transparent;
 }
 
 .MiniLogo{
