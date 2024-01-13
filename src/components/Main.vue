@@ -213,7 +213,7 @@ export default {
 
   watch: {
     cashResult(n) {
-      gsap.to(this, { duration: 0.5, cashResultweened: Number(n).toFixed(1) || 0 })
+      gsap.to(this, { duration: 0.5, cashResultweened: Number(n) || 0 })
     },
     compairpersent(n) {
       gsap.to(this, { duration: 0.5, compairpersentweened: Number(n) || 0 })
