@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div class="InfoBox">
+    <div class="InfoBox upZ-index">
       <div class="InfoText">  
         구매할 정보를 기입해줘 !
       </div>
     </div>
 
-    <div class="WhatMoney">
+    <div class="WhatMoney upZ-index">
       <span class="Auction">
         아이템 금액
         <div v-if="Ratio <= 0">( 게임 머니 )</div>
@@ -28,13 +28,15 @@
       </span>
     </div>
 
-    <div class="WhenSell">
+    <img class="winImg" src="../assets/images/win.gif" v-if="isWin[0] == true">
+    <div class="WhenSell upZ-index">
       <label>
         <span class="AuctionSell">
           <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
+          
           <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-if="compairpersentweened !== Infinity">
             {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_
           </span>
@@ -51,7 +53,7 @@
         </span>
       </label>
 
-      <label>
+      <label class="upZ-index">
         <span class="CashSell">
           <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[1] == false ">
             캐시 아이템 금액 입력 
@@ -77,7 +79,7 @@
 
     <!-- ---------------------------------------------------------------------------------------------------------- -->
 
-    <div class="SetBox">
+    <div class="SetBox upZ-index">
       <div class="CashRatioInputBox">
         <span class="CashRatio">
           현금 거래 비율
@@ -279,6 +281,12 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .ResultCalc{
   color : #02fa97;
+}
+
+.winImg{
+  position: absolute;
+  z-index: 0;
+  left: -50px;
 }
 
 .AuctionSell{
@@ -597,5 +605,9 @@ input[type="number"]::-webkit-inner-spin-button {
   left : 20%;
   transform:translate(-15%, 0);
   bottom: 20%;
+}
+
+.upZ-index{
+  z-index: 10;
 }
 </style>
