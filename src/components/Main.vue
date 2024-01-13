@@ -38,8 +38,11 @@
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
           
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-if="compairpersentweened !== Infinity">
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-if="compairpersentweened !== NaN && compairpersentweened !== Infinity && compairpersentweened > 0">
             {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_
+          </span>
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-else>
+            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -60,10 +63,12 @@
             캐시 아이템 금액 입력 
           </span>
 
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-if="compairpersentweened !== Infinity">
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-if="compairpersentweened !== NaN && compairpersentweened !== Infinity && compairpersentweened > 0">
             {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_ 
           </span>
-
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-else>
+            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_ 
+          </span>
 
           <div>
             <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange[1] }" @input="updateCash">
@@ -156,7 +161,7 @@ export default {
       isCashOption: [true, false], // 할인, 추가증정 여부
       cashResultweened: 0,
       compairpersentweened: 0,
-      Cashtweened: 0, // 테스트
+      // Cashtweened: 0, // 테스트
     }
   },
   computed:{
@@ -181,6 +186,9 @@ export default {
     updatePersent(){
       if(this.Persent > 100 && this.isCashOption[0] == true){
         this.Persent = 100
+      }
+      if(this.Persent > 1000 && this.isCashOption[1] == true){
+        this.Persent = 1000
       }
       this.$store.dispatch('updatePersent', this.Persent)
     },
@@ -213,9 +221,9 @@ export default {
   },
 
   watch: {
-    cashResult(n) {
-      gsap.to(this, { duration: 0.5, cashResultweened: Number(n) || 0 })
-    },
+    // cashResult(n) {
+    //   gsap.to(this, { duration: 0.5, cashResultweened: Number(n) || 0 })
+    // },
     compairpersent(n) {
       gsap.to(this, { duration: 0.5, compairpersentweened: Number(n) || 0 })
     },
