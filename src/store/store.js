@@ -29,7 +29,7 @@ export default createStore({
         },
 
         cashResult(state) {
-            if(state.Cash !== '' && state.Money !== '' && state.Ratio !== ''){
+            if(state.Cash > 0 && state.Money > 0 && state.Ratio > 0){
                 if(state.ExchangeRatio > 0){
                     state.leftresult = state.Money / state.Ratio * state.ExchangeRatio
                 }else{

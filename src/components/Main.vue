@@ -35,8 +35,8 @@
             아이템 판매 금액 입력
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
-            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-if="compairpersentweened !== Infinity">
+            {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -58,11 +58,9 @@
           </span>
 
           <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-if="compairpersentweened !== Infinity">
-            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_ 
+            {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_ 
           </span>
-          <span v-else>
-            {{ cashResult }}
-          </span>
+
 
           <div>
             <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange[1] }" @input="updateCash">
