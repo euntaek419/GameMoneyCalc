@@ -38,11 +38,8 @@
           </span>
 <!-- ------------------------------------------------------------------------------------------------------ -->
           
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-if="compairpersentweened !== NaN && compairpersentweened !== Infinity && compairpersentweened > 0">
-            {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_
-          </span>
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true" v-else>
-            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
+            {{ cashResult }} 원, {{ Math.abs(Math.round(compairpersentweened*10) / 10) }} % 만큼 이득이야!_
           </span>
 
           <div>
@@ -63,11 +60,8 @@
             캐시 아이템 금액 입력 
           </span>
 
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-if="compairpersentweened !== NaN && compairpersentweened !== Infinity && compairpersentweened > 0">
-            {{ cashResult }} 원, {{ compairpersentweened.toFixed(1) }} % 만큼 이득이야!_ 
-          </span>
-          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true" v-else>
-            {{ cashResult }} 원, {{ compairpersentweened }} % 만큼 이득이야!_ 
+          <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[1] == true">
+            {{ cashResult }} 원, {{ Math.abs(Math.round(compairpersentweened *10) / 10) }} % 만큼 이득이야!_ 
           </span>
 
           <div>
@@ -124,7 +118,7 @@
           상품권 옵션 설정
         </div>
         <span>
-          <input class="GiftCardInput" maxlength='5' v-model="Persent" @input="updatePersent"> <div class="Persent"> % </div>
+          <input class="GiftCardInput" maxlength='4' v-model="Persent" @input="updatePersent"> <div class="Persent"> % </div>
           <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
@@ -185,7 +179,7 @@ export default {
     },
     updatePersent(){
       if(this.Persent > 100 && this.isCashOption[0] == true){
-        this.Persent = 100
+        this.Persent = 99.9
       }
       if(this.Persent > 1000 && this.isCashOption[1] == true){
         this.Persent = 1000
