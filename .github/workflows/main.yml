@@ -24,10 +24,23 @@ jobs:
       - name: npm run build
         run: npm run build
 
-      - name: S3 upload
-        uses: a-sync/s3-uploader@2.0.1
-        
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Upload S3
+  # You may pin to the exact commit or the version.
+  # uses: shallwefootball/upload-s3-action@4350529f410221787ccf424e50133cbc1b52704e
+        uses: shallwefootball/upload-s3-action@v1.3.3
+        with:
+          # aws key id
+          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # aws secret access key
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # aws bucket name
+          aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
+          
+          # 업로드할 로컬 디렉토리 경로를 지정합니다.
+          source_dir: ./dist
+          
+          # S3 Bucket의 목적지 디렉토리 경로를 지정합니다. (선택 사항, 기본값은 /)# S3 Bucket의 목적지 디렉토리 경로를 지정합니다. (선택 사항, 기본값은 /)
+          #destination_dir: # optional, default is /
+          
+          # s3의 엔드포인트를 url로 저장
+          #endpoint: # optional
