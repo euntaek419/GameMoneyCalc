@@ -37,9 +37,9 @@ jobs:
           aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
           
           # 업로드할 로컬 디렉토리 경로를 지정합니다.
-          source_dir: ./dist
+          source_dir: ./dist/*
           
-          # S3 Bucket의 목적지 디렉토리 경로를 지정합니다. (선택 사항, 기본값은 /)# S3 Bucket의 목적지 디렉토리 경로를 지정합니다. (선택 사항, 기본값은 /)
+          # S3 Bucket의 목적지 디렉토리 경로를 지정합니다. (선택 사항, 기본값은 /)
           #destination_dir: # optional, default is /
           
           # s3의 엔드포인트를 url로 저장
