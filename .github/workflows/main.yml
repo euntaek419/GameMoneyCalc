@@ -44,3 +44,17 @@ jobs:
           
           # s3의 엔드포인트를 url로 저장
           #endpoint: # optional
+
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # AWS 리전을 본인의 리전으로 변경하세요.
+
+      - name: Create CloudFront Invalidation
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id YOUR_CLOUDFRONT_DISTRIBUTION_ID \
+            --paths "/*"
