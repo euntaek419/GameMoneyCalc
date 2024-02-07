@@ -1,39 +1,42 @@
 <template>
 <div class="wrap">
   <div class="title_container">
-    <div class="Title_img Title_text">
-      <!-- <a href="https://cet4713.cafe24.com/"> -->
-        <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
-      <!-- </a> -->
-    </div>
-    <div class="Title_img">
-      <!-- <a href="https://cet4713.cafe24.com/"> -->
-        <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
-      <!-- </a> -->
-    </div>
-
-    <div>
-      <div class="Title_name">
-        GAMEMONEY<span class="Gray">CALC</span>
-        <div class="Subtitle">게임머니계산기</div> 
+    <div class="title_box">
+      <div class="title_img">
+          <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
+          <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
       </div>
     </div>
 
-<pre class="MainContents">
-GAMEMONEYCALC은 캐시 아이템의 게임 머니 금액과 현금 구매의 효율을 간편하게 비교하고 계산하기 위해 개발되었습니다.
-필수적인 기능들로 계산을 용이하게 만들어, 여러분이 더 효율적으로 지갑을 관리할 수 있도록 돕고자 합니다.
+    <div class="title_box">
+        <div class="title_name">
+          GAMEMONEY<span class="Gray">CALC</span>
+          <div class="Subtitle">게임머니계산기</div> 
+        </div>
+    </div>
+  </div>
 
-이 웹사이트를 활용하여 가성비를 고려하며 즐거운 게임을 즐기시기 바랍니다!
-</pre>
+  <div class="main_container">
+    <pre class="main_contents">
+<!-- <span class="mini_name">GAMEMONEY</span><span class="mini_name Gray">CALC </span>은 -->
+GAMEMONEYCALC은,
+캐시 아이템의 게임 머니 금액과 현금 구매의 효율을 간편하게 비교하고 계산하기 위해 개발되었습니다.
+필수적인 기능들로 계산을 용이하게 만들었으니, 여러분의 지갑을 더 효율적으로 관리해보세요.
+
+즐거운 게임 되세요 !
+    </pre>
+  </div>
+
+  <div class="footer_container">
     <div class="Mouse_img">
       <img src="../assets/images/MouseIcon.gif" title="마우스 스크롤을 내려보세요!">
     </div>
 
     <div class="animated-title">
       <div class="track"> <!-- bottom animation -->
-        <span v-for="item in 10" :key="item">
-          <span class="content"> GAMEMONEYCALC </span>
-          <span class="content2"> GAMEMONEYCALC </span>
+        <span v-for="item in 30" :key="item">
+          <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span>
+          <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span>
         </span>
       </div>
     </div>
@@ -54,23 +57,48 @@ export default {
 </script>
 
 <style>
-.Title_text{
-  margin-left:150px;
+.wrap{}
+
+.title_container{
+  width:1280px;
+  height: 47vh;
+  margin:0 auto;
+  /* border: 1px solid white; */
+}
+.title_box{
+  height: 23.5vh;
+  /* border: 1px solid white; */
+  position: relative;
 }
 
-.Title_img{
+.title_img{
   position: absolute;
-  top:10%;
-  left:10%;
-  cursor: pointer;
+  bottom: 0;
+  left: 10%;
 }
 
-.Title_name{
+.pumpkinball_img{
+  width: 10vh;
+}
+
+.text_img{
+  margin-left:10px;
   position: absolute;
-  top: 25%;
+  width:10vh;
+}
+
+.title_name{
+  position: absolute;
   left: 10%;
   color:#fff;
-  font-size: 220px;
+  font-size: 20vh;
+  font-family: "MorganiteBold";
+  background-color: transparent;
+}
+
+.mini_name{
+  color:#fff;
+  font-size: 7vh;
   font-family: "MorganiteBold";
   background-color: transparent;
 }
@@ -83,19 +111,28 @@ export default {
 .Subtitle{
   font-family: "NeurimboGothicRegular";
   color : #fff;
-  font-size: 55px;
+  font-size: 7vh;
   background-color: transparent;
-  margin-top:-30px;
+  margin-top:-5vh;
 }
 
-.MainContents{
+.main_container{
+  width:1280px;
+  height: 35vh;
+  margin: auto;
+  position: relative;
+  /* border: 1px solid white; */
+}
+
+.main_contents{
   position: absolute;
-  top: 60%;
   left: 10%;
+  right: 10%;
+  bottom: 0;
   z-index: 1;
   font-family: 'PretendardMedium';
   color : #fff;
-  font-size: 25px;
+  font-size: 2.4vh;
   background-color: transparent;
 }
 
@@ -166,30 +203,91 @@ export default {
 
 
 @media (max-width:479px) {
-
-.Title_img{
-  display: none;
+.title_container{
+  width:420px;
+  height: 20vh;
+  margin:0 auto;
+  /* border: 1px solid white; */
+}
+.title_box{
+  height: 4vh;
+  /* border: 1px solid white; */
+  position: relative;
 }
 
-.Title_name{
-  top: 5%;
-  font-size: 100px;
+.title_img{
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+}
+
+.pumpkinball_img{
+  width: 10vh;
+}
+
+.text_img{
+  margin-left:10px;
+  position: absolute;
+  width:100px;
+}
+
+.title_name{
+  position: absolute;
+  left: 10%;
+  color:#fff;
+  font-size: 10vh;
+  font-family: "MorganiteBold";
+  background-color: transparent;
+}
+
+.mini_name{
+  color:#fff;
+  font-size: 3vh;
+  font-family: "MorganiteBold";
+  background-color: transparent;
+}
+
+.Gray{
+  color: #9b9b9b;
+  background-color: transparent;
 }
 
 .Subtitle{
-  font-size: 35px;
+  font-family: "NeurimboGothicRegular";
+  color : #fff;
+  font-size: 3.5vh;
+  background-color: transparent;
+  margin-top:-3vh;
 }
 
-.MainContents{
+.main_container{
+  width:420px;
+  height: 35vh;
+  margin: 0 auto;
+  position: relative;
+  /* border: 1px solid white; */
+}
+
+.main_contents{
   position: absolute;
-  top: 20%;
-  font-size: 15px;
-  white-space: normal;
-  right:10%;
+  left: 10%;
+  right: 10%;
+  bottom: 0;
+  z-index: 1;
+  font-family: 'PretendardMedium';
+  color : #fff;
+  font-size: 2vh;
+  background-color: transparent;
+  white-space: pre-wrap;
 }
 
-.Mouse_img{
+.footer_container{
   display: none;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  height: 50px;
 }
 }
 </style>
