@@ -1,13 +1,14 @@
 <template>
-  <div class="Title">
+<div class="wrap">
+  <div class="title_container">
     <div class="Title_img Title_text">
       <!-- <a href="https://cet4713.cafe24.com/"> -->
-        <img src="../assets/images/PumpkinBallText.webp" @click="click">
+        <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
       <!-- </a> -->
     </div>
     <div class="Title_img">
       <!-- <a href="https://cet4713.cafe24.com/"> -->
-        <img src="../assets/images/PumpkinBall.webp" @click="click">
+        <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
       <!-- </a> -->
     </div>
 
@@ -30,18 +31,22 @@ GAMEMONEYCALC은 캐시 아이템의 게임 머니 금액과 현금 구매의 �
 
     <div class="animated-title">
       <div class="track"> <!-- bottom animation -->
-        <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span><span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span> <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span> 
+        <span v-for="item in 10" :key="item">
+          <span class="content"> GAMEMONEYCALC </span>
+          <span class="content2"> GAMEMONEYCALC </span>
+        </span>
       </div>
     </div>
 
   </div>
+</div>
 </template>
 
 <script>
 export default {
   methods:{
     click(){
-      alert('지금은 아무일도 일어나지 않습니다. 업데이트 이후를 기대해주세요!')
+      window.scrollTo(9999,9999)
     }
   }
 
@@ -64,7 +69,6 @@ export default {
   position: absolute;
   top: 25%;
   left: 10%;
-
   color:#fff;
   font-size: 220px;
   font-family: "MorganiteBold";
@@ -89,7 +93,6 @@ export default {
   top: 60%;
   left: 10%;
   z-index: 1;
-
   font-family: 'PretendardMedium';
   color : #fff;
   font-size: 25px;
@@ -123,16 +126,71 @@ export default {
 }
 
 /* 움직이는 텍스트 */
-.animated-title {font-size:25px; position: absolute; bottom:0; width: 100%; max-width:100%; height: 35px; overflow-x: hidden; overflow-y: hidden; color: #000000;}
-.animated-title .track {position: absolute; white-space: nowrap; will-change: transform; animation: marquee 180s linear infinite; background-color: #fff;}
+.animated-title {
+  font-size:25px;
+  position: absolute;
+  bottom:0;
+  width: 100%;
+  height: 35px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  color: #000000;
+}
+
+.animated-title .track {
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee 180s linear infinite;
+  background-color: #fff;
+}
+
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
 @media (hover: hover) and (min-width: 700px){
-.animated-title .content { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceBold'; }
-.animated-title .content2 { background-color: #fff; text-align: center; font-family:'PyeongChangPeaceLight';  }
+  .animated-title .content { 
+    background-color: #fff;
+    text-align: center;
+    font-family:'PyeongChangPeaceBold';
+  }
+  .animated-title .content2 {
+    background-color: #fff;
+    text-align: center;
+    font-family:'PyeongChangPeaceLight';
+  }
 }
 
+
+
+@media (max-width:479px) {
+
+.Title_img{
+  display: none;
+}
+
+.Title_name{
+  top: 5%;
+  font-size: 100px;
+}
+
+.Subtitle{
+  font-size: 35px;
+}
+
+.MainContents{
+  position: absolute;
+  top: 20%;
+  font-size: 15px;
+  white-space: normal;
+  right:10%;
+}
+
+.Mouse_img{
+  display: none;
+}
+}
 </style>
 

@@ -93,7 +93,7 @@ export default {
 
 * {
   background-color: #000000;
-  }
+}
 
 /* 크롬 기본 스타일링 처리 */
 body {

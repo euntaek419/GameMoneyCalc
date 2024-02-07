@@ -620,4 +620,379 @@ input[type="number"]::-webkit-inner-spin-button {
 .upZ-index{
   z-index: 10;
 }
+
+
+@media (max-width:479px) {
+.InfoBox{
+  width: 250px;
+  height: 52px;
+  top: 40%;
+}
+
+.InfoText{
+  font-size: 20px;
+}
+
+.WhatMoney{
+  top: 50%;
+}
+
+.Auction{
+  left: 5%;
+}
+
+.CashShop{
+  top: 100%;
+  right: 5%;
+}
+
+.WhenSell{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  font-family: "Galmuri11";
+  font-size: 30px;
+  color: #9b9b9b;
+}
+
+.ResultCalc{
+  color : #02fa97;
+}
+
+.winImg{
+  position: absolute;
+  z-index: 0;
+  left: -50px;
+}
+
+.winImgR{
+  position: absolute;
+  z-index: 0;
+  right : 0;
+  transform: scaleX(-1);
+}
+
+.AuctionSell{
+  position: absolute;
+  left: 5%;
+}
+
+.AuctionInput{
+  width: 500px;
+  height: 180px;
+  color:#9b9b9b;
+  font-size: 180px;
+  font-family: "MorganiteBold";
+  outline: none;
+  border: none;
+}
+
+.CashSell{
+  position: absolute;
+  right: 5%;
+  text-align: right;
+}
+
+
+.CashInput{
+  width: 500px;
+  height: 180px;
+  color:#9b9b9b;
+  font-size: 180px;
+  font-family: "MorganiteBold";
+  text-align: right;
+  outline: none;
+  border: none;
+}
+
+.UnderBar{
+  margin-top: -50px;
+}
+
+.ExchangeBox{
+  position : absolute;
+  bottom: 0;
+  width: 100%;
+  height: 15%;
+  color:white;
+  font-size: 25px;
+  border: 1px solid;
+  font-family: 'Galmuri11';
+  z-index: 1;
+}
+
+.ExchangeRatio{
+  position : absolute;
+  font-size: 25px;
+  top: 50%;
+  right : 5%;
+  margin-right: 150px;
+  transform:translate(0, -50%);
+  background-color: transparent;
+}
+
+.ExchangeInput{
+  position : absolute;
+  height: 40px;
+  width: 160px;
+  font-family: 'Galmuri11';
+  color:#fff;
+  font-size: 25px;
+  top:50%;
+  right:0;
+  transform:translate(0, -50%);
+  text-align: center;
+
+}
+
+.ExchangeRead{
+  position : absolute;
+  left: 5%;
+  top: 50%;
+  transform:translate(0, -50%);
+  background-color: transparent;
+}
+
+.MiniLogo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color:transparent;
+  transform:translate(-50%, -50%);
+}
+
+.Exchange_img{
+  position: absolute;
+  background-color: gray;
+  right:1%;
+  cursor: pointer;
+}
+
+.SetBox{
+  position: absolute;
+  top:170%;
+  width: 100%;
+  height: 30%;
+  background-color: gray;
+}
+
+.GiftCardOption{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  left:50%;
+  transform:translate(-50%, 0);
+  color: #fff;
+  font-size: 25px;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  z-index: 1;
+  padding: 1%;
+}
+
+.GiftCardInputBox{
+  position: absolute;
+  height: 95%;
+  width: 40%;
+  right: 5%;
+  background-color: #000;
+}
+
+.GiftCardInput{
+  position: absolute;
+  width: 100%;
+  height: 65%;
+  font-size: 165px;
+  color: #fff;
+  font-family: "MorganiteBold";
+  outline: none;
+  border: none; 
+  z-index: 0;
+  text-align: center;
+  top: 55%;
+  transform:translate(0, -55%);
+  padding:0px;
+}
+
+.Persent{
+  position: absolute;
+  left:50%;
+  margin-left:120px;
+  font-size: 165px;
+  color: #fff;
+  font-family: "MorganiteBold";
+  z-index: 0;
+  top: 55%;
+  transform:translate(-35%, -55%);
+}
+
+.GiftCardInput_Under{
+  position: absolute;
+  left:50%;
+  transform:translate(-50%, 0);
+  bottom:20%;
+  color: #fff;
+  font-family: "MorganiteBold";
+}
+
+.WhatPersent{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  height: 15%;
+}
+
+.DiscountF{
+  position: absolute;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  height:40px;
+  left:0;
+  width: 50%;
+  height: 100%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.DiscountF:hover{
+  background-color: #000;
+  color:#02fa97
+}
+
+.DiscountT{
+  position: absolute;
+  background-color: #000;
+  color:#02fa97;
+  font-family: 'Galmuri11';
+  height:100%;
+  left:0;
+  width: 50%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.BonusF{
+  position: absolute;
+  bottom:0;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  height:100%;
+  right:0;
+  width: 50%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.BonusF:hover{
+  background-color: #000;
+  color:#02fa97
+}
+
+.BonusT{
+  position: absolute;
+  background-color: #000;
+  color:#02fa97;
+  font-family: 'Galmuri11';
+  height:40px;
+  right:0;
+  width: 50%;
+  height: 100%;
+  font-size: 25px;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.Reverse{
+  position: absolute;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  width: 100%;
+  font-size: 25px;
+  z-index: 1;
+  top:50%;
+  transform:translate(0, -50%);
+}
+
+.Reverse:hover{
+  background-color: #000;
+  color: #fff
+}
+
+.CashRatioInputBox{
+  position: absolute;
+  height: 95%;
+  width: 40%;
+  left: 5%;
+  background-color: #000;
+}
+
+.CashRatio{
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  right:50%;
+  transform:translate(50%, 0);
+  color: #fff;
+  font-size: 25px;
+  background-color: gray;
+  font-family: 'Galmuri11';
+  z-index: 1;
+  padding: 1%;
+}
+
+.Ratio{
+  position: absolute;
+  color:#fff;
+  font-size: 165px;
+  font-family: "MorganiteBold";
+  right:25%;
+  top: 55%;
+  transform:translate(0, -55%);
+  z-index: 0;
+}
+
+.Colon{
+  position: absolute;
+  color:#fff;
+  font-size: 165px;
+  font-family: "MorganiteBold";
+  left:50%;
+  top: 55%;
+  transform:translate(-50%, -65%);
+  z-index: 0;
+}
+
+.CashRatioInput{
+  position: absolute;
+  left: 0;
+  top: 55%;
+  width: 45%;
+  height: 65%;
+  transform:translate(0, -55%);
+  font-size: 130px;
+  /* font-size: 165px; */
+  color: #fff;
+  text-align: right;
+  font-family: "MorganiteBold";
+  z-index: 0;
+  text-align: center;
+  outline: none;
+  border: none;
+}
+
+.CashRatioInput_Under{
+  position: absolute;
+  left : 20%;
+  transform:translate(-15%, 0);
+  bottom: 20%;
+}
+
+.upZ-index{
+  z-index: 10;
+}
+
+}
 </style>
