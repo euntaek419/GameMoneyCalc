@@ -624,31 +624,49 @@ input[type="number"]::-webkit-inner-spin-button {
 
 @media (max-width:479px) {
 .InfoBox{
-  width: 250px;
-  height: 52px;
-  top: 40%;
+  width: 350px;
+  height: 65px;
+  border: solid 2px #000;
+  background-color: #5b5b5b;
+  color:#fff;
+  position: absolute;
+  left: 50%;
+  transform:translate(-50%, 0);
+  top: 105%;
 }
 
 .InfoText{
-  font-size: 20px;
+  background-color: transparent;
+  font-family: "Galmuri11";
+  font-size: 25px;
+  top: 50%;
+  transform:translate(0, 50%);
+  text-align: center;
 }
 
 .WhatMoney{
-  top: 50%;
+  position: absolute;
+  top: 115%;
+  width: 100%;
+  font-family: "Galmuri11";
+  font-size: 25px;
+  color: #fff;
 }
 
 .Auction{
+  position: absolute;
   left: 5%;
 }
 
 .CashShop{
-  top: 100%;
+  position: absolute;
   right: 5%;
+  text-align: right;
 }
 
 .WhenSell{
   position: absolute;
-  top: 100%;
+  top: 125%;
   width: 100%;
   font-family: "Galmuri11";
   font-size: 30px;
@@ -993,6 +1011,5 @@ input[type="number"]::-webkit-inner-spin-button {
 .upZ-index{
   z-index: 10;
 }
-
 }
 </style>
