@@ -56,19 +56,21 @@ export default {
 }
 </script>
 
-<style>
-.wrap{}
+<style scoped>
+.wrap{
+  height: 100vh;
+}
 
 .title_container{
   width:1280px;
-  height: 47vh;
+  height: 44vh;
   margin:0 auto;
-  /* border: 1px solid white; */
+  /* border: 1px solid red; */
 }
 .title_box{
-  height: 23.5vh;
-  /* border: 1px solid white; */
+  height: 22vh;
   position: relative;
+  /* border: 1px solid orange; */
 }
 
 .title_img{
@@ -78,29 +80,23 @@ export default {
 }
 
 .pumpkinball_img{
-  width: 10vh;
+  width: 7rem;
 }
 
 .text_img{
   margin-left:10px;
   position: absolute;
-  width:10vh;
+  width:7rem;
 }
 
 .title_name{
   position: absolute;
   left: 10%;
   color:#fff;
-  font-size: 20vh;
+  font-size: 14.5vh;
   font-family: "MorganiteBold";
   background-color: transparent;
-}
-
-.mini_name{
-  color:#fff;
-  font-size: 7vh;
-  font-family: "MorganiteBold";
-  background-color: transparent;
+  word-spacing: 2.21px;
 }
 
 .Gray{
@@ -111,24 +107,22 @@ export default {
 .Subtitle{
   font-family: "NeurimboGothicRegular";
   color : #fff;
-  font-size: 7vh;
+  font-size: 5vh;
   background-color: transparent;
-  margin-top:-5vh;
 }
 
 .main_container{
   width:1280px;
-  height: 35vh;
-  margin: auto;
+  height: 52vh;
+  margin: 0 auto;
   position: relative;
-  /* border: 1px solid white; */
+  /* border: 1px solid yellow; */
 }
 
 .main_contents{
   position: absolute;
   left: 10%;
-  right: 10%;
-  bottom: 0;
+  top: 10%;
   z-index: 1;
   font-family: 'PretendardMedium';
   color : #fff;
@@ -205,36 +199,19 @@ export default {
 @media (max-width:479px) {
 .title_container{
   width:420px;
-  height: 20vh;
+  height: 35vh;
   margin:0 auto;
-  /* border: 1px solid white; */
 }
 .title_box{
-  height: 4vh;
-  /* border: 1px solid white; */
+  height: 15vh;
   position: relative;
 }
 
 .title_img{
   display: none;
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-}
-
-.pumpkinball_img{
-  width: 10vh;
-}
-
-.text_img{
-  margin-left:10px;
-  position: absolute;
-  width:100px;
 }
 
 .title_name{
-  position: absolute;
-  left: 10%;
   color:#fff;
   font-size: 10vh;
   font-family: "MorganiteBold";
@@ -258,7 +235,7 @@ export default {
   color : #fff;
   font-size: 3.5vh;
   background-color: transparent;
-  margin-top:-3vh;
+  margin-top: 0px;
 }
 
 .main_container{
@@ -270,24 +247,12 @@ export default {
 }
 
 .main_contents{
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 0;
-  z-index: 1;
-  font-family: 'PretendardMedium';
-  color : #fff;
   font-size: 2vh;
-  background-color: transparent;
   white-space: pre-wrap;
 }
 
 .footer_container{
   display: none;
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  height: 50px;
 }
 }
 </style>
