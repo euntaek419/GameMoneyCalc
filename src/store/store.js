@@ -72,20 +72,20 @@ export default createStore({
             if(payload < 10000){
                 return payload 
             }
-            if(payload >= 10000 && payload < 100000000){
+            else if(payload >= 10000 && payload < 100000000){
                 if(payload % 10000 == 0){
                     return Math.floor(payload / 10000) + ' 만 '
                 }
                 return Math.floor(payload / 10000) + ' 만 ' + payload % 10000
             }
-            if(payload >= 100000000){
+            else if(payload >= 100000000){
                 if(payload % 100000000 == 0){
                     return Math.floor(payload / 100000000) + ' 억 '
                 }
-                if(payload % 10000 == 0){
+                else if(payload % 10000 == 0){
                     return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 '
                 }
-                if(Math.floor( payload / 10000 ) % 10000 == 0){
+                else if(Math.floor( payload / 10000 ) % 10000 == 0){
                     return Math.floor(payload / 100000000) + ' 억 ' + payload % 10000
                 }
                 return Math.floor(payload / 100000000) + ' 억 ' + Math.floor(payload % 100000000 / 10000) + ' 만 ' + payload % 10000
