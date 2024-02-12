@@ -84,8 +84,8 @@
         <span class="CashRatio">
           현금 거래 비율
           <span>
-            <img class="Exchange_img" src="../assets/images/Exchange.png" v-if="IsExchange == false" @click="updateisExchange">
-            <img class="Exchange_img" src="../assets/images/Exchange_yellow.png" v-if="IsExchange == true" @click="updateisExchange">
+            <img class="Exchange_img" src="../assets/images/Exchange.webp" v-if="IsExchange == false" @click="updateisExchange">
+            <img class="Exchange_img" src="../assets/images/Exchange_yellow.webp" v-if="IsExchange == true" @click="updateisExchange">
           </span>
         </span>
         <span>
