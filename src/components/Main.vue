@@ -28,8 +28,8 @@
       </span>
     </div>
 
-    <img class="winImg" src="../assets/images/win.gif" v-if="isWin[0] == true">
-    <img class="winImgR" src="../assets/images/win.gif" v-if="isWin[1] == true">
+    <img class="winImg" src="../assets/images/win.webp" v-if="isWin[0] == true">
+    <img class="winImgR" src="../assets/images/win.webp" v-if="isWin[1] == true">
     <div class="WhenSell upZ-index">
       <label>
         <span class="AuctionSell">
@@ -45,7 +45,7 @@
           <div>
             <input class="AuctionInput" maxlength='11' v-model="Money" :style="{ color : fontchange[0] }" @input="updateMoney">
             <div v-if="Money == ''" class="UnderBar">
-              <img src="../assets/images/UnderBar.gif" >
+              <img src="../assets/images/UnderBar.webp" >
             </div>
             <div>
               <div> {{ this.$store.getters.readinput(Money) }} 머니</div>
@@ -67,7 +67,7 @@
           <div>
             <input class="CashInput" maxlength="10" v-model="Cash" :style="{ color : fontchange[1] }" @input="updateCash">
             <div v-if="Cash == ''" class="UnderBar">
-                <img src="../assets/images/UnderBar.gif">
+                <img src="../assets/images/UnderBar.webp">
             </div>
             <div>
               <div> {{ this.$store.getters.readinput(Cash) }} 원</div>
@@ -92,7 +92,7 @@
           <div class="Ratio"> 1 </div>
           <div class="Colon"> : </div>
           <input class="CashRatioInput" maxlength='9' v-model="Ratio" @input="updateRatio">
-          <img src="../assets/images/UnderBar.gif" class="CashRatioInput_Under" v-if=" Ratio == ''">
+          <img src="../assets/images/UnderBar.webp" class="CashRatioInput_Under" v-if=" Ratio == ''">
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
           <span class="ExchangeRatio">
@@ -119,7 +119,7 @@
         </div>
         <span>
           <input class="GiftCardInput" maxlength='4' v-model="Persent" @input="updatePersent"> <div class="Persent"> % </div>
-          <img src="../assets/images/UnderBar.gif" class="GiftCardInput_Under" v-if="Persent == ''">
+          <img src="../assets/images/UnderBar.webp" class="GiftCardInput_Under" v-if="Persent == ''">
         </span>
         
         <div class="WhatPersent">

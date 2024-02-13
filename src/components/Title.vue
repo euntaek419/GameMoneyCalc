@@ -29,7 +29,7 @@ GAMEMONEYCALC은,
 
   <div class="footer_container">
     <div class="Mouse_img">
-      <img src="../assets/images/MouseIcon.gif" title="마우스 스크롤을 내려보세요!">
+      <img src="../assets/images/MouseIcon.webp" title="마우스 스크롤을 내려보세요!">
     </div>
 
     <div class="animated-title">
