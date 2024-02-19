@@ -288,12 +288,14 @@ input[type="number"]::-webkit-inner-spin-button {
 
 .winImg{
   position: absolute;
+  top:100%;
   z-index: 0;
   left: -50px;
 }
 
 .winImgR{
   position: absolute;
+  top:100%;
   z-index: 0;
   right : 0;
   transform: scaleX(-1);
