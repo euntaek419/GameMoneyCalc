@@ -1,24 +1,18 @@
 <template>
 <div class="wrap">
   <div class="title_container">
-    <div class="title_box">
-      <div class="title_img">
-          <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
-          <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
-      </div>
-    </div>
+    <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
+    <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
 
-    <div class="title_box">
-        <div class="title_name">
-          GAMEMONEY<span class="Gray">CALC</span>
-          <div class="Subtitle">게임머니계산기</div> 
-        </div>
+    <div class="title_name">
+      <span>GAMEMONEY</span>
+      <span class="Gray">CALC</span>
+      <div class="Subtitle">게임머니계산기</div>
     </div>
   </div>
 
   <div class="main_container">
     <pre class="main_contents">
-<!-- <span class="mini_name">GAMEMONEY</span><span class="mini_name Gray">CALC </span>은 -->
 GAMEMONEYCALC은,
 캐시 아이템의 게임 머니 금액과 현금 구매의 효율을 간편하게 비교하고 계산하기 위해 개발되었습니다.
 필수적인 기능들로 계산을 용이하게 만들었으니, 여러분의 지갑을 더 효율적으로 관리해보세요.
@@ -60,45 +54,37 @@ export default {
 .wrap{}
 
 .title_container{
-  width:1280px;
-  height: 47vh;
+  width:100%;
+  height: 48.2vh;
   margin:0 auto;
   /* border: 1px solid white; */
 }
-.title_box{
-  height: 23.5vh;
-  /* border: 1px solid white; */
-  position: relative;
-}
-
-.title_img{
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-}
 
 .pumpkinball_img{
-  width: 10vh;
+  position: absolute;
+  top:11%;
+  left: 10.5%;
+  width: 128px;
+  height: 106px;
+  background-color: transparent;
 }
 
 .text_img{
-  margin-left:10px;
   position: absolute;
-  width:10vh;
+  top:8.7%;
+  left: 18%;
+  width:166px;
+  height: 48px;
+  background-color: transparent;
 }
 
 .title_name{
   position: absolute;
-  left: 10%;
+  top:25%;
+  left: 10.4%;
   color:#fff;
-  font-size: 20vh;
-  font-family: "MorganiteBold";
-  background-color: transparent;
-}
-
-.mini_name{
-  color:#fff;
-  font-size: 7vh;
+  font-size: 170.5px;
+  letter-spacing: 2.21px;
   font-family: "MorganiteBold";
   background-color: transparent;
 }
@@ -109,30 +95,33 @@ export default {
 }
 
 .Subtitle{
+  width: 100%;
+  height: 51.8vh;
   font-family: "NeurimboGothicRegular";
   color : #fff;
-  font-size: 7vh;
+  font-size: 48.8px;
+  line-height:2.4%;
   background-color: transparent;
-  margin-top:-5vh;
 }
 
 .main_container{
-  width:1280px;
-  height: 35vh;
-  margin: auto;
+  width:100%;
+  height: 100%;
+  margin: 0 auto;
   position: relative;
   /* border: 1px solid white; */
 }
 
 .main_contents{
   position: absolute;
-  left: 10%;
+  top: 11.4%;
+  left: 10.4%;
   right: 10%;
-  bottom: 0;
-  z-index: 1;
   font-family: 'PretendardMedium';
   color : #fff;
-  font-size: 2.4vh;
+  font-size: 26px;
+  line-height: 43px;
+  letter-spacing: -0.26px;
   background-color: transparent;
 }
 
@@ -169,9 +158,9 @@ export default {
   bottom:0;
   width: 100%;
   height: 35px;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   color: #000000;
+  background-color: #fff;
 }
 
 .animated-title .track {
@@ -179,7 +168,7 @@ export default {
   white-space: nowrap;
   will-change: transform;
   animation: marquee 180s linear infinite;
-  background-color: #fff;
+  background-color: transparent;
 }
 
 @keyframes marquee {
@@ -200,95 +189,5 @@ export default {
   }
 }
 
-
-
-@media (max-width:479px) {
-.title_container{
-  width:420px;
-  height: 20vh;
-  margin:0 auto;
-  /* border: 1px solid white; */
-}
-.title_box{
-  height: 4vh;
-  /* border: 1px solid white; */
-  position: relative;
-}
-
-.title_img{
-  display: none;
-  position: absolute;
-  bottom: 0;
-  left: 10%;
-}
-
-.pumpkinball_img{
-  width: 10vh;
-}
-
-.text_img{
-  margin-left:10px;
-  position: absolute;
-  width:100px;
-}
-
-.title_name{
-  position: absolute;
-  left: 10%;
-  color:#fff;
-  font-size: 10vh;
-  font-family: "MorganiteBold";
-  background-color: transparent;
-}
-
-.mini_name{
-  color:#fff;
-  font-size: 3vh;
-  font-family: "MorganiteBold";
-  background-color: transparent;
-}
-
-.Gray{
-  color: #9b9b9b;
-  background-color: transparent;
-}
-
-.Subtitle{
-  font-family: "NeurimboGothicRegular";
-  color : #fff;
-  font-size: 3.5vh;
-  background-color: transparent;
-  margin-top:-3vh;
-}
-
-.main_container{
-  width:420px;
-  height: 35vh;
-  margin: 0 auto;
-  position: relative;
-  /* border: 1px solid white; */
-}
-
-.main_contents{
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  bottom: 0;
-  z-index: 1;
-  font-family: 'PretendardMedium';
-  color : #fff;
-  font-size: 2vh;
-  background-color: transparent;
-  white-space: pre-wrap;
-}
-
-.footer_container{
-  display: none;
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  height: 50px;
-}
-}
 </style>
 
