@@ -20,7 +20,6 @@ export default {
       page: 0,
       lastPage: 0,
       wrap: null,
-      On: false,
     }
   },
   mounted() {
@@ -50,7 +49,7 @@ export default {
 
       wrap.style.top = this.page * -100 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
       //console.log(e.deltaY); // 스크롤 이벤트 발생 시 deltaY 값 출력
-      console.log(this.page)
+      //console.log(this.page)
     };
       window.addEventListener('wheel', handleWheel, { passive: true });
 
