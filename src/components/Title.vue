@@ -1,8 +1,10 @@
 <template>
 <div class="wrap">
   <div class="title_container">
-    <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp" @click="click">
-    <img class="text_img" src="../assets/images/PumpkinBallText.webp" @click="click">
+    <div @click="$emit('downEvent')" class="img_box">
+      <img class="pumpkinball_img" src="../assets/images/PumpkinBall.webp">
+      <img class="text_img" src="../assets/images/PumpkinBallText.webp">
+    </div>
 
     <div class="title_name">
       <span>GAMEMONEY</span>
@@ -21,38 +23,29 @@ GAMEMONEYCALC은,
     </pre>
   </div>
 
-  <div class="footer_container">
-    <div class="Mouse_img">
-      <img src="../assets/images/MouseIcon.webp" title="마우스 스크롤을 내려보세요!">
-    </div>
 
-    <div class="animated-title">
-      <div class="track"> <!-- bottom animation -->
-        <span v-for="item in 30" :key="item">
-          <span class="content"> GAMEMONEYCALC &nbsp; &nbsp; </span>
-          <span class="content2"> GAMEMONEYCALC &nbsp; &nbsp; </span>
-        </span>
-      </div>
-    </div>
-
+  <div class="Mouse_img">
+    <img src="../assets/images/MouseIcon.webp" title="마우스 스크롤을 내려보세요!">
   </div>
+
+  <div class="animated-title">
+    <div class="track">
+      <span v-for="item in 30" :key="item">
+        <span class="content"> &nbsp; GAMEMONEYCALC  &nbsp; </span>
+        <span class="content2"> &nbsp; GAMEMONEYCALC &nbsp; </span>
+      </span>
+    </div>
+  </div>
+
 </div>
 </template>
 
 <script>
 export default {
-  methods:{
-    click(){
-      window.scrollTo(9999,9999)
-    }
-  }
-
 }
 </script>
 
 <style>
-.wrap{}
-
 .title_container{
   width:100%;
   height: 48.2vh;
@@ -60,12 +53,16 @@ export default {
   /* border: 1px solid white; */
 }
 
+.img_box{
+  cursor: pointer;
+}
+
 .pumpkinball_img{
   position: absolute;
   top:11%;
   left: 10.5%;
-  width: 128px;
-  height: 106px;
+  width: 13.91vh;
+  height: 11.52vh;
   background-color: transparent;
 }
 
@@ -73,8 +70,8 @@ export default {
   position: absolute;
   top:8.7%;
   left: 18%;
-  width:166px;
-  height: 48px;
+  width:18vh;
+  height: 5.2vh;
   background-color: transparent;
 }
 
@@ -83,8 +80,8 @@ export default {
   top:25%;
   left: 10.4%;
   color:#fff;
-  font-size: 170.5px;
-  letter-spacing: 2.21px;
+  font-size: 18.5vh;
+  letter-spacing: 0.25vh;
   font-family: "MorganiteBold";
   background-color: transparent;
 }
@@ -96,17 +93,16 @@ export default {
 
 .Subtitle{
   width: 100%;
-  height: 51.8vh;
   font-family: "NeurimboGothicRegular";
   color : #fff;
-  font-size: 48.8px;
+  font-size: 5.3vh;
   line-height:2.4%;
   background-color: transparent;
 }
 
 .main_container{
   width:100%;
-  height: 100%;
+  height: 51.8vh;
   margin: 0 auto;
   position: relative;
   /* border: 1px solid white; */
@@ -123,13 +119,6 @@ export default {
   line-height: 43px;
   letter-spacing: -0.26px;
   background-color: transparent;
-}
-
-.Footer{
-  background-color: #fff;
-  position: fixed;
-  bottom: 0;
-  height: 50px;
 }
 
 .BoldText{
@@ -188,6 +177,5 @@ export default {
     font-family:'PyeongChangPeaceLight';
   }
 }
-
 </style>
 
