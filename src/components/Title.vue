@@ -16,10 +16,11 @@
   <div class="main_container">
     <pre class="main_contents">
 GAMEMONEYCALC은,
-캐시 아이템의 게임 머니 금액과 현금 구매의 효율을 간편하게 비교하고 계산하기 위해 개발되었습니다.
-필수적인 기능들로 계산을 용이하게 만들었으니, 여러분의 지갑을 더 효율적으로 관리해보세요.
+캐시 아이템의 게임 머니 금액과 현금 구매의 효율을
+간편하게 비교하고 계산하기 위해 개발되었습니다.
 
-즐거운 게임 되세요 !
+필수적인 기능들로 계산을 용이하게 만들었으니,
+여러분의 지갑을 더 효율적으로 관리해보세요.
     </pre>
   </div>
 
@@ -81,7 +82,7 @@ export default {
   left: 10.4%;
   color:#fff;
   font-size: 18.5vh;
-  letter-spacing: 0.25vh;
+  letter-spacing: 0.2vh;
   font-family: "MorganiteBold";
   background-color: transparent;
 }
@@ -95,6 +96,7 @@ export default {
   width: 100%;
   font-family: "NeurimboGothicRegular";
   color : #fff;
+  letter-spacing: 0.055vh;
   font-size: 5.3vh;
   line-height:2.4%;
   background-color: transparent;
@@ -115,21 +117,10 @@ export default {
   right: 10%;
   font-family: 'PretendardMedium';
   color : #fff;
-  font-size: 26px;
-  line-height: 43px;
-  letter-spacing: -0.26px;
+  font-size: 2.4vh;
+  line-height: 4vh;
+  letter-spacing: -0.024vh;
   background-color: transparent;
-}
-
-.BoldText{
-  background-color: #fff;
-  font-size: 25px;
-  text-align: center;
-}
-
-.LightText{
-  background-color: #fff;
-  font-size: 25px;
 }
 
 .Mouse_img{
@@ -142,11 +133,11 @@ export default {
 
 /* 움직이는 텍스트 */
 .animated-title {
-  font-size:25px;
+  font-size:13px;
   position: absolute;
   bottom:0;
   width: 100%;
-  height: 35px;
+  height: 20px;
   overflow: hidden;
   color: #000000;
   background-color: #fff;
