@@ -19,7 +19,6 @@ export default {
     return {
       page: 0,
       lastPage: 0,
-      wrap: null,
     }
   },
   mounted() {
@@ -47,9 +46,7 @@ export default {
         this.page = this.lastPage;
       }
 
-      wrap.style.top = this.page * -100 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
-      //console.log(e.deltaY); // 스크롤 이벤트 발생 시 deltaY 값 출력
-      //console.log(this.page)
+      wrap.style.top = this.page * -99.9 + 'vh'; // 페이지에 따라 'wrap' 요소의 top 값을 조절하여 페이지를 표시
     };
       window.addEventListener('wheel', handleWheel, { passive: true });
 
@@ -62,14 +59,14 @@ export default {
         if(this.page > this.lastPage){
           this.page = this.lastPage;
         }
-        this.$refs.wrap.style.top = this.page * -100 + 'vh'
+        this.$refs.wrap.style.top = this.page * -99.9 + 'vh'
       },
       upEvent() {
         this.page--;
         if (this.page < 0) {
           this.page = 0; // 페이지가 최소 페이지보다 작아지지 않도록 보정합니다.
         }
-        this.$refs.wrap.style.top = this.page * -100 + 'vh'; // 페이지가 올라가는 효과를 적용합니다.
+        this.$refs.wrap.style.top = this.page * -99.9 + 'vh'; // 페이지가 올라가는 효과를 적용합니다.
       }
     },
   };
@@ -127,14 +124,15 @@ body {
     position:absolute;
     width:100%;
     height:100%;
-    transition: 1.0s;
+    transition: 1s;
 }
 .container {
-    /* width:100%; */
     height:100%;
 }
 
+
 body {
-  overflow: hidden;  /* 수직 스크롤바를 숨김 */
+  /* 수직 스크롤바를 숨김 */
+  overflow: hidden;
 }
 </style>
