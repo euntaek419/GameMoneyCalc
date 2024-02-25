@@ -1,6 +1,6 @@
 <template>
   <div class="wrap" ref="wrap">
-    <Title class="container" @downEvent="downEvent"></Title>
+    <Title class="container" @downEvent="downEvent" @upEvent="upEvent"></Title>
     <Main class="container"></Main>
   </div>
 </template>
@@ -64,6 +64,13 @@ export default {
         }
         this.$refs.wrap.style.top = this.page * -100 + 'vh'
       },
+      upEvent() {
+        this.page--;
+        if (this.page < 0) {
+          this.page = 0; // 페이지가 최소 페이지보다 작아지지 않도록 보정합니다.
+        }
+        this.$refs.wrap.style.top = this.page * -100 + 'vh'; // 페이지가 올라가는 효과를 적용합니다.
+      }
     },
   };
 

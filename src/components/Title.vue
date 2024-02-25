@@ -43,6 +43,26 @@ GAMEMONEYCALC은,
 
 <script>
 export default {
+  mounted() {
+    // 컴포넌트가 마운트되면 window의 keydown 이벤트를 듣습니다.
+    window.addEventListener("keydown", this.handleKeyDown);
+  },
+  methods: {
+    handleKeyDown(event) {
+      // 키보드 이벤트가 발생했을 때, 키가 화살표 아래 방향키인지 확인합니다.
+      if (event.key === "ArrowDown") {
+        // 만약 키가 화살표 아래 방향키라면, 콘솔에 "하단 입력"을 출력합니다.
+        this.$emit('downEvent')
+      }
+      if (event.key === "ArrowUp") {
+        this.$emit('upEvent')
+      }
+    }
+  },
+  beforeUnmount() {
+    // 컴포넌트가 언마운트되기 전에 이벤트 리스너를 제거합니다.
+    window.removeEventListener("keydown", this.handleKeyDown);
+  }
 }
 </script>
 
