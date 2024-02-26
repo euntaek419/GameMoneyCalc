@@ -28,7 +28,7 @@ GAMEMONEYCALC은,
 
   <div class="animated-title">
     <div class="track">
-      <span v-for="item in 54" :key="item">
+      <span v-for="item in 14" :key="item">
         <span class="content"> &nbsp; GAMEMONEYCALC  &nbsp; </span>
         <span class="content2"> &nbsp; GAMEMONEYCALC &nbsp; </span>
       </span>
@@ -166,7 +166,7 @@ export default {
   position: absolute;
   white-space: nowrap;
   will-change: transform;
-  animation: marquee 300s linear infinite;
+  animation: marquee 100s linear infinite;
   bottom:0;
 }
 
