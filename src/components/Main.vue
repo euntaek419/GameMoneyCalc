@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div class="InfoBox upZ-index">
+  <!-- <div class="wrap"> -->
+    <div class="InfoBox">
       <div class="InfoText">  
         구매할 정보를 기입해줘 !
       </div>
@@ -36,7 +37,6 @@
           <span v-show="Cash == '' || Money == '' || Ratio == '' || isWin[0] == false">
             아이템 판매 금액 입력
           </span>
-<!-- ------------------------------------------------------------------------------------------------------ -->
           
           <span class="ResultCalc" v-show="Cash !== '' && Money !== '' && Ratio !== '' && isWin[0] == true">
             {{ cashResult }} 원, {{ Math.abs(Math.round(compairpersentweened*10) / 10) }} % 만큼 이득이야!_
@@ -225,7 +225,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -233,21 +233,22 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 .InfoBox{
-  width: 350px;
-  height: 65px;
+  position: absolute;
+  width: 22.2%;
+  height: 7vh;
   border: solid 2px #000;
   background-color: #5b5b5b;
   color:#fff;
-  position: absolute;
   left: 50%;
   transform:translate(-50%, 0);
-  top: 105%;
+  /* top: 8.4vh; */
+  top: 108.4vh;
 }
 
 .InfoText{
   background-color: transparent;
   font-family: "Galmuri11";
-  font-size: 25px;
+  font-size: 2.5vh;
   top: 50%;
   transform:translate(0, 50%);
   text-align: center;

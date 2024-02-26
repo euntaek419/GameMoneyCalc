@@ -126,6 +126,7 @@ body {
     height:100%;
     transition: 1s;
 }
+
 .container {
     height:100%;
 }

@@ -24,10 +24,7 @@ GAMEMONEYCALC은,
     </pre>
   </div>
 
-
-  <div class="Mouse_img">
-    <img src="../assets/images/MouseIcon.webp" title="마우스 스크롤을 내려보세요!">
-  </div>
+  <img src="../assets/images/MouseIcon.webp" title="마우스 스크롤을 내려보세요!" class="Mouse_img">
 
   <div class="animated-title">
     <div class="track">
@@ -66,7 +63,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .title_container{
   width:100%;
   height: 48.2vh;
@@ -148,12 +145,12 @@ export default {
   bottom:5%;
   left: 50%;
   transform:translate(-50%, 0);
-  z-index: 0;
+  height: 5.5vh;
 }
 
 /* 움직이는 텍스트 */
 .animated-title {
-  font-size:13px;
+  font-size:1.5vh;
   position: absolute;
   bottom:0;
   width: 100%;
@@ -162,7 +159,7 @@ export default {
   background-color: #fff;
   outline: transparent;
   border: transparent;
-  height: 20px;
+  height: 2.2vh;
 }
 
 .animated-title .track {
@@ -174,7 +171,7 @@ export default {
 }
 
 .track{
-  height: 20px;
+  height: 2.2vh;
 }
 
 @keyframes marquee {
