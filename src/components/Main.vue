@@ -1,7 +1,7 @@
 <template>
   <div>
   <!-- <div class="wrap"> -->
-    <div class="InfoBox">
+    <div class="InfoBox upZ-index">
       <div class="InfoText">  
         구매할 정보를 기입해줘 !
       </div>
@@ -243,6 +243,7 @@ input[type="number"]::-webkit-inner-spin-button {
   transform:translate(-50%, 0);
   /* top: 8.4vh; */
   top: 108.4vh;
+
 }
 
 .InfoText{
@@ -292,6 +293,7 @@ input[type="number"]::-webkit-inner-spin-button {
   top:100%;
   z-index: 0;
   left: -50px;
+  background-color: transparent;
 }
 
 .winImgR{
@@ -300,6 +302,7 @@ input[type="number"]::-webkit-inner-spin-button {
   z-index: 0;
   right : 0;
   transform: scaleX(-1);
+  background-color: transparent;
 }
 
 .AuctionSell{
