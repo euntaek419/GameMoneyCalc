@@ -15,7 +15,7 @@
 - VUE.JS로 1차 개발 후, VUEX로 리팩토링하는 과정을 거쳐 VUE.JS 구조와 VUEX의 상태관리법에 대해 공부하였습니다.
 - gsap to를 사용하여, 숫자 카운트 애니메이션을 추가하였습니다.
 - 기존 CAFE24를 통한 배포보다는 CSR 페이지의 적절한 배포방식을 고민하였고, AWS S3, CLOUDFRONT를 통한 정적 웹 사이트 호스팅을 선택하였습니다.
-- 가비아를 통해 도메인을 구매하고, Route53 호스팅을 통해서 개인 도메인 서비스를 사용해보았습니다.
+- 가비아를 통해 도메인을 구매하고, AWS Route53 호스팅을 통해서 개인 도메인 서비스를 사용해보았습니다.
 - AWS Certificate Manager를 통해 SSL 인증서를 발급받고, https 서비스를 지원하도록 변경하였습니다.
 - Github 에서 코드가 PUSH 되면 Github Actions를 통해 AWS에 자동으로 업로드 되도록 CI/CD를 구축하였습니다.
 
@@ -53,14 +53,15 @@
 
 ---
 
-### Lighthouse Score 성능
+### Lighthouse Score 성능 ( 24/02/09 기준 )
 
 ![Lighthouse Score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/719834a9-6452-4773-963d-011d84fea426)
 
 
 ### 고려 중 사항
-1. 사용 친화적인 UI 고려하여 변경
-2. typescript 변환
+1. 사용 친화적인 UI/UX 고려하여 변경
+2. typescript 공부 및 변환
+3. 모바일 웹 지원
 
 ### 개발 로그
 2024/02/26
