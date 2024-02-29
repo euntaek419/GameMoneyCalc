@@ -23,8 +23,7 @@
 4. 상품권 옵션 설정
 5. 상품권 옵션 비율 입력
 
-![ezgif-5-37bd2a46ba](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/e8eae662-4967-4e4f-86c0-293ac70c98e8)
-
+![GAMEMONEYCALC 소개](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/d630439e-308f-4b51-8f6c-c629e1f39806)
 
 ### 개발환경 & 기술스택
 <div>
@@ -42,9 +41,21 @@
    - GIF로 인한 지연 또한 webp로 변경하여 이미지의 로드를 최소화 했다. <br/>
    - Total Bloking Time 변경 전 780ms -> 변경 후 250ms 까지 낮추는데 성공했다! ( 3.12배 )
    - 리팩토링을 통해 기존 methods 에서 시행되던 계산의 일부를 computed 로 변경하여 로딩의 속도를 줄이도록 노력하였습니다.
+   - 기존 CAFE24를 통한 배포보다는 CSR 페이지의 적절한 배포방식을 고민하였고, AWS S3, CLOUDFRONT를 통한 정적 웹 사이트 호스팅을 선택하였습니다. 이를 통해 페이지 로딩 시간이 90% 이상 감소하였습니다.
 
+* Lighthouse Score
+Total Blocking Time 1000 밀리초 이상 -> 10밀리초
+Largest Contentful Paint 15초 이상 -> 0.7초
+
+    - Github 에서 코드가 PUSH 되면 Github Actions를 통해 AWS에 자동으로 업로드 되도록 CI/CD를 구축하였습니다. 이를 통해 기존 업로드 대비 시간이 40% 이상 감소하였습니다. 기존 직접 업로드 80초 이상 -> Github Actions 약 1분 미만
 
 ---
+
+### Lighthouse Score 성능
+
+![Lighthouse Score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/719834a9-6452-4773-963d-011d84fea426)
+
+
 ### 고려 중 사항
 1. 사용 친화적인 UI 고려하여 변경
 2. typescript 변환
