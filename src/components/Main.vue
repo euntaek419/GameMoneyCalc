@@ -96,7 +96,7 @@
         </span>
         <div class="ExchangeBox"  v-if="IsExchange == true">
           <span class="ExchangeRatio">
-             1 =
+            1 =
           </span>
           <span class="ExchangeRead">
             ( {{ this.$store.getters.readinput(ExchangeRatio) }} 원 )
@@ -435,7 +435,7 @@ input[type="number"]::-webkit-inner-spin-button {
   position: absolute;
   width: 100%;
   height: 65%;
-  font-size: 165px;
+  font-size: 135px;
   color: #fff;
   font-family: "MorganiteBold";
   outline: none;
@@ -451,7 +451,7 @@ input[type="number"]::-webkit-inner-spin-button {
   position: absolute;
   left:50%;
   margin-left:120px;
-  font-size: 165px;
+  font-size: 135px;
   color: #fff;
   font-family: "MorganiteBold";
   z-index: 0;
@@ -579,7 +579,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .Ratio{
   position: absolute;
   color:#fff;
-  font-size: 165px;
+  font-size: 135px;
   font-family: "MorganiteBold";
   right:25%;
   top: 55%;
