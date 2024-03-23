@@ -64,7 +64,7 @@
 
 ### 개발 로그
 2024/03/19
-* TypeScript 변환 완료[https://github.com/euntaek419/GameMoneyCalc_ts]
+* [TypeScript 변환 완료](https://github.com/euntaek419/GameMoneyCalc_ts)
 
 2024/02/26
 * 키보드 방향 키( 위, 아래 )를 사용한 페이지 전환 연출 & 이미지 클릭 시, 하단 이동
