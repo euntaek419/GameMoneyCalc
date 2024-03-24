@@ -51,6 +51,7 @@
      * Largest Contentful Paint 15초 이상 -> 0.7초
    - Github 에서 코드가 PUSH 되면 Github Actions를 통해 AWS에 자동으로 업로드 되도록 CI/CD를 구축하였습니다. 이를 통해 기존 업로드 대비 시간이 25% 이상 감소하였습니다.
      * 기존 직접 업로드 80초 이상 -> Github Actions 약 1분 미만
+   - Vite / TypeScript / Pinia를 통한 마이그레이션 작업을 통해 기존 서비 실행 시간과 빌드 시간이 90% 이상 감소하였습니다.
 
 ---
 
