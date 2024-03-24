@@ -18,6 +18,7 @@
 - 가비아를 통해 도메인을 구매하고, AWS Route53 호스팅을 통해서 개인 도메인 서비스를 사용해보았습니다.
 - AWS Certificate Manager를 통해 SSL 인증서를 발급받고, https 서비스를 지원하도록 변경하였습니다.
 - Github 에서 코드가 PUSH 되면 Github Actions를 통해 AWS에 자동으로 업로드 되도록 CI/CD를 구축하였습니다.
+- Vite / TypeScript / Pinia를 통한 마이그레이션 작업을 진행했습니다. [[링크]](https://github.com/euntaek419/GameMoneyCalc_ts)
 
 ### 프로젝트 사용방법
 1. 게임 머니 아이템 금액 입력
