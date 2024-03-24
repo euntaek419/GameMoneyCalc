@@ -58,6 +58,9 @@
 ![Lighthouse Score](https://github.com/euntaek419/GameMoneyCalc/assets/100109284/719834a9-6452-4773-963d-011d84fea426)
 
 
+<details>
+<summary>개발 로그 & 고려 사항</summary>
+
 ### 고려 중 사항
 1. 사용 친화적인 UI/UX 고려하여 변경
 2. 모바일 웹 지원
@@ -167,3 +170,5 @@
 
 2023/06/28
 * 로고 제작 및 컴포넌트 분할 개발
+
+</details>
